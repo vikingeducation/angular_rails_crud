@@ -15,6 +15,7 @@
 
 //= require angular
 //= require angular-ui-router
+//= require ui-bootstrap.min
 
 //= require underscore.min
 //= require restangular

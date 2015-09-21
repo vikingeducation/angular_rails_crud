@@ -34,6 +34,6 @@ pinApp = angular.module('pinApp', ['ui.router', 'restangular'])
 
   }])
 
-.run(function($rootScope){
-  $rootScope.$on("$stateChangeError", console.log.bind(console));
-});
+  .run(function($rootScope){
+    $rootScope.$on("$stateChangeError", console.log.bind(console));
+  });

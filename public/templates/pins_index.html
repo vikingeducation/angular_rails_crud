@@ -1,25 +1,90 @@
-<hr>
-<form ng-submit="createPin()">
-  <h2>New Pin</h2>
-  <label for="">Title</label>
-  <input type="text" ng-model="newPin.item_name"><br>
-  <label for="">Buy/Sell?</label>
-  <input type="text" ng-model="newPin.buy_sell"><br>
-  <label for="">Description</label>
-  <textarea ng-model="newPin.description"></textarea>
-  <button type="submit">Create Pin</button>
-</form>
-<hr>
+<div class="row">
+  <div class="col-md-9">
+    <div class="row">
 
-<h2>All Pins</h2>
-<hr>
-<div ng-repeat="pin in pins" class="pin-wrapper">
-  <h3>{{pin.item_name}}</h3>
-  <h4 ng-if="pin.buy_sell">For Sale</h4>
-  {{pin.buy_sell}}
-  <h4 ng-if="!pin.buy_sell">Want to Buy</h4>
-  <p><a href="#">Edit Pin</a></p>
-  <p><a href="#">Delete Pin</a></p>
-  <p>{{pin.description}}</p>
-  <p>Posted: {{pin.created_at | date}}</p>
+      <div class="col-xs-12">
+        <h2>New Pin</h2>
+      </div>
+
+      <div class="col-xs-8">
+        <form role = "form" class = "form-horizontal" name="newpinform" ng-submit = "createPin()">
+
+          <div class="form-group">
+            <label for = "title" class="col-sm-5 control-label">Title</label>
+            <div class="col-sm-7">
+              <input  type="text"
+                      name = "itemname"
+                      required="string"
+                      placeholder = "Macbook Pro"
+                      ng-model="newPin.item_name"
+                      class = "form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for = "transaction" class="col-sm-5 control-label">Buy / Sell</label>
+            <div class="col-sm-7">
+              <select name = "transaction" ng-model="newPin.buy_sell" class = "form-control" required>
+                <option value="false">Want to Buy</option>
+                <option value="true">For Sale</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for = "description" class="col-sm-5 control-label">Description</label>
+            <div class="col-sm-7">
+              <textarea ng-model="newPin.description"
+                        name = "description"
+                        placeholder = "Best computer ever!"
+                        class = "form-control"
+                        required></textarea>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="form-group">
+            <div class="col-xs-7 col-xs-offset-5">
+              <input type="submit" class="btn btn-primary btn-lg btn-block" value="Create Pin!" ng-disabled = "newpinform.$invalid">
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="col-xs-4">
+
+        <p><b>Form Status:</b></p>
+        <p class = "text-success" ng-if="newpinform.$valid">All fields valid!</p>
+        <p class = "text-warning" ng-if="newpinform.$invalid">Not all fields are valid!</p>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+      <div class="col-xs-12">
+        <h2>All Pins</h2>
+      </div>
+
+      <hr>
+
+      <div class="col-xs-12">
+        <div ng-repeat="pin in pins" class="pin-wrapper">
+          <h3>{{pin.item_name}}</h3>
+          <h4 ng-if="pin.buy_sell">For Sale</h4>
+          <h4 ng-if="!pin.buy_sell">Want to Buy</h4>
+          <p><a href="#">Edit Pin</a></p>
+          <p><a href="#">Delete Pin</a></p>
+          <p>{{pin.description}}</p>
+          <p>Posted: {{pin.created_at | date}}</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </div>

@@ -43,6 +43,18 @@ pinApp = angular.module('pinApp', ['ui.router', 'restangular'])
         }
       })
 
+      .state('pins.edit',{
+        url: "/:id/edit",
+        templateUrl: '/templates/pins_edit.html',
+        controller: 'pinsShowCtrl',
+        resolve: {
+          pin: ['Restangular', '$stateParams',
+                function(Restangular, $stateParams){
+                  return Restangular.one('pins', $stateParams.id).get();
+          }]
+        }
+      });
+
 
     $urlRouterProvider.otherwise('/pins');
 

@@ -24,7 +24,8 @@ class PinsController < ApplicationController
 
     respond_to do |format|
       if @pin.save
-        format.json { render json: @pin.to_json(include: :user) }
+        format.json { render json: @pin }
+        # format.json { render :show, status: :created }
       else
         format.json { render status: :unprocessable_entity }
       end

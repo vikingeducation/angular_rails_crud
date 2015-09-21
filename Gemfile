@@ -24,9 +24,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'better_errors'
-
 gem 'angularjs-rails'
+# gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 
 
@@ -44,6 +43,16 @@ gem 'angular_rails_csrf'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'faker'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+
+  # gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

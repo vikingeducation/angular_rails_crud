@@ -18,8 +18,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: pinboard
+  database: pinboardtest
 
 production:
   <<: *default
-  database: pinboard
+  database: pinboardprod

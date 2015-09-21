@@ -21,6 +21,20 @@ class PinsController < ApplicationController
 
   end
 
+  def show
+    @pin = Pin.find(params['id'])
+
+    respond_to do |format|
+      if @pin
+        format.json { render json: @pin.to_json(:include => :user) }
+      else
+        format.json { render status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+
   private
 
   def whitelisted_params

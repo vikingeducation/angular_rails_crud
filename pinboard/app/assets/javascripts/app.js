@@ -27,7 +27,22 @@ pinboard.config(['$urlRouterProvider', '$stateProvider',
             return Restangular.all('pins').getList();
           }]
         }
+      })
+
+      .state('pins.show',{
+        url: '/:id',
+        templateUrl: 'templates/pinsShow.html',
+        controller: 'pinShowCtrl',
+        resolve: {
+          pin: ['Restangular', '$stateParams',
+                function(Restangular, $stateParams){
+            return Restangular.one('pins', $stateParams.id).get();
+          }]
+        }
+
       });
+
+
   }]);
 
 //for errors

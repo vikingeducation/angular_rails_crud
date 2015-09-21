@@ -6,16 +6,34 @@ pinboard.controller('testCtrl', ['$scope', function($scope){
 
 }]);
 
+pinboard.config(['RestangularProvider', function(RestangularProvider){
+    RestangularProvider.setBaseUrl('/api/v1');
+    RestangularProvider.setRequestSuffix('.json');
+}]);
 
-// pinboard.config(['$urlRouterProvider', '$stateProvider'],
-//   function($urlRouterProvider, $stateProvider){
-//     $stateProvider
-//       .state('index', {
-//         url: '/index',
-//         templateUrl: '/templates/index.html',
-//         controller: ['$scope', function($scope){
-//           console.log('controller initiated');
-//           $scope.testVar = 'testing!';
-//         }
-//       });
-//   });
+
+pinboard.config(['$urlRouterProvider', '$stateProvider'],
+  function($urlRouterProvider, $stateProvider){
+    $stateProvider
+      .state('pins', {
+        url: '/pins',
+        templateUrl: '/templates/pinsLayout.html'
+      })
+
+      .state('pins.index', {
+        url: '/index',
+        templateUrl: '/templates/pinsIndex.html',
+        controller: 'PinsIndexCtrl',
+        resolve: {
+          pins: ['Restangular', function(Restangular){
+            return Restangular.all('pins').getList();
+          }]
+        }
+      })
+  });
+
+//for errors
+
+pinboard.run(function($rootScope){
+  $rootScope.$on("$stateChangeError", console.log.bind(console));
+});

@@ -16,6 +16,14 @@ Pin.destroy_all
 
 end
 
+users = User.ids
+status = [true, false]
+
 20.times do
+
+  Pin.create( item_name: Faker::Commerce.product_name,
+              buy_string: status.sample,
+              description: Faker::Lorem.sentence(2),
+              user_id: users.sample )
 
 end

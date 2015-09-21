@@ -32,8 +32,8 @@
   </a>
   <p ng-if='pin.buy_string' style='color:red'>WANT TO BUY<p>
   <p ng-if='!pin.buy_string' style='color:green'>FOR SALE<p>
-  <a ui-sref='pins.edit{{id: pin.id}}'>Edit Pin</a>
-  <a ng-click='deletePin(pin)'>Delete Pin</a>
+  <a ui-sref='pins.edit({id: pin.id})'>Edit Pin</a>
+  <a ng-click='deletePin(pin)' href='#'>Delete Pin</a>
   <p>{{pin.description}}</p>
   <p> Posted {{pin.created_at | date}}
       by {{pin.user.username}}

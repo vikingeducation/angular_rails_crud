@@ -9,7 +9,7 @@ pinboard.controller('pinShowCtrl', ['$scope', 'pin', 'Restangular', '$location',
   };
 
   $scope.deletePin = function(){
-    $scope.pin.delete().then(function(){
+    $scope.pin.remove().then(function(){
       $location.path('/pins/index');
     });
   };

@@ -63,7 +63,8 @@ class PinsController < ApplicationController
 
     respond_to do |format|
       if @pin.destroy
-        format.json { render status: :accepted}
+        @pins = Pin.all
+        format.json { render json: @pins.to_json(:include => :user) }
       else
         format.json { render status: :unprocessable_entity }
       end

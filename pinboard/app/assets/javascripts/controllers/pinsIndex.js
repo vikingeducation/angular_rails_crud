@@ -23,8 +23,9 @@ pinboard.controller('pinsIndexCtrl',
 
   $scope.deletePin = function(pin){
     var idx = pins.indexOf(pin);
-    pin.delete().then(function(){
-      pins.splice(idx, 1);
+    console.log($scope.pins, idx, pin);
+    $scope.pins[idx].remove().then(function(){
+      $scope.pins.splice(idx, 1);
     });
   };
 

@@ -1,4 +1,4 @@
-pinApp.controller('pinsCtrl',
+pinApp.controller('pinsIndexCtrl',
   ['$scope', 'Restangular', 'pins',
   function($scope, Restangular, pins) {
 
@@ -6,7 +6,7 @@ pinApp.controller('pinsCtrl',
 
 
     $scope.createPin = function(){
-      $scope.newPin.user_id = 40;
+      $scope.newPin.user_id = 1;
       Restangular.all('pins').post( JSON.stringify( { pin: $scope.newPin } ) );
       $scope.newPin = {};
     };

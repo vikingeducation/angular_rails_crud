@@ -1,0 +1,44 @@
+<div class="row">
+
+  <div class="col-xs-12">
+    <h2>Pin {{ pin.id }}: {{ pin.item_name }}</h2>
+  </div>
+
+  <hr>
+
+  <div class="col-xs-12">
+    <div class="pin-wrapper">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>{{pin.item_name}}</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h4 ng-if="pin.buy_sell" class="text-success">For Sale</h4>
+          <h4 ng-if="!pin.buy_sell" class="text-danger">Want to Buy</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-2">
+          <p> <a href="#">Edit Pin</a> </p>
+        </div>
+        <div class="col-xs-2">
+          <p> <a href="#">Delete Pin</a> </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <p>{{pin.description}}</p>
+          <p class="text-muted pull-right">Posted: {{pin.created_at | date: 'short' }} by <strong> {{ pin.user.username }} </strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

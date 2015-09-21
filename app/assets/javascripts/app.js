@@ -14,17 +14,31 @@ pinApp = angular.module('pinApp', ['ui.router', 'restangular'])
   function($urlRouterProvider, $stateProvider){
 
     $stateProvider
+
       .state('pins', {
         url: '/pins',
         templateUrl: '/templates/pins_layout.html',
       })
+
       .state('pins.index',{
         url: "/index",
         templateUrl: '/templates/pins_index.html',
-        controller: 'pinsCtrl',
+        controller: 'pinsIndexCtrl',
         resolve: {
           pins: ['Restangular', function(Restangular){
             return Restangular.all('pins').getList();
+          }]
+        }
+      })
+
+      .state('pins.show',{
+        url: "/:id",
+        templateUrl: '/templates/pins_show.html',
+        controller: 'pinsShowCtrl',
+        resolve: {
+          pin: ['Restangular', '$stateParams',
+                function(Restangular, $stateParams){
+                  return Restangular.one('pins', $stateParams.id).get();
           }]
         }
       })

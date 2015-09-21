@@ -7,11 +7,6 @@ pinApp = angular.module('pinApp', ['ui.router', 'restangular'])
     RestangularProvider.setDefaultHttpFields({
         "content-type": "application/json"
     });
-    RestangularProvider.setResponseExtractor( function( response, operation ) {
-        // it would have defaulted to response.data
-        // but we wanted the first item.
-        return response.data;
-    });
 
   }])
 

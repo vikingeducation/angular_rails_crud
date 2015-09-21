@@ -1,9 +1,9 @@
 pinApp.controller('pinsCtrl',
-  ['$scope', 'Restangular',
-  function($scope, Restangular, pins){
+  ['$scope', 'Restangular', 'pins',
+  function($scope, Restangular, pins) {
 
-  $scope.hello = "Hello Ang world";
+    console.log("instantiated pins controller")
 
-  $scope.pins = pins;
+    $scope.pins = pins
 
 }]);

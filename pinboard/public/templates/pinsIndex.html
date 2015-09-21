@@ -24,6 +24,6 @@
   <button ng-click="createPin()">Add Pin </button>
 </form>
 
-<div ng-repeat='pin in pins'>
+<div ng-repeat='pin in pins | orderBy: "-created_at"'>
   <p>{{pin}}</p>
 </div>

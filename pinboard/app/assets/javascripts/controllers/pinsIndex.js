@@ -3,8 +3,7 @@ pinboard.controller('pinsIndexCtrl',
                     function($scope, pins, Restangular){
 
   $scope.pins = pins;
-  // $scope.newPin = {};
-  // debugger
+  $scope.newPin = {};
   $scope.user = pins[0].user;
 
   $scope.createPin = function(){

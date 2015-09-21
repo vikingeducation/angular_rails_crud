@@ -1,0 +1,18 @@
+<h2>Pin {{pin.id}}: {{pin.item_name}}</h2>
+
+<p>Signed in as {{pin.user.username}}</p>
+
+<a ui-sref="pins.index">View All Pins</a>
+
+<hr>
+<h4>{{pin.item_name}}</h4>
+<p ng-if='pin.buy_string' style='color:red'>WANT TO BUY<p>
+<p ng-if='!pin.buy_string' style='color:green'>FOR SALE<p>
+<a ui-sref='pins.edit({id: pin.id})'>Edit Pin</a>
+<a >Delete Pin</a>
+<p>{{pin.description}}</p>
+<p> Posted {{pin.created_at | date}}
+    by {{pin.user.username}}
+</p>
+<hr>
+ <ui-view></ui-view>

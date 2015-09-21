@@ -10,10 +10,11 @@ pinboard.controller('pinsIndexCtrl',
   $scope.createPin = function(){
 
     Restangular.all('pins').post(
-      { pin: { item_name:     $scope.newPin.item_name,
-                buy_string:   $scope.newPin.buy_string,
-                description:  $scope.newPin.description,
-                user_id:      $scope.user.id }})
+          { pin: {  item_name:    $scope.newPin.item_name,
+                    buy_string:   $scope.newPin.buy_string,
+                    description:  $scope.newPin.description,
+                    user_id:      $scope.user.id }})
+
                           .then(function(createdPin){
                                 $scope.pins.push(createdPin);
                                 $scope.newPin = {};

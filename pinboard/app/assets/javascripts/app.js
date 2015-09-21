@@ -10,7 +10,7 @@ pinboard.config(['RestangularProvider', function(RestangularProvider){
 }]);
 
 
-pinboard.config(['$urlRouterProvider', '$stateProvider'],
+pinboard.config(['$urlRouterProvider', '$stateProvider',
   function($urlRouterProvider, $stateProvider){
     $stateProvider
       .state('pins', {
@@ -28,7 +28,7 @@ pinboard.config(['$urlRouterProvider', '$stateProvider'],
           }]
         }
       });
-  });
+  }]);
 
 //for errors
 

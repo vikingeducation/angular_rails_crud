@@ -24,10 +24,6 @@ RSpec.describe PinsController, type: :controller do
 
   describe 'POST /pins' do
 
-    before do
-      let!(:pin2){ create(:pin, :user => user)}
-    end
-
     it 'should create a new pin with valid submission' do
       expect do
         post :create, pin: attributes_for(:pin)

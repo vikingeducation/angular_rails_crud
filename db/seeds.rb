@@ -5,7 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+User.destroy_all
+Pin.destroy_all
 MULTIPLIER = 20
 
 def generate_user
@@ -17,7 +18,7 @@ end
 def generate_pin
   pin = Pin.new
   pin.item_name = Faker::Commerce.product_name
-  pin.buy_sell = [true, false].sample
+  pin.buy_sell = [true, false].shuffle.sample
   pin.description = Faker::Lorem.sentence
   pin.user_id = User.ids.sample
   pin.save

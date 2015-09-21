@@ -1,0 +1,2 @@
+class PinboardsController < ApplicationController
+end

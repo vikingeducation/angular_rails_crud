@@ -1,23 +1,17 @@
-pinboard.controller('pinShowCtrl', ['$scope', 'pin', 'Restangular', function($scope, pin, Restangular){
+pinboard.controller('pinShowCtrl', ['$scope', 'pin', 'Restangular', '$location', function($scope, pin, Restangular, $location){
 
   $scope.pin = pin;
-  $scope.buying = { 'true':  "Want to Buy",
-                    'false': 'For Sale'};
 
   $scope.updatePin = function(){
-
-        $scope.pin.put();
-
-        // Restangular.all('pin').post(
-        //   { pin: {  item_name:    $scope.editPin.item_name,
-        //             buy_string:   $scope.editPin.buy_string,
-        //             description:  $scope.editPin.description }})
-
-                          // .then(function(updatedPin){
-                          //       $scope.pins.push(createdPin);
-                          //       $scope.newPin = {};
-                          //     });
+    $scope.pin.put().then(function(){
+      $location.path('/pins/index');
+    });
   };
 
+  $scope.deletePin = function(){
+    $scope.pin.delete().then(function(){
+      $location.path('/pins/index');
+    });
+  };
 
 }]);

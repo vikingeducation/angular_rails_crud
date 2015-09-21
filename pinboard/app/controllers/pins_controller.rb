@@ -58,6 +58,18 @@ class PinsController < ApplicationController
 
   end
 
+  def destroy
+    @pin = Pin.find(params['id'])
+
+    respond_to do |format|
+      if @pin.destroy
+        format.json { render status: :accepted}
+      else
+        format.json { render status: :unprocessable_entity }
+      end
+    end
+
+  end
 
   private
 

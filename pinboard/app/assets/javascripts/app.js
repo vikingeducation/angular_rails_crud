@@ -39,7 +39,6 @@ pinboard.config(['$urlRouterProvider', '$stateProvider',
             return Restangular.one('pins', $stateParams.id).get();
           }]
         }
-
       })
 
       .state('pins.edit', {
@@ -53,7 +52,6 @@ pinboard.config(['$urlRouterProvider', '$stateProvider',
           }]
         }
       });
-
 
   }]);
 

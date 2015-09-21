@@ -16,7 +16,9 @@
   </label>
 
   <label>Buy/Sell?
-    <select ng-model="pin.buy_string" ng-options="buying." >
+    <select ng-model="pin.buy_string">
+      <option value='true'>Buy</option>
+      <option value='false'>Sell</option>
     </select>
   </label>
 

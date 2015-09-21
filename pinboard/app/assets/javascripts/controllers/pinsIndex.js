@@ -21,4 +21,11 @@ pinboard.controller('pinsIndexCtrl',
 
   };
 
+  $scope.deletePin = function(pin){
+    var idx = pins.indexOf(pin);
+    pin.delete().then(function(){
+      pins.splice(idx, 1);
+    });
+  };
+
 }]);

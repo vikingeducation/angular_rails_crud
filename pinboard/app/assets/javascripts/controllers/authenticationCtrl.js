@@ -1,12 +1,7 @@
 pinboard.controller('authenticationCtrl',
-  ['$scope', 'Auth', function(Auth, $scope) {
+  ['$scope', 'Auth', '$location', function($scope, Auth, $location) {
+
     $scope.newUser = {};
-      // var credentials = {
-      //   email: $scope.newUser.email,
-      //   password: $scope.newUser.password,
-      //   password_confirmation: $scope.newUser.password_confirmation,
-      //   username: $scope.newUser.username
-      // };
 
     var config = {
       headers: {
@@ -14,8 +9,10 @@ pinboard.controller('authenticationCtrl',
       }
     };
 
+    newUser = $scope.newUser;
 
     $scope.createUser = function(){
+      console.log('newUser: '+ $scope.newUser);
       Auth.register($scope.newUser, config).then(function(registeredUser) {
         console.log(registeredUser); // => {id: 1, ect: '...'}
       }, function(error) {
@@ -24,7 +21,8 @@ pinboard.controller('authenticationCtrl',
       });
 
       $scope.$on('devise:new-registration', function(event, user) {
-        // ...callback?
+        // Redirect on registration
+        $location.path('/pins/index');
       });
 
      };

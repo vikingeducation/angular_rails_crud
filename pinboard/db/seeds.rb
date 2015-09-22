@@ -12,7 +12,11 @@ Pin.destroy_all
 
 10.times do
 
-  User.create(username: Faker::Internet.user_name)
+  User.create(username: Faker::Internet.user_name,
+              email:    Faker::Internet.email,
+              # password: 'foobar',
+              # password_confirmation: 'foobar',
+              encrypted_password: '#$taawktljasktlw4aaglj')
 
 end
 
@@ -21,9 +25,9 @@ status = [true, false]
 
 20.times do
 
-  Pin.create( item_name: Faker::Commerce.product_name,
-              buy_string: status.sample,
-              description: Faker::Lorem.sentence(2),
-              user_id: users.sample )
+  # Pin.create( item_name: Faker::Commerce.product_name,
+  #             buy_string: status.sample,
+  #             description: Faker::Lorem.sentence(2),
+  #             user_id: users.sample )
 
 end

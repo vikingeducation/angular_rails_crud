@@ -1,5 +1,8 @@
 class PinsController < ApplicationController
 
+  # before_action :authenticate_user!, except: [:index, :show ]
+  # require :current_user, except: [:index, :show]
+
   def index
     # @pins = Pin.includes(:user).all #without default_scope
     @pins = Pin.all
@@ -10,7 +13,7 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.new(whitelisted_params)
-
+    @pin.user_id = current_user.id
     respond_to do |format|
       if @pin.save
         format.json { render json: @pin }

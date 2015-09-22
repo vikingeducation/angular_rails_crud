@@ -14,9 +14,20 @@ pinApp.controller('pinsShowCtrl',
 
         pin.put();
 
-        $state.go('pins.show', {id: pin.id })
+        $state.go('pins.show', {id: pin.id });
       });
 
+    };
+
+    $scope.deletePin = function(id){
+      Restangular.one('pins', id).get().then( function(pin){
+        console.log(pin);
+        pin.remove().then(function(){
+
+          $state.go('pins.index');
+
+        });
+      });
     };
 
 }]);

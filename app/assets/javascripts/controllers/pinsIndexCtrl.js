@@ -13,4 +13,21 @@ pinApp.controller('pinsIndexCtrl',
       $scope.newPin = {};
     };
 
+    $scope.deletePin = function(id){
+      Restangular.one('pins', id).get().then( function(pin){
+        console.log(pin);
+        pin.remove().then(function(){
+
+          for(var i = 0 ; i < $scope.pins.length ; i++ ){
+            if($scope.pins[i].id === pin.id){
+              return $scope.pins.splice( i, 1 );
+            }
+          }
+
+          
+
+        });
+    });
+  };
+
 }]);

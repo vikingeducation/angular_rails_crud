@@ -73,7 +73,7 @@
       <hr>
 
       <div class="col-xs-12">
-        <div ng-repeat="pin in pins | orderBy: created_at : true" class="pin-wrapper">
+        <div ng-repeat="pin in pins | orderBy: (created_at | date) : true" class="pin-wrapper">
 
           <div class="row">
             <div class="col-xs-12">
@@ -92,10 +92,10 @@
 
           <div class="row">
             <div class="col-xs-2">
-              <p> <a href="#">Edit Pin</a> </p>
+              <p> <a ui-sref="pins.edit({id: pin.id})">Edit Pin</a> </p>
             </div>
             <div class="col-xs-2">
-              <p> <a href="#">Delete Pin</a> </p>
+              <p> <a ng-click="deletePin(pin.id)">Delete Pin</a> </p>
             </div>
           </div>
 

@@ -53,6 +53,16 @@ pinApp = angular.module('pinApp', ['ui.router', 'restangular'])
                   return Restangular.one('pins', $stateParams.id).get();
           }]
         }
+      })
+      .state('pins.delete', {
+        url: "/:id/delete",
+        controller: 'pinsShowCtrl',
+        resolve: {
+          pin: ['Restangular', '$stateParams',
+                function(Restangular, $stateParams){
+                  return Restangular.one('pins', $stateParams.id).get();
+          }]
+        }
       });
 
 

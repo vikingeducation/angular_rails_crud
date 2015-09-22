@@ -1,0 +1,42 @@
+<p>Pins Index Page</p>
+
+<!-- for now, assume first user is current user -->
+
+<form name="newPin">
+
+  <label>Title:
+    <input type="string" ng-model="newPin.item_name">
+  </label>
+
+  <label>Buy/Sell?
+    <select ng-model="newPin.buy_string">
+      <option value="true">Buying</option>
+      <option value="false">Selling</option>
+    </select>
+  </label>
+
+  <label>Description
+    <textarea ng-model="newPin.description"
+      placeholder="Enter description of item">
+    </textarea>
+  </label>
+
+  <button ng-click="createPin()">Add Pin </button>
+</form>
+
+
+<h2>All Pins</h2>
+<div ng-repeat='pin in pins | orderBy: "-created_at"'>
+  <a ui-sref='pins.show({id: pin.id})'>
+    <h4>{{pin.item_name}}</h4>
+  </a>
+  <p ng-if='pin.buy_string' style='color:red'>WANT TO BUY<p>
+  <p ng-if='!pin.buy_string' style='color:green'>FOR SALE<p>
+  <a ui-sref='pins.edit({id: pin.id})'>Edit Pin</a>
+  <a ng-click='deletePin(pin)' href='#'>Delete Pin</a>
+  <p>{{pin.description}}</p>
+  <p> Posted {{pin.created_at | date}}
+      by {{pin.user.username}}
+  </p>
+  <hr>
+</div>

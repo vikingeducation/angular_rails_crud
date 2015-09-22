@@ -1,0 +1,31 @@
+<h2>Pin {{pin.id}}: {{pin.item_name}}</h2>
+
+<p>Signed in as {{pin.user.username}}</p>
+
+<a ui-sref="pins.index">View All Pins</a>
+
+<hr>
+<h3>Edit Pin</h3>
+
+<form name="pinForm">
+
+  <label>Title:
+    <input type="string" ng-model="pin.item_name" >
+  </label>
+
+  <label>Buy/Sell?
+    <select ng-model="pin.buy_string">
+      <option value='true'>Buy</option>
+      <option value='false'>Sell</option>
+    </select>
+  </label>
+
+  <label>Description
+    <textarea ng-model="pin.description">
+    </textarea>
+  </label>
+
+  <button ng-click="updatePin()"> Update Pin </button>
+</form>
+
+<hr>

@@ -1,0 +1,19 @@
+<form name = "newUser">
+  <label>email:
+    <input type="email" ng-model="newUser.email">
+  </label>
+
+  <label>username:
+    <input type="string" ng-model="newUser.username">
+  </label>
+
+  <label>password:
+    <input type="password" ng-model="newUser.password">
+  </label>
+
+  <label>password confirmation:
+    <input type="password_confirmation" ng-model="newUser.password_confirmation">
+  </label>
+
+  <button ng-click="createUser()"> Sign Up! </button>
+</form>

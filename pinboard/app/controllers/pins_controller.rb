@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
 
-  # before_action :authenticate_user!, except: [:index, :show ]
-  # require :current_user, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :current_user, except: [:index, :show]
 
   def index
     # @pins = Pin.includes(:user).all #without default_scope

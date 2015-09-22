@@ -21,12 +21,22 @@ pinboard.config(['$urlRouterProvider', '$stateProvider',
 
       .state('pins.index', {
         url: '/index',
-        templateUrl: 'templates/pinsIndex.html',
-        controller: 'pinsIndexCtrl',
-        resolve: {
-          pins: ['Restangular', function(Restangular){
-            return Restangular.all('pins').getList();
-          }]
+
+        views:{
+          'login' : {
+            templateUrl: '/templates/signUpAndLogin.html',
+            controller: 'authenticationCtrl'
+          },
+
+          '': {
+            templateUrl: 'templates/pinsIndex.html',
+            controller: 'pinsIndexCtrl',
+            resolve: {
+              pins: ['Restangular', function(Restangular){
+                return Restangular.all('pins').getList();
+              }]
+            }
+          }
         }
       })
 

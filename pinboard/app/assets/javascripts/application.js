@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-
 //= require angular
 
 //= require angular-ui-router.min.js
+
+//= require angular-devise/lib/devise
+
 //= require underscore
 //= require lodash.min.js
 //= require restangular

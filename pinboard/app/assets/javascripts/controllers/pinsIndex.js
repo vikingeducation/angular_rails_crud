@@ -34,34 +34,3 @@ pinboard.controller('pinsIndexCtrl',
 
 
 
-  $scope.createUser = function(){
-
-  };
-
-  $scope.signIn = function(){
-
-  }
-
-    angular.module('myModule', ['Devise']).
-    controller('myCtrl', function(Auth) {
-        var credentials = {
-            email: 'user@domain.com',
-            password: 'password1',
-            password_confirmation: 'password1'
-        };
-        var config = {
-            headers: {
-                'X-HTTP-Method-Override': 'POST'
-            }
-        };
-
-        Auth.register(credentials, config).then(function(registeredUser) {
-            console.log(registeredUser); // => {id: 1, ect: '...'}
-        }, function(error) {
-            // Registration failed...
-        });
-
-        $scope.$on('devise:new-registration', function(event, user) {
-            // ...
-        });
-    });

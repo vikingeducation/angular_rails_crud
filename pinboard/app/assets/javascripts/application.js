@@ -16,7 +16,7 @@
 
 //= require angular-ui-router.min.js
 
-//= require angular-devise/lib/devise
+//= require devise-min.js
 
 //= require underscore
 //= require lodash.min.js

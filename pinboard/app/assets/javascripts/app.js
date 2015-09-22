@@ -1,4 +1,5 @@
-var pinboard = angular.module('pinboard', ['ui.router', 'restangular']);
+var pinboard = angular.module('pinboard',
+                  ['ui.router', 'restangular', 'Devise']);
 
 // pinboard.controller('testCtrl', ['$scope', function($scope){
 //   $scope.testVar = 'testing';

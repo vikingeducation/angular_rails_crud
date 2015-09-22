@@ -12,6 +12,9 @@ MULTIPLIER = 20
 def generate_user
   user = User.new
   user.username = Faker::Internet.user_name
+  user.email = Faker::Internet.email
+  user.password = "password"
+  user.password_confirmation = "password"
   user.save
 end
 

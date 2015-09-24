@@ -1,0 +1,42 @@
+// Place all the styles related to the pins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+a {
+  cursor: pointer;
+}
+
+form .ng-invalid.ng-touched {
+  border: 2px inset #d8262c;
+}
+
+form .ng-valid.ng-touched {
+  border: 2px inset #8AC007;
+}
+
+.pin-wrapper {
+  border-top: 2px ridge #ccc;
+  // border-bottom: 2px ridge #ccc;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  padding-top: 10px;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+}

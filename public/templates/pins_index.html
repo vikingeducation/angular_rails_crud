@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="row">
+
+      <div class="col-xs-12">
+        <h2>New Pin</h2>
+      </div>
+
+      <div class="col-xs-8">
+        <form role = "form" class = "form-horizontal" name="newpinform" ng-submit = "createPin()">
+
+          <div class="form-group">
+            <label for = "title" class="col-sm-5 control-label">Title</label>
+            <div class="col-sm-7">
+              <input  type="text"
+                      name = "itemname"
+                      required="string"
+                      placeholder = "Macbook Pro"
+                      ng-model="newPin.item_name"
+                      class = "form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for = "transaction" class="col-sm-5 control-label">Buy / Sell</label>
+            <div class="col-sm-7">
+              <select name = "transaction" ng-model="newPin.buy_sell" class = "form-control" required>
+                <option value="false">Want to Buy</option>
+                <option value="true">For Sale</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for = "description" class="col-sm-5 control-label">Description</label>
+            <div class="col-sm-7">
+              <textarea ng-model="newPin.description"
+                        name = "description"
+                        placeholder = "Best computer ever!"
+                        class = "form-control"
+                        required></textarea>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="form-group">
+            <div class="col-xs-7 col-xs-offset-5">
+              <input type="submit" class="btn btn-primary btn-lg btn-block" value="Create Pin!" ng-disabled = "newpinform.$invalid">
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="col-xs-4">
+
+        <p><b>Form Status:</b></p>
+        <p class = "text-success" ng-if="newpinform.$valid">All fields valid!</p>
+        <p class = "text-warning" ng-if="newpinform.$invalid">Not all fields are valid!</p>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+      <div class="col-xs-12">
+        <h2>All Pins</h2>
+      </div>
+
+      <hr>
+
+      <div class="col-xs-12">
+        <div ng-repeat="pin in pins | orderBy: (created_at | date) : true" class="pin-wrapper">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>
+                <a ui-sref = "pins.show({id: pin.id})">{{pin.item_name}}</a>
+              </h3>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h4 ng-if="pin.buy_sell" class="text-success">For Sale</h4>
+              <h4 ng-if="!pin.buy_sell" class="text-danger">Want to Buy</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-2">
+              <p> <a ui-sref="pins.edit({id: pin.id})">Edit Pin</a> </p>
+            </div>
+            <div class="col-xs-2">
+              <p> <a ng-click="deletePin(pin.id)">Delete Pin</a> </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <p>{{pin.description}}</p>
+              <p class="text-muted pull-right">Posted: {{pin.created_at | date: 'short' }} by <strong> {{ pin.user.username }} </strong></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,9 +1,38 @@
-var crudpin = angular.module('crudpin', []);
+var crudpin = angular.module('crudpin', ['ui.router', 'restangular'])
 
-crudpin.controller('TestCtrl',
-  ['$scope',
-  function($scope) {
 
-    $scope.testString = 'Hello Angular';
+.config( ['$stateProvider', '$urlRouterProvider', 'RestangularProvider',
+  function($stateProvider, $urlRouterProvider, RestangularProvider) {
 
-  }]);
+
+  // REST configurations
+  RestangularProvider.setBaseUrl('/api');
+  RestangularProvider.setRequestSuffix('.json');
+  RestangularProvider.setDefaultHttpFields({
+    'content-type': 'application/json'
+  });
+
+
+  // Routing
+  $urlRouterProvider.otherwise("/pins");
+
+  $stateProvider
+
+    .state('pins', {
+      url: '/pins',
+      templateUrl: '/templates/pins/pinsIndex.html',
+      controller: 'PinsIndexCtrl',
+      resolve: {
+        pins: ['Restangular', function(Restangular){
+          return Restangular.all('pins').getList();
+        }]
+      }
+    })
+
+
+}])
+
+
+crudpin.run(function($rootScope){
+  $rootScope.$on("$stateChangeError", console.log.bind(console));
+})

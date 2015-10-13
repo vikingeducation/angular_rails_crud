@@ -10,7 +10,40 @@
 </div>
 
 
-<!-- new pin form here -->
+
+
+<div class='row'>
+  <div class='col-xs-12'>
+    <h2>New Pin</h2>
+
+    <form name='newPinForm' ng-submit='processForm(newPinForm.$valid)'>
+
+      <div class='form-group'>
+        <label for='title'>Title:</label>
+        <input type='text' name='title' class='form-control' ng-model='newPin.item_name'>
+      </div>
+
+      <div class='form-group'>
+        <label for='title'>Buy/Sell?</label>
+        <select name='title' class='form-control' ng-model='newPin.buy_sell'>
+          <option value='1'>WANT TO BUY</option>
+          <option value='0'>FOR SALE</option>
+        </select>
+      </div>
+
+      <div class='form-group'>
+        <label for='title'>Title:</label>
+        <textarea name='title' class='form-control' ng-model='newPin.description'></textarea>
+      </div>
+
+      <input type='submit' value='Create Pin'>
+
+    </form>
+
+  </div>
+</div>
+
+
 
 
 <div class='row'>
@@ -19,9 +52,9 @@
     <h2>All Pins</h2>
 
     <!-- this could be a directive -->
-    <div class='pin-wrapper' ng-repeat='pin in pins'>
+    <div class='pin-wrapper' ng-repeat="pin in pins | orderBy: '-created_at' ">
       <h4>
-        {{ pin.item_name }}
+        <a href='#'>{{ pin.item_name }}</a>
       </h4>
       <p>FOR SALE / WANT TO BUY</p>
 
@@ -35,8 +68,7 @@
       </p>
 
       <p>
-        <!-- this should use filters for the  "Post {date} at {time}" format -->
-        <em>Posted {{ pin.created_at }} by {{ pin.user.username }}</em>
+        <em>Posted {{ pin.created_at | date: "M/d/yyyy 'at' h:mm a" }} by {{ pin.user.username }}</em>
       </p>
 
     </div>

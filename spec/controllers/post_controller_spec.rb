@@ -3,10 +3,11 @@ require 'rails_helper'
 describe PinsController do
 
   let(:json) { JSON.parse(response.body) }
-  let!(:pin) { create(:pin) }
 
 
   describe 'GET pins' do
+
+    let!(:pin) { create(:pin) }
 
     before do
       create_list(:pin, 9)
@@ -33,6 +34,7 @@ describe PinsController do
 
   describe 'POST pins' do
 
+    let!(:pin) { create(:pin) }
     let(:status) { response.status }
 
     context 'with valid params' do
@@ -53,15 +55,17 @@ describe PinsController do
 
     context 'with invalid params' do
 
+      let!(:user) { create(:user) }
 
-      xit 'should not save' do
+      it 'should not save' do
         current_pins = Pin.all.count
-        post :create, :pin => attributes_for(:pin, :description => nil)
+        post :create, :format => :json, :pin => attributes_for(:pin, :description => nil)
         expect(Pin.all.count).to eq(current_pins)
       end
 
-      xit 'should return status 422' do
-        expect(response).to have_http_status(:error)
+      it 'should return status 422' do
+        post :create, :format => :json, :pin => attributes_for(:pin, :description => nil)
+        expect(response).to have_http_status(422)
       end
 
     end

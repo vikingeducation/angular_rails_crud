@@ -3,9 +3,16 @@ crudpin.factory('loginService', ['Restangular',
 
   var loginService = {};
 
+/*
   loginService.login = function() {
-    loginService.currentUser = Restangular.one('users', 1);
+    Restangular.one('users', 1).get()
+      .then( function(user) {
+        loginService.currentUser = user;
+    });
   };
+*/
+
+  loginService.currentUser = JSON.parse("{\"id\":1,\"username\":\"Abe\",\"created_at\":\"2015-10-11T12:53:39.213Z\",\"updated_at\":\"2015-10-11T12:53:39.213Z\"}");
 
   return loginService;
 

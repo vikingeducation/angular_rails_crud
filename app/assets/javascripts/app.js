@@ -19,6 +19,11 @@ var crudpin = angular.module('crudpin', ['ui.router', 'restangular'])
   $stateProvider
 
     .state('pins', {
+      url: '',
+      templateUrl: '/templates/pins/pinsLayout.html'
+    })
+
+    .state('pins.index', {
       url: '/pins',
       templateUrl: '/templates/pins/pinsIndex.html',
       controller: 'PinsIndexCtrl',
@@ -30,9 +35,14 @@ var crudpin = angular.module('crudpin', ['ui.router', 'restangular'])
     })
 
     .state('pins.show', {
-      url: '/:id',
+      url: '/pins/:id',
       templateUrl: '/templates/pins/pinsShow.html',
-      controller: 'PinsShowCtrl'
+      controller: 'PinsShowCtrl',
+      resolve: {
+        pin: ['Restangular', '$stateParams', function(Restangular, $stateParams){
+          return Restangular.one('pins', $stateParams.id).get();
+        }]
+      }
     })
 
 

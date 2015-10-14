@@ -1,6 +1,9 @@
 crudpin.controller('PinsShowCtrl',
-  ['$scope', 'Restangular',
-  function($scope, Restangular) {
+  ['$scope', 'pin', 'loginService',
+  function($scope, pin, loginService) {
 
+    $scope.currentUser = loginService.currentUser;
+
+    $scope.pin = pin;
 
 }]);

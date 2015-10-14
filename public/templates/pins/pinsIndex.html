@@ -3,13 +3,11 @@
 
     <h1>The Pinboard</h1>
     <p>
-      <em>Signed in as {{ currentUser }}</em> - <a href='#'>logout</a>
+      <em>Signed in as {{ currentUser.username }}</em> - <a href='#'>logout</a>
     </p>
 
   </div>
 </div>
-
-
 
 
 <div class='row'>
@@ -51,25 +49,10 @@
 
     <h2>All Pins</h2>
 
-    <!-- this could be a directive -->
+
     <div class='pin-wrapper' ng-repeat="pin in pins | orderBy: '-created_at' ">
-      <h4>
-        <a href='#'>{{ pin.item_name }}</a>
-      </h4>
-      <p>FOR SALE / WANT TO BUY</p>
 
-      <div class='links-row'> <!-- ng-if current_user -->
-        <a href='#'>Edit Pin</a>
-        <a href='#'>Delete Pin</a>
-      </div>
-
-      <p>
-        {{ pin.description }}
-      </p>
-
-      <p>
-        <em>Posted {{ pin.created_at | date: "M/d/yyyy 'at' h:mm a" }} by {{ pin.user.username }}</em>
-      </p>
+      <pin pin='pin'></pin>
 
     </div>
 

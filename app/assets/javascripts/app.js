@@ -45,6 +45,17 @@ var crudpin = angular.module('crudpin', ['ui.router', 'restangular'])
       }
     })
 
+    .state('pins.edit', {
+      url: '/pins/:id/edit',
+      templateUrl: '/templates/pins/pinsEdit.html',
+      controller: 'PinsEditCtrl',
+      resolve: {
+        pin: ['Restangular', '$stateParams', function(Restangular, $stateParams){
+          return Restangular.one('pins', $stateParams.id).get();
+        }]
+      }
+    })
+
 
 }])
 

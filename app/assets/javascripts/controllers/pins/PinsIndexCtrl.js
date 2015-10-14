@@ -17,7 +17,7 @@ crudpin.controller('PinsIndexCtrl',
     $scope.addPinToIndex = function(response) {
       $scope.newPin.user = $scope.currentUser;
       $scope.newPin.created_at = response.created_at;
-      $scope.pins.push($scope.newPin);
+      $scope.pins.push($scope.newPin);;
       $scope.newPin = {};
     };
 

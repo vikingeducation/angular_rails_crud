@@ -4,15 +4,15 @@
 
 <div ng-switch on="pin.buy_sell">
   <div ng-switch-when="true">
-      <p class='for-sale'>FOR SALE</p>
+      <p class='want-buy'>WANT TO BUY</p>
   </div>
   <div ng-switch-default>
-      <p class='want-buy'>WANT TO BUY</p>
+      <p class='for-sale'>FOR SALE</p>
   </div>
 </div>
 
 <div class='links-row'> <!-- ng-if current_user -->
-  <a href='#'>Edit Pin</a>
+  <a ui-sref='pins.edit({id: pin.id})'>Edit Pin</a>
   <a href='#'>Delete Pin</a>
 </div>
 

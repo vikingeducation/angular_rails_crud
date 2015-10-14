@@ -40,6 +40,21 @@ class PinsController < ApplicationController
   end
 
 
+  def update
+    @pin = Pin.find_by_id(params[:id])
+
+    if @pin.update(pin_params)
+      respond_to do |format|
+        format.json { render json: @pin.to_json(:include => :user), :status => 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render :nothing => :true, :status => 422 }
+      end
+    end
+  end
+
+
   private
 
     def pin_params

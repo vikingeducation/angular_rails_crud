@@ -24,6 +24,22 @@ class PinsController < ApplicationController
   end
 
 
+  def show
+    # use find_by_id for more graceful error handling
+    @pin = Pin.find_by_id(params[:id]) || nil
+
+    if @pin
+      respond_to do |format|
+        format.json { render json: @pin.to_json(:include => :user), :status => 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render :nothing => true, :status => 404 }
+      end
+    end
+  end
+
+
   private
 
     def pin_params

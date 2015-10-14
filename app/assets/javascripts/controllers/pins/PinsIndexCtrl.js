@@ -1,6 +1,9 @@
 crudpin.controller('PinsIndexCtrl',
-  ['$scope', 'Restangular', 'pins',
-  function($scope, Restangular, pins) {
+  ['$scope', 'Restangular', 'pins', 'loginService',
+  function($scope, Restangular, pins, loginService) {
+
+    loginService.login();
+    $scope.currentUser = loginService.currentUser;
 
     $scope.pins = pins;
 
@@ -12,7 +15,7 @@ crudpin.controller('PinsIndexCtrl',
     };
 
     $scope.addPinToIndex = function(response) {
-      $scope.newPin.user = response.user;
+      $scope.newPin.user = $scope.currentUser;
       $scope.newPin.created_at = response.created_at;
       $scope.pins.push($scope.newPin);
       $scope.newPin = {};

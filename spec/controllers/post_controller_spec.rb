@@ -74,4 +74,48 @@ describe PinsController do
   end
 
 
+  describe 'GET pins#show' do
+
+
+    context 'for an existing pin' do
+
+      let(:pin) { create(:pin) }
+      let(:json) { JSON.parse(response.body) }
+
+      before do
+        get :show, :format => :json, id: pin.id
+      end
+
+      it 'should return status OK' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'should return the right pin id' do
+        expect(json['id']).to eq(pin.id)
+      end
+
+      it 'should return the right pin item_name' do
+        expect(json['item_name']).to eq(pin.item_name)
+      end
+
+      it 'should include the username' do
+        expect(json['user']['username']).to eq(pin.user.username)
+      end
+
+    end
+
+
+    context 'when pin does not exist' do
+
+      it 'should return error 404' do
+        get :show, :format => :json, :id => 999
+        expect(response).to have_http_status(404)
+      end
+
+    end
+
+
+  end
+
+
 end

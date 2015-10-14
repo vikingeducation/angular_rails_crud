@@ -29,6 +29,12 @@ var crudpin = angular.module('crudpin', ['ui.router', 'restangular'])
       }
     })
 
+    .state('pins.show', {
+      url: '/:id',
+      templateUrl: '/templates/pins/pinsShow.html',
+      controller: 'PinsShowCtrl'
+    })
+
 
 }])
 

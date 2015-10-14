@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'angular#index'
 
   scope 'api' do
-    resources :pins, only: [:index, :create]
+    resources :pins, only: [:index, :create, :show]
   end
 
 

@@ -144,4 +144,27 @@ describe PinsController do
   end
 
 
+  describe 'DELETE pins' do
+
+    let!(:pin) { create(:pin) }
+
+    context 'with valid id' do
+
+      it 'should remove the pin from the database' do
+        current_pins = Pin.all.count
+        delete :destroy, format: :json, :id => pin.id
+        expect(Pin.all.count).to eq(current_pins - 1)
+      end
+
+      it 'should return status 204' do
+        delete :destroy, format: :json, :id => pin.id
+        expect(response).to have_http_status(204)
+      end
+
+    end
+
+
+  end
+
+
 end

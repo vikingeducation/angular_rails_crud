@@ -1,0 +1,46 @@
+<div class='row'>
+  <div class='col-xs-12'>
+
+    <h1>Pin {{ pin.id }}: {{ pin.item_name }}</h1>
+    <p>
+      <em>Signed in as {{ currentUser.username }}</em> - <a href='#'>logout</a>
+    </p>
+    <a ui-sref='pins.index'>View All Pins</a>
+
+  </div>
+</div>
+
+
+<div class='row'>
+  <div class='col-xs-12'>
+
+<!-- make me a form -->
+    <h2>Edit Pin</h2>
+
+    <form name='editPinForm' ng-submit='processForm(editPinForm.$valid)'>
+
+      <div class='form-group'>
+        <label for='title'>Title:</label>
+        <input type='text' name='title' class='form-control' ng-model='editPin.item_name'>
+      </div>
+
+      <div class='form-group'>
+        <label for='title'>Buy/Sell?</label>
+        <select name='title' class='form-control' ng-model='editPin.buy_sell' ng-options="obj.value as obj.name for obj in [{ name: 'WANT TO BUY', value: true }, { name: 'FOR SALE', value: false }]">
+          <!-- <option value='true'>WANT TO BUY</option>
+          <option value='false'>FOR SALE</option> -->
+        </select>
+      </div>
+
+      <div class='form-group'>
+        <label for='title'>Title:</label>
+        <textarea name='title' class='form-control' ng-model='editPin.description'></textarea>
+      </div>
+
+      <input type='submit' value='Update Pin'>
+
+    </form>
+
+
+  </div>
+</div>

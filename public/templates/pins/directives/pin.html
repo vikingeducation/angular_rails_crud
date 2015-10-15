@@ -1,0 +1,25 @@
+<h4>
+  <a ui-sref='pins.show({id: pin.id})'>{{ pin.item_name }}</a>
+</h4>
+
+<div ng-switch on="pin.buy_sell">
+  <div ng-switch-when="true">
+      <p class='want-buy'>WANT TO BUY</p>
+  </div>
+  <div ng-switch-default>
+      <p class='for-sale'>FOR SALE</p>
+  </div>
+</div>
+
+<div class='links-row'> <!-- ng-if current_user -->
+  <a ui-sref='pins.edit({id: pin.id})'>Edit Pin</a>
+  <a href ng-click='delete(pin)'>Delete Pin</a>
+</div>
+
+<p>
+  {{ pin.description }}
+</p>
+
+<p>
+  <em>Posted {{ pin.created_at | date: "M/d/yyyy 'at' h:mm a" }} by {{ pin.user.username }}</em>
+</p>

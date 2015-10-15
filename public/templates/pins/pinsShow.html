@@ -1,0 +1,20 @@
+<div class='row'>
+  <div class='col-xs-12'>
+
+    <h1>Pin {{ pin.id }}: {{ pin.item_name }}</h1>
+    <p>
+      <em>Signed in as {{ currentUser.username }}</em> - <a href='#'>logout</a>
+    </p>
+    <a ui-sref='pins.index'>View All Pins</a>
+
+  </div>
+</div>
+
+
+<div class='row'>
+  <div class='col-xs-12'>
+
+    <pin pin='pin' delete='delete(pin)'></pin>
+
+  </div>
+</div>

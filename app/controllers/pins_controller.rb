@@ -45,7 +45,7 @@ class PinsController < ApplicationController
 
     if @pin.update(pin_params)
       respond_to do |format|
-        format.json { render json: @pin.to_json(:include => :user), :status => 200 }
+        format.json { render :nothing => :true, :status => 200 }
       end
     else
       respond_to do |format|

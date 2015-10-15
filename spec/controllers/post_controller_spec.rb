@@ -118,4 +118,30 @@ describe PinsController do
   end
 
 
+
+  describe 'PATCH pins' do
+
+    let!(:pin) { create(:pin) }
+    let(:new_title) { 'New title'}
+
+    context 'with valid params' do
+
+      before do
+        patch :update, format: :json, :id => pin.id, :pin => attributes_for(:pin, :item_name => new_title)
+      end
+
+      it 'should change the pin in the database' do
+        expect(Pin.find(pin.id).item_name).to eq(new_title)
+      end
+
+      it 'should return status OK' do
+        expect(response).to have_http_status(:ok)
+      end
+
+    end
+
+
+  end
+
+
 end

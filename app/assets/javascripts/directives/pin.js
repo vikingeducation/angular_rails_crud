@@ -3,7 +3,8 @@ crudpin.directive('pin', function() {
     templateUrl: '/templates/pins/directives/pin.html',
     restrict: 'E',
     scope: {
-      pin: '='
+      pin: '=',
+      delete: '&'
     }
   };
 });

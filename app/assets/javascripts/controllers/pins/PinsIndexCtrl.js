@@ -2,7 +2,6 @@ crudpin.controller('PinsIndexCtrl',
   ['$scope', 'Restangular', 'pins', 'loginService',
   function($scope, Restangular, pins, loginService) {
 
-    //loginService.login();
     $scope.currentUser = loginService.currentUser;
 
     $scope.pins = pins;
@@ -19,6 +18,13 @@ crudpin.controller('PinsIndexCtrl',
       $scope.newPin.created_at = response.created_at;
       $scope.pins.push($scope.newPin);;
       $scope.newPin = {};
+    };
+
+    $scope.delete = function(pin) {
+      pin.remove().then( function() {
+        var index = $scope.pins.indexOf(pin);
+        if (index > -1) $scope.pins.splice(index, 1);
+      });
     };
 
 }])

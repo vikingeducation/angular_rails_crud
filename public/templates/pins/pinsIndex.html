@@ -50,7 +50,7 @@
 
     <div class='pin-wrapper' ng-repeat="pin in pins | orderBy: '-created_at' ">
 
-      <pin pin='pin'></pin>
+      <pin pin='pin' delete='delete(pin)'></pin>
 
     </div>
 

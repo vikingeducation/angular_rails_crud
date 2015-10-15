@@ -13,7 +13,7 @@
 
 <div class='links-row'> <!-- ng-if current_user -->
   <a ui-sref='pins.edit({id: pin.id})'>Edit Pin</a>
-  <a href='#'>Delete Pin</a>
+  <a href ng-click='delete(pin)'>Delete Pin</a>
 </div>
 
 <p>

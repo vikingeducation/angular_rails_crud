@@ -1,0 +1,10 @@
+<new-pin></new-pin>
+
+<div class="col-sm-12">
+	<h1>All Pins:</h1>
+</div>
+
+<section class="pin col-sm-4" ng-repeat="pin in pins">
+	<h2><a ui-sref="pins.show({ id: {{ pin.id }} })">{{ pin.item_name }}</a></h2>
+	<p>{{ pin.description }}</p>
+</section>

@@ -1,0 +1,10 @@
+<section class="col-sm-6 col-sm-offset-3">
+	<h2>Pin {{ pin.id }}: {{ pin.item_name }}</h2>
+	<p>{{ pin.buy_sell ? "FOR SALE" : "WANTED"}}</p>
+	<p>{{ pin.description }}</p>
+	<p><em>Posted on {{ pin.created_at | date }} by {{ pin.user.username }}</em></p>
+	<p>
+		<a ui-sref="pins.edit({ id: {{ pin.id }} })">Edit Pin</a> | 
+		<a ui-sref="pins.delete({ id: {{ pin.id }} })">Delete Pin</a>
+	</p>
+</section>

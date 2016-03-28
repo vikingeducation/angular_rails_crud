@@ -1,0 +1,28 @@
+<div class="pin">
+  <header class="page-header">
+    <h2>
+      <small>
+        {{ pin.user.full_name }}
+        is interested in
+        <span ng-class="pin.pin_type.id === 1 ? 'text-success' : 'text-danger'">
+          {{ pin.pin_type.name }}
+        </span>
+        a:
+      </small>
+      <br>
+      {{ pin.item_name }}
+    </h2>
+    <p>Pinned on: {{ pin.created_at | date: 'EEEE d MMMM, yyyy' }}</p>
+    <a class="btn btn-primary" ui-sref="pins.edit({ id: pin.id })">Edit Pin</a>
+    <a class="btn btn-danger" ng-click="pin.destroy()">&times; Delete Pin</a>
+  </header>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+      <blockquote>
+        {{ pin.description }}
+      </blockquote>
+    </div>
+  </div>
+</div>
+

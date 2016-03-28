@@ -12,9 +12,19 @@
 //
 //= require jquery2
 //= require jquery_ujs
-//= underscore
-//= angular
-//= angular-ui-router
-//= restangular
+//= require underscore
+//= require angular
+//= require angular-ui-router
+//= require restangular
 
+//= require pins
+//= require pin_types
+//= require static_pages
+//= require users
 
+//= require app
+//= require services/underscore-service
+//= require configs/restangular-config
+//= require configs/router-config
+//= require services/action-service
+//= require controllers/pins-ctrl

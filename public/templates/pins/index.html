@@ -1,0 +1,68 @@
+<!-- Pin Form -->
+<header class="page-header">
+  <h2>Create Pin</h2>
+</header>
+
+<form id="pin-form" name="pinForm">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Item Name..." ng-model="pinParams.item_name">
+  </div>
+  <div class="form-group">
+    <p>Pin Type:</p>
+    <label class="radio-inline" ng-repeat="pinType in pinTypes">
+      <input name="pin-type" type="radio" ng-model="pinParams.pin_type_id" ng-value="pinType.id">
+      <span ng-class="pinTypes[0].id === pinType.id ? 'text-success' : 'text-danger'">
+        {{ pinType.name }}
+      </span>
+    </label>
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" placeholder="Write..." ng-model="pinParams.description"></textarea>
+  </div>
+  <div class="form-group">
+    <a class="btn btn-success" ng-click="createPin()">
+      Create Pin
+    </a>
+  </div>
+</form>
+
+
+
+
+<!-- Pins -->
+<header class="page-header">
+  <h2>Pins</h2>
+</header>
+
+<p class="text-danger" ng-if="!pins.length">No Pins</p>
+
+<div class="pin" ng-repeat="pin in pins" ng-if="pins.length">
+  <header class="page-header">
+    <h2>
+      <small>
+        {{ pin.user.full_name }}
+        is interested in
+        <span ng-class="pin.pin_type.id === 1 ? 'text-success' : 'text-danger'">
+          {{ pin.pin_type.name }}
+        </span>
+        a:
+      </small>
+      <br>
+      <a ui-sref="pins.show({ id: pin.id })">
+        {{ pin.item_name }}
+      </a>
+    </h2>
+    <p>Pinned on: {{ pin.created_at | date: 'EEEE d MMMM, yyyy' }}</p>
+    <a class="btn btn-primary" ui-sref="pins.edit({ id: pin.id })">Edit Pin</a>
+    <a class="btn btn-danger" ng-click="pin.destroy()">&times; Delete Pin</a>
+  </header>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+      <blockquote>
+        {{ pin.description | limitTo: 100 }}...
+      </blockquote>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<!-- Pin Form -->
+<header class="page-header">
+  <h2>Edit Pin</h2>
+</header>
+
+<form id="pin-form" name="pinForm">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Item Name..." ng-model="pin.item_name">
+  </div>
+  <div class="form-group">
+    <p>Pin Type:</p>
+    <label class="radio-inline" ng-repeat="pinType in pinTypes">
+      <input name="pin-type" type="radio" ng-model="pin.pin_type_id" ng-value="pinType.id">
+      <span ng-class="pinTypes[0].id === pinType.id ? 'text-success' : 'text-danger'">
+        {{ pinType.name }}
+      </span>
+    </label>
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" placeholder="Write..." ng-model="pin.description"></textarea>
+  </div>
+  <div class="form-group">
+    <a class="btn btn-success" ng-click="pin.update()">
+      Edit Pin
+    </a>
+  </div>
+</form>
+

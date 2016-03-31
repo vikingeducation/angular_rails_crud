@@ -7,6 +7,8 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
 
 .config(['$urlRouterProvider', '$stateProvider',
   function($urlRouterProvider, $stateProvider){
+    // $urlRouterProvider.otherwise('/pins');
+    
     $stateProvider
       .state('pins', {
         template: '<div ui-view></div>'
@@ -22,8 +24,8 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
         }
       })
       .state('pins.show', {
-        url: "/:id",
-        templateUrl: "/templates/pinsShow.html",
+        url: "pins/:id",
+        templateUrl: "/templates/pins/show.html",
         controller: 'PinsShowCtrl',
         resolve: {
           pin: ['Restangular', '$stateParams',
@@ -32,7 +34,6 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
                 }]}
       });
 
-    $urlRouterProvider.otherwise('/pins');
 
   }])
 

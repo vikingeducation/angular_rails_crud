@@ -1,0 +1,10 @@
+<h1>Pin {{ pin.id }}: {{ pin.item_name }}</h1>
+<a ui-sref='pins.index'>View All Pins</a>
+
+<h3>{{ pin.item_name }}</h3>
+<p>{{ pin.buy_sell }}</p>
+<a ui-sref='pins.edit({id: pin.id})'>Edit Pin</a>
+<a ui-sref='pins.delete({id: pin.id})'>Delete Pin</a>
+<br>
+<p>{{ pin.description }}</p>
+<p class='text-center'>Posted {{ pin.created_at | date }}</p>

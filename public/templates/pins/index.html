@@ -1,7 +1,19 @@
-<h1>This is the pins index</h1>
+<form>
+  <label for='title'>Title</label>
+  <input type='text' id='title' ng-model='title'>
+  <label for='buy_sell'>Buy/Sell</label>
+  <select ng-model='buy_sell'>
+    <option value='true'>Buy</option>
+    <option value='false'>For Sale</option>
+  </select>
+  <label for='description'>Description</label>
+  <input type='textfield' id='description' ng-model='description'>
+  <button ng-click='createPin()'>Create New Pin</button>
+</form>
 
 <div ng-repeat='pin in pins'>
   <h1>{{ pin.item_name }}</h1>
+  <a ui-sref='pins.show({ id: pin.id })'>Go To Pin</a>
   <h3>{{ pin.buy_sell }}</h3>
   <p>{{ pin.description }}</p>
   <p>{{ pin.user_id }}</p>

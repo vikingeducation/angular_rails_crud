@@ -49,7 +49,7 @@ describe PinsController do
       end
 
       it 'user count increase by one' do
-
+        expect{ post :create, pin: attributes_for(:pin), format: :json }.to change( Pin, :count ).by(1)
       end
 
     end
@@ -72,6 +72,34 @@ describe PinsController do
   end
 
 
+  describe "GET pins/:id" do
 
+    let (:json) {JSON.parse(response.body)}
+
+    before do
+      get :show, id: pin.id, format: :json
+    end
+
+    it 'should respond with 200' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns the pin as a json' do
+      expect(json).to be_a Hash
+    end
+
+    it 'returns the correct post id' do
+      expect( json["id"] ).to eq(pin.id)
+    end
+
+    it 'returns the correct post item_name' do
+      expect( json["item_name"] ).to eq(pin.item_name)
+    end
+
+    it 'returns the correct post description' do
+      expect( json["description"] ).to eq(pin.description)
+    end
+
+  end
 
 end

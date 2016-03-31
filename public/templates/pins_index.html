@@ -3,7 +3,7 @@
 <form name="newPin" novalidate>
   <label>Item Name:</label><br/>
   <input type="text" ng-model="newPin.item_name" required ng-minlength="0" ng-maxlength="140" value=""><br/><br/>
-  
+
 
   <label>BUY or SELL:</label>
   <select class="" ng-model="newPin.buy_sell" required>
@@ -23,9 +23,9 @@
 
 <div ng-repeat="pin in pins | orderBy:'-created_at'">
   Pin id: <div>{{ pin.id }}</div>
-  <div>{{ pin.item_name }}</div>
+  <div><a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a></div>
   <div>{{ pin.buy_sell }}</div>
   <div>{{ pin.description }}</div>
   <div>{{ pin.user_id }}</div><br/>
-
+  <a ui-sref="pins.edit({id: pin.id})">Edit</a>
 </div>

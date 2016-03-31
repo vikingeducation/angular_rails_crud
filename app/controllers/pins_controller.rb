@@ -4,22 +4,12 @@ class PinsController < ApplicationController
     @pins = Pin.all
 
     respond_to do |format|
-      format.json {render json: @pins }
+      format.json {render json: @pins.to_json }
     end
   end
 
   def create
     @pin = Pin.new( pin_params )
-
-    # if @pin.save
-    #   respond_to do |format|
-    #     format.json { render json: @pin }
-    #   end
-    # else
-    #   respond_to do |format|
-    #     format.json { render status: :unprocessable_entity }
-    #   end
-    # end
 
     respond_to do |format|
       if @pin.save
@@ -30,6 +20,34 @@ class PinsController < ApplicationController
       end
     end
 
+  end
+
+  def show
+    @pin = Pin.find( params[:id] )
+
+    respond_to do |format|
+      format.json { render json: @pin.to_json }
+    end
+  end
+
+  def edit
+    @pin = Pin.find( params[:id] )
+
+    respond_to do |format|
+      format.json { render json: @pin.to_json }
+    end
+  end
+
+  def update
+    @pin = Pin.find( params[:id] )
+
+    respond_to do |format|
+      if @pin.update( pin_params )
+        format.json { render json: @pin.to_json }
+      else
+        format.json { render json: @pin.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 

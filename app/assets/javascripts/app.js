@@ -23,8 +23,23 @@ pinboard.config(['$urlRouterProvider', '$stateProvider',
     $stateProvider
 
     .state("pins", {
-      url: "/pins",
+      url: "/",
+      template: "<div ui-view></div>",
+      controller: "PinCtrl"
+    })
+    .state("pins.index", {
+      url: "pins",
       templateUrl: "templates/pins_index.html",
+      controller: "PinCtrl"
+    })
+    .state("pins.show", {
+      url: "pins/:id",
+      templateUrl: "templates/pins_show.html",
+      controller: "PinCtrl"
+    })
+    .state("pins.edit", {
+      url: "pins/:id/edit",
+      templateUrl: "templates/pins_edit.html",
       controller: "PinCtrl"
     })
 

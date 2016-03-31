@@ -8,9 +8,9 @@ pinboard.config( ['RestangularProvider', function(RestangularProvider) {
 
   RestangularProvider.setBaseUrl('/api/v1');
   RestangularProvider.setRequestSuffix('.json');
-  // RestangularProvider.setDefaultHttpFields({
-  //   "content-type": "application/json"
-  // });
+  RestangularProvider.setDefaultHttpFields({
+    "content-type": "application/json"
+  });
   // RestangularProvider.setResponseExtractor( function( response, operation ) {
   //
   // });
@@ -22,12 +22,12 @@ pinboard.config(['$urlRouterProvider', '$stateProvider',
 
     $stateProvider
 
-    .state("hello", {
-      url: "/hello",
-      templateUrl: "templates/hello.html",
+    .state("pins", {
+      url: "/pins",
+      templateUrl: "templates/pins_index.html",
       controller: "PinCtrl"
     })
 
-    $urlRouterProvider.otherwise('/hello');
+    $urlRouterProvider.otherwise('/pins');
 
   }]);

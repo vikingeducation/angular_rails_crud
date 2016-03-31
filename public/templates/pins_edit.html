@@ -13,8 +13,8 @@
   <label>Item Description:</label><br/>
   <textarea rows="8" cols="40" ng-model="showPin.description" required ng-minlength="0" ng-maxlength="400"></textarea><br/>
 
-  <input type="submit" value="Submit" ng-click="updatePin(showPin.$valid)">
+  <input type="submit" value="Submit" ng-click="updatePin(editPin.$valid)">
 
-  <div ng-if="showPin.$invalid && showPin.$dirty">Invalid! Please enter values for Item Name, BUY/SELL, and Item Description.</div><br/><br/>
+  <div ng-if="editPin.$invalid && editPin.$dirty">Invalid! Please enter values for Item Name, BUY/SELL, and Item Description.</div><br/><br/>
 
 </form>

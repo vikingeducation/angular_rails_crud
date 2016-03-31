@@ -1,4 +1,4 @@
-pinboard.controller('PinCtrl', [ "$scope", "$stateParams", "$location", "_", 'Restangular', function($scope, $stateParams, $location, _, Restangular) {
+pinboard.controller('PinCtrl', [ "$scope", "$stateParams", "$location", 'Restangular', function($scope, $stateParams, $location, Restangular) {
 
   $scope.pins = Restangular.all( 'pins' ).getList().$object;
 
@@ -21,17 +21,24 @@ pinboard.controller('PinCtrl', [ "$scope", "$stateParams", "$location", "_", 'Re
 
   $scope.updatePin = function(formIsValid) {
     if (formIsValid) {
-      Restangular.one('pins', $stateParams.id).put( { pin: {
-        item_name: $scope.editPin.item_name,
-        buy_sell: $scope.editPin.buy_sell,
-        description: $scope.editPin.description,
+      console.log($scope.showPin)
+      console.log()
+      var copy = Restangular.copy($scope.showPin);
+
+      $scope.showPin.patch({ pin: {
+        item_name: $scope.showPin.item_name,
+        buy_sell: $scope.showPin.buy_sell,
+        description: $scope.showPin.description,
         user_id: 1
-      }})
+      } })
       .then( function(updatedPin) {
-        $scope.pins.push( updatedPin );
-        $scope.editPin = {};
+        for (var i = 0; i < $scope.pins.length; i++) {
+          if (updatedPin.id == $scope.pins[i].id) {
+            $scope.pins.splice(i, 1, updatedPin);
+          }
+        }
       })
-      }
+    }
   }
 
 

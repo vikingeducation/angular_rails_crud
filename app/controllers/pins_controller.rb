@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
   def index
-    @pins = Pin.all
+    @pins = Pin.all.order(created_at: :desc)
     respond_to do |format|
       format.json { render json: @pins }
     end

@@ -28,6 +28,7 @@ describe PinsController do
     end
   end
 
+
   describe 'GET #show' do
     let(:pin) { create(:pin) }
 
@@ -48,6 +49,15 @@ describe PinsController do
 
     it 'returns an object with the pins description' do
       expect(json['description']).to eq pin.description
+    end
+  end
+
+
+  describe 'POST #create' do
+    let(:pin_attributes) { attributes_for(:pin) }
+
+    it 'creates a new pin' do
+      post :create, format: :json, pin_attributes
     end
   end
 end

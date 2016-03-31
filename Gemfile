@@ -14,6 +14,7 @@ gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 
 group :development, :test do
+  gem 'spring-commands-rspec'
   gem 'rubocop'
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'

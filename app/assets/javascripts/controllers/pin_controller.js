@@ -1,0 +1,3 @@
+pinboard.controller('PinCtrl', [function() {
+
+}]);

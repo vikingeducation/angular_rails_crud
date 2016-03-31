@@ -1,3 +1,3 @@
-pinboard.controller('PinCtrl', [function() {
+pinboard.controller('PinCtrl', [ "$scope", function($scope) {
 
 }]);

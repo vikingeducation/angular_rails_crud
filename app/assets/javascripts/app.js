@@ -1,5 +1,9 @@
 var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
 
+pinboard.factory('_', ['$window', function($window) {
+  return $window._; // assumes underscore has already been loaded on the page
+}]);
+
 pinboard.config( ['RestangularProvider', function(RestangularProvider) {
 
   RestangularProvider.setBaseUrl('/api/v1');
@@ -24,6 +28,6 @@ pinboard.config(['$urlRouterProvider', '$stateProvider',
       controller: "PinCtrl"
     })
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/hello');
 
   }]);

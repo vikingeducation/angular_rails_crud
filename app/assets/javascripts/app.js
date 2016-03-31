@@ -9,7 +9,6 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
   function($urlRouterProvider, $stateProvider){
     $stateProvider
       .state('pins', {
-        url: '',
         template: '<div ui-view></div>'
       })
       .state('pins.index',{
@@ -31,8 +30,7 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
                   function(Restangular, $stateParams){
                     return Restangular.one('pins', $stateParams.id).get();
                 }]}
-      })
-
+      });
 
     $urlRouterProvider.otherwise('/pins');
 

@@ -7,15 +7,14 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
 
 .config(['$urlRouterProvider', '$stateProvider',
   function($urlRouterProvider, $stateProvider){
-
     $stateProvider
       .state('pins', {
-        url: '/pins',
-        templateUrl: '/templates/pins.html'
+        url: '',
+        template: '<div ui-view></div>'
       })
       .state('pins.index',{
-        url: "/index",
-        templateUrl: '/templates/pinsIndex.html',
+        url: "/pins",
+        templateUrl: '/templates/pins/index.html',
         controller: 'PinsIndexCtrl',
         resolve: {
           pins: ['Restangular', function(Restangular){

@@ -1,6 +1,19 @@
-Hello Pins!
+<h1>Pinboard</h1>
 
-<div ng-repeat="pin in pins">
+<form name="newPin">
+  <input type="text" name="item_name" ng-model="newPin.item_name">
+
+  <select class="" name="buy_sell" ng-model="newPin.buy_sell">
+    <option value="true">BUY</option>
+    <option value="false">SELL</option>
+  </select>
+
+  <textarea name="description" rows="8" cols="40" ng-model="newPin.description"></textarea>
+
+  <input type="submit" value="Submit" ng-click="createPin()">
+</form>
+
+<div ng-repeat="pin in pins | orderBy:'-created_at'">
   Pin id: <div>{{ pin.id }}</div>
   <div>{{ pin.item_name }}</div>
   <div>{{ pin.buy_sell }}</div>

@@ -22,9 +22,8 @@
 </form>
 
 <div ng-repeat="pin in pins | orderBy:'-created_at'">
-  Pin id: <div>{{ pin.id }}</div>
-  <div><a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a></div>
-  <div>{{ pin.buy_sell }}</div>
-  <div>{{ pin.description }}</div>
-  <div>{{ pin.user_id }}</div><br/>
+ <div>Pin id: {{ pin.id }}</div>
+  <div>Title: <a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a></div>
+  <div>Buy? {{ pin.buy_sell }}</div>
+  <div>Description: {{ pin.description }}</div><br/>
 </div>

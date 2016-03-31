@@ -127,4 +127,40 @@ describe PinsController do
     end
   end
 
+
+  describe 'DELETE /pins/:id' do
+
+    let (:json) {JSON.parse(response.body)}
+
+    context 'check response' do
+      before do
+        pin
+        delete :destroy, id: pin.id, format: :json
+      end
+
+      it 'should return 200' do
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'check effects' do
+
+      it 'should decrease pins by 1' do
+        pin
+        expect { delete :destroy, id: pin.id, format: :json }.to change(Pin, :count).by(-1)
+      end
+
+      it "doesn't delete the wrong pin" do
+        pin1 = pin
+        pin2 = create(:pin)
+        delete :destroy, id: pin1.id, format: :json
+        get :index, format: :json
+        expect(json[0]["id"]).to eq(2)
+      end
+
+
+    end
+
+  end
+
 end

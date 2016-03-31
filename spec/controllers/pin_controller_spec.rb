@@ -102,4 +102,29 @@ describe PinsController do
 
   end
 
+  describe "PATCH /pins/:id" do
+
+    let (:json) {JSON.parse(response.body)}
+
+    before do
+      patch :update, id: pin.id, pin: attributes_for(:pin, item_name: "new name"), format: :json
+    end
+
+    it 'should respond with 200' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'responds to successful request with the updated pin' do
+      expect(json).to be_a Hash
+    end
+
+    it 'returns the correct post id' do
+      expect( json["id"] ).to eq(pin.id)
+    end
+
+    it 'returns the updated post item_name' do
+      expect( json["item_name"] ).to eq("new name")
+    end
+  end
+
 end

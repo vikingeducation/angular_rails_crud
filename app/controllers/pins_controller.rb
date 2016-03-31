@@ -50,6 +50,14 @@ class PinsController < ApplicationController
     end
   end
 
+  def destroy
+    @pin = Pin.find( params[:id] )
+    @pin.destroy()
+    respond_to do |format|
+      format.json { render json: @pin.to_json }
+    end
+
+  end
 
   private
 

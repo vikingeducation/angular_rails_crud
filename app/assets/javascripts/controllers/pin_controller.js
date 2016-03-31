@@ -1,4 +1,4 @@
-pinboard.controller('PinCtrl', [ "$scope", "$stateParams", "$location", 'Restangular', function($scope, $stateParams, $location, Restangular) {
+pinboard.controller('PinCtrl', [ "$scope", "$state", "$stateParams", "$location", 'Restangular', function($scope, $state, $stateParams, $location, Restangular) {
 
   $scope.pins = Restangular.all( 'pins' ).getList().$object;
 
@@ -37,8 +37,21 @@ pinboard.controller('PinCtrl', [ "$scope", "$stateParams", "$location", 'Restang
             $scope.pins.splice(i, 1, updatedPin);
           }
         }
+        $state.go("pins.show", { id: $stateParams.id });
       })
     }
+  }
+
+  $scope.deletePin = function() {
+    $scope.showPin.remove()
+    .then( function(deletedPin) {
+      for (var i = 0; i < $scope.pins.length; i++) {
+        if (deletedPin.id == $scope.pins[i].id) {
+          $scope.pins.splice(i, 1);
+        }
+      }
+      $state.go("pins.index");
+    })
   }
 
 

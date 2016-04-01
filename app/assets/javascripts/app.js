@@ -4,6 +4,7 @@ pinboard.factory('_', ['$window', function($window) {
   return $window._; // assumes underscore has already been loaded on the page
 }]);
 
+// Restangular Config
 pinboard.config( ['RestangularProvider', function(RestangularProvider) {
 
   RestangularProvider.setBaseUrl('/api/v1');
@@ -11,9 +12,9 @@ pinboard.config( ['RestangularProvider', function(RestangularProvider) {
   RestangularProvider.setDefaultHttpFields({
     "content-type": "application/json"
   });
-  // RestangularProvider.setResponseExtractor( function( response, operation ) {
-  //
-  // });
+  RestangularProvider.setResponseExtractor( function( response, operation ) {
+    // Extractor code here
+  });
 
 }]);
 

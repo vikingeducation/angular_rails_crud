@@ -1,0 +1,10 @@
+<form name='editPinForm'>
+  <label for='title'>Title</label>
+  <input type='text' id='title' ng-model='pin.item_name' ng-minlength='1' ng-maxlength='32' required>
+  <label for='buy_sell'>Buy/Sell</label>
+  <select ng-model='pin.buy_sell' ng-init="buy_sell = pin.buy_sell" ng-options="obj.value as obj.label for obj in buySellOptions">
+  </select>
+  <label for='description'>Description</label>
+  <input type='text' id='description' ng-model='pin.description' ng-minlength='1' ng-maxlength='140' required>
+  <button ng-click='updatePin()'>Update Pin</button>
+</form>

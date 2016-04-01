@@ -1,11 +1,13 @@
-<form>
+<form name='newPinForm'>
   <label for='title'>Title</label>
-  <input type='text' id='title' ng-model='newPin.item_name'>
+  <input type='text' id='title' ng-model='newPin.item_name' ng-minlength='5' ng-maxlength='32' required name='item_name' ng-model-options='{updateOn: blur}'>
+  <span ng-show='newPinForm.item_name.$error.minlength || newPinForm.item_name.$error.maxlength'>This is not within the length limits</span>
   <label for='buy_sell'>Buy/Sell</label>
   <select ng-model='newPin.buy_sell' ng-init="newPin.buy_sell = true" ng-options="obj.value as obj.label for obj in buySellOptions">
   </select>
   <label for='description'>Description</label>
-  <input type='textfield' id='description' ng-model='newPin.description'>
+  <input type='text' id='description' ng-model='newPin.description' ng-minlength='1' ng-maxlength='140' required name='description' ng-model-options='{updateOn: blur}'>
+  <span ng-show='newPinForm.description.$error.minlength || newPinForm.description.$error.maxlength'>This is not within the length limits</span>
   <button ng-click='createPin()'>Create New Pin</button>
 </form>
 

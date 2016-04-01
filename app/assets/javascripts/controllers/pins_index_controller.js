@@ -9,10 +9,8 @@ pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', function($scope, pins) {
     ];
 
     $scope.createPin = function() {
-        $scope.pins.create($scope.newPin);
+        if ($scope.newPinForm.$valid) {
+            $scope.pins.create($scope.newPin);
+        };
     };
-
-    $scope.$watch('newPin.buy_sell', function() {
-        console.log($scope.newPin.buy_sell);
-    });
 }]);

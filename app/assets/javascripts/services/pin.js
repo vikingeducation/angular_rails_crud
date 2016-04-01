@@ -10,5 +10,11 @@ pinboard.factory('Pins', ['Restangular', function(Restangular) {
         return collection;
     });
 
+    Restangular.extendModel('pins', function(model) {
+        model.update = function() {
+        };
+        return model;
+    })
+
     return Restangular.service('pins');
 }]);

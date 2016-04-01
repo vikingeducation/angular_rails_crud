@@ -28,10 +28,20 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
         templateUrl: "/templates/pins/show.html",
         controller: 'PinsShowCtrl',
         resolve: {
-          pin: ['Restangular', '$stateParams',
-                  function(Restangular, $stateParams){
-                    return Restangular.one('pins', $stateParams.id).get();
+          pin: ['Pins', '$stateParams',
+                  function(Pins, $stateParams){
+                    return Pins.one($stateParams.id).get();
                 }]}
+      })
+      .state('pins.edit', {
+        url: 'pins/:id/edit',
+        templateUrl: 'templates/pins/edit.html',
+        controller: 'PinsEditCtrl',
+        resolve: {
+          pin: ['Pins', '$stateParams', function(Pins, $stateParams) {
+            return Pins.one($stateParams.id).get();
+          }]
+        }
       });
 
 

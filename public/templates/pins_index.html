@@ -1,0 +1,29 @@
+<h1>Pinboard</h1>
+
+<form name="newPin" novalidate>
+  <label>Item Name:</label><br/>
+  <input type="text" ng-model="newPin.item_name" required ng-minlength="0" ng-maxlength="140" value=""><br/><br/>
+
+
+  <label>BUY or SELL:</label>
+  <select class="" ng-model="newPin.buy_sell" required>
+    <option value="true">BUY</option>
+    <option value="false">SELL</option>
+  </select><br/><br/>
+
+
+  <label>Item Description:</label><br/>
+  <textarea rows="8" cols="40" ng-model="newPin.description" required ng-minlength="0" ng-maxlength="400"></textarea><br/>
+
+  <input type="submit" value="Submit" ng-click="createPin(newPin.$valid)">
+
+  <div ng-if="newPin.$invalid && newPin.$dirty">Invalid! Please enter values for Item Name, BUY/SELL, and Item Description.</div><br/><br/>
+
+</form>
+
+<div ng-repeat="pin in pins | orderBy:'-created_at'">
+ <div>Pin id: {{ pin.id }}</div>
+  <div>Title: <a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a></div>
+  <div>Buy? {{ pin.buy_sell }}</div>
+  <div>Description: {{ pin.description }}</div><br/>
+</div>

@@ -1,0 +1,13 @@
+* Todos
+** Interiguing      <2016-03-31 Thu 15:57>
+ 
+ LinLink:
+** TODO  Intriguing      <2016-03-31 Thu 16:18>
+ 
+ Link: file:~/Viking/Unit19/assignment_angular_rails_crud/app/controllers/pins_controller.rb::@pin%20=%20Pin.find(params%5B:id%5D)
+* Checklist
+SCHEDULED: [2016-03-31 Thu]
+:LOGBOOK:
+CLOCK: [2016-03-31 Thu 16:19]--[2016-03-31 Thu 16:44] =>  0:25
+:END:
+- [ ]What 

@@ -1,0 +1,18 @@
+<ui-view></ui-view>
+
+<h2>All Pins</h2>
+<hr>
+
+<div ng-repeat="pin in pins | orderBy: '-created_at' ">
+  <a href="#">
+    <h3>{{ pin.item_name }}</h3>
+  </a>
+  <span ng-show="pin.buy_sell">WANT TO BUY</span>
+  <span ng-show="!pin.buy_sell">FOR SALE</span>
+  <a href="#">Edit Pin</a> | <a href="#">Delete Pin</a>
+  <p>{{ pin.description }}</p>
+  <p>
+    <em>Posted {{ pin.created_at | date }} by {{ pin.user.username }}</em>
+  </p>
+  <hr>
+</div>

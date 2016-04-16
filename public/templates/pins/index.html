@@ -1,10 +1,30 @@
-<ui-view></ui-view>
+<form name="newPinForm" ng-submit="create()">
+  <h3>New Pin</h3>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input name="title" type="text" ng-model="newPin.itemname" required>
+  </div>
+
+  <div class="form-group">
+    <label for="buysell">Buy/Sell?</label>
+    <select name="buysell" ng-model="newPin.buysell" ng-options="label for (label, value) in buySellOptions" required>
+      <option value="" disabled>Please choose...</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" ng-model="newPin.description" cols="30" rows="10" required></textarea>
+  </div>
+
+  <input type="submit" value="Create Pin">
+</form>
 
 <h2>All Pins</h2>
 <hr>
 
 <div ng-repeat="pin in pins | orderBy: '-created_at' ">
-  <a href="#">
+  <a ui-sref="pins.show({id: pin.id})">
     <h3>{{ pin.item_name }}</h3>
   </a>
   <span ng-show="pin.buy_sell">WANT TO BUY</span>

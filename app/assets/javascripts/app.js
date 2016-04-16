@@ -18,8 +18,19 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
       templateUrl: 'templates/pins/index.html',
       controller: 'PinsIndexCtrl',
       resolve: {
-        pins: ['Restangular', function(Restangular){
-          return Restangular.all('pins').getList();
+        pins: ['PinsAPI', function( PinsAPI ){
+          return PinsAPI.index();
+        }]
+      }
+    })
+
+    .state('pins.show', {
+      url: '/show/:id',
+      templateUrl: 'templates/pins/show.html',
+      controller: 'PinsShowCtrl',
+      resolve: {
+        pin: ['PinsAPI', '$stateParams', function( PinsAPI, $stateParams ){
+          return PinsAPI.show($stateParams.id);
         }]
       }
     });

@@ -1,0 +1,25 @@
+<a ui-sref="pins.index">View All Pins</a>
+
+<hr>
+
+<form name="editPinForm" ng-submit="update()">
+  <h3>New Pin</h3>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input name="title" type="text" ng-model="editPin.item_name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="buysell">Buy/Sell?</label>
+    <select name="buysell" ng-model="editPin.buy_sell" ng-options="label for (label, value) in buySellOptions" required>
+      <option value="" disabled>Please choose...</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" ng-model="editPin.description" cols="30" rows="10" required></textarea>
+  </div>
+
+  <input type="submit" value="Update Pin">
+</form>

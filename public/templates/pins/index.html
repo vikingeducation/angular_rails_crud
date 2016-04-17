@@ -24,12 +24,12 @@
 <hr>
 
 <div ng-repeat="pin in pins | orderBy: '-created_at' ">
-  <a ui-sref="pins.show({id: pin.id})">
+  <a ui-sref="pins.show({ id: pin.id })">
     <h3>{{ pin.item_name }}</h3>
   </a>
   <span ng-show="pin.buy_sell">WANT TO BUY</span>
   <span ng-show="!pin.buy_sell">FOR SALE</span>
-  <a href="#">Edit Pin</a> | <a href="#">Delete Pin</a>
+  <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a> | <a href="javascript:void(0)" ng-click="delete(pin)">Delete Pin</a>
   <p>{{ pin.description }}</p>
   <p>
     <em>Posted {{ pin.created_at | date }} by {{ pin.user.username }}</em>

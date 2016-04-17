@@ -50,4 +50,36 @@ RSpec.describe PinsController, type: :controller do
     end
   end
 
+  describe "PUT /pins/:id" do
+    before do
+      pin_data = attributes_for(:pin)
+      pin_data["item_name"] = "new name"
+      put :update, id: pin.id, pin: pin_data, format: :json
+    end
+
+    it "updates an existing pin, returns that pin" do
+      expect(response).to have_http_status(200)
+      expect(json["id"]).to eq(pin.id)
+    end
+
+    it "actually updates the pin" do
+      expect(json["item_name"]).to eq("new name")
+    end
+
+    it "returns 422 error if pin data is invalid" do
+      pin_data = attributes_for(:pin)
+      pin_data["item_name"] = ""
+      put :update, id: pin.id, pin: pin_data, format: :json
+
+      expect(response).to have_http_status(422)
+    end
+  end
+
+  describe "DELETE /pins/:id" do
+    it "removes the existing pin" do
+      pin
+      expect{ delete :destroy, id: pin.id, format: :json }.to change(Pin, :count).by(-1)
+    end
+  end
+
 end

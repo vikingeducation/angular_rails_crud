@@ -33,6 +33,17 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
           return PinsAPI.show($stateParams.id);
         }]
       }
+    })
+
+    .state('pins.edit', {
+      url: '/edit/:id',
+      templateUrl: 'templates/pins/edit.html',
+      controller: 'PinsEditCtrl',
+      resolve: {
+        pin: ['PinsAPI', '$stateParams', function( PinsAPI, $stateParams ){
+          return PinsAPI.show($stateParams.id);
+        }]
+      }
     });
 
   $urlRouterProvider.otherwise('/pins/index');

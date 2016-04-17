@@ -9,7 +9,7 @@ class PinsController < ApplicationController
   end
 
   def show
-    @pin = Pin.find(params[:id])
+    @pin = Pin.find_by_id(params[:id])
 
     respond_to do |format|
       format.json { render json: @pin.to_json(include: :user) }
@@ -25,6 +25,28 @@ class PinsController < ApplicationController
         format.json { render json: @pin.to_json(include: :user) }
       else
         format.json { render nothing: true, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @pin = Pin.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @pin.update(pin_params)
+        format.json { render json: @pin.to_json(include: :user) }
+      else 
+        format.json { render nothing: true, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @pin = Pin.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @pin.destroy
+        format.json { render json: @pin.to_json(include: :user) }
       end
     end
   end

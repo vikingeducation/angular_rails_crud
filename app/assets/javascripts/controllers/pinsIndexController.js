@@ -15,4 +15,11 @@ pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI',
       });
   };
 
+  $scope.delete = function(pin){
+    console.log(pin);
+    pin.remove().then(function(pin){
+      pins.splice(pins.indexOf(pin), 1);
+    });
+  };
+
 }]);

@@ -18,10 +18,20 @@ pinboard.factory('PinsAPI', ['Restangular', function(Restangular){
     });
   };
 
+  var update = function(pin){
+    return pin.put();
+  };
+
+  var destroy = function(pin){
+    return pin.delete();
+  };
+
   return {
     index: index,
     show: show,
     create: create,
+    update: update,
+    destory: destroy,
   };
 
 }]);

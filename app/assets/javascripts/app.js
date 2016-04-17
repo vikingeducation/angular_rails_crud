@@ -1,4 +1,4 @@
-var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
+var pinboard = angular.module('pinboard', ['ui.router', 'restangular', 'Devise'])
 
 .config(['RestangularProvider', function(RestangularProvider){
   RestangularProvider.setBaseUrl('/api/v1');
@@ -9,8 +9,17 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
 
   $stateProvider
     .state('pins', {
+      abstract: true,
       url: '/pins',
-      templateUrl: 'templates/pinsLayout.html'
+      views: {
+        'pins': {
+          templateUrl: 'templates/pinsLayout.html',
+        },
+        'auth': {
+          templateUrl: 'templates/auth.html',
+          controller: 'AuthCtrl'
+        }
+      }
     })
 
     .state('pins.index', {

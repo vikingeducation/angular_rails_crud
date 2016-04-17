@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PinsController, type: :controller do
 
+  let(:user) { create(:user) }
   let(:pin) { create(:pin) }
   let(:json) { JSON.parse( response.body ) }
 
@@ -30,56 +31,63 @@ RSpec.describe PinsController, type: :controller do
     end
   end
 
-  describe "POST /pins" do
+  describe "Logged in users" do
     before do
-      pin
+      sign_in user
     end
 
-    it "creates a new pin, returns that pin" do
-      post_data = {format: :json, pin: attributes_for(:pin)}
+    describe "POST /pins" do
+      before do
+        pin
+      end
 
-      expect{ post :create, post_data }.to change(Pin, :count).by(1)
-      expect(json['item_name']).to eq(pin.item_name)
+      it "creates a new pin, returns that pin" do
+        post_data = {format: :json, pin: attributes_for(:pin)}
+
+        expect{ post :create, post_data }.to change(Pin, :count).by(1)
+        expect(json['item_name']).to eq(pin.item_name)
+      end
+
+      it "returns 422 error if pin data is invalid" do
+        post_data = {format: :json, pin: {item_name: "bogus"}}
+
+        expect{ post :create, post_data }.not_to change(Pin, :count)
+        expect(response).to have_http_status(422)
+      end
     end
 
-    it "returns 422 error if pin data is invalid" do
-      post_data = {format: :json, pin: {item_name: "bogus"}}
+    describe "PUT /pins/:id" do
+      before do
+        pin_data = attributes_for(:pin)
+        pin_data["item_name"] = "new name"
+        put :update, id: pin.id, pin: pin_data, format: :json
+      end
 
-      expect{ post :create, post_data }.not_to change(Pin, :count)
-      expect(response).to have_http_status(422)
+      it "updates an existing pin, returns that pin" do
+        expect(response).to have_http_status(200)
+        expect(json["id"]).to eq(pin.id)
+      end
+
+      it "actually updates the pin" do
+        expect(json["item_name"]).to eq("new name")
+      end
+
+      it "returns 422 error if pin data is invalid" do
+        pin_data = attributes_for(:pin)
+        pin_data["item_name"] = ""
+        put :update, id: pin.id, pin: pin_data, format: :json
+
+        expect(response).to have_http_status(422)
+      end
+    end
+
+    describe "DELETE /pins/:id" do
+      it "removes the existing pin" do
+        pin
+        expect{ delete :destroy, id: pin.id, format: :json }.to change(Pin, :count).by(-1)
+      end
     end
   end
 
-  describe "PUT /pins/:id" do
-    before do
-      pin_data = attributes_for(:pin)
-      pin_data["item_name"] = "new name"
-      put :update, id: pin.id, pin: pin_data, format: :json
-    end
-
-    it "updates an existing pin, returns that pin" do
-      expect(response).to have_http_status(200)
-      expect(json["id"]).to eq(pin.id)
-    end
-
-    it "actually updates the pin" do
-      expect(json["item_name"]).to eq("new name")
-    end
-
-    it "returns 422 error if pin data is invalid" do
-      pin_data = attributes_for(:pin)
-      pin_data["item_name"] = ""
-      put :update, id: pin.id, pin: pin_data, format: :json
-
-      expect(response).to have_http_status(422)
-    end
-  end
-
-  describe "DELETE /pins/:id" do
-    it "removes the existing pin" do
-      pin
-      expect{ delete :destroy, id: pin.id, format: :json }.to change(Pin, :count).by(-1)
-    end
-  end
 
 end

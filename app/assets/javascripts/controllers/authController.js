@@ -1,12 +1,26 @@
-pinboard.controller('AuthCtrl', ['$scope', 'Auth', 
-  function($scope, Auth){
+pinboard.controller('AuthCtrl', ['$scope', '$location', 'Auth', 
+  function($scope, $location, Auth){
+
+  $scope.signedIn = Auth.isAuthenticated;
+
+  Auth.currentUser().then(function(user){
+    $scope.user = user;
+  });
 
   $scope.login = function(){
-    console.log($scope.auth);
     Auth.login($scope.auth).then(function(user){
-      console.log(user);
+      $location.path("/");
+      $scope.user = user;
+      $scope.authMessage = "";
     }, function(error){
-      console.log(error);
+      $scope.authMessage = "Login Failed!";
+    });
+  };
+
+$location.path("/");
+  $scope.logout = function(){
+    Auth.logout().then(function(){
+      $location.path("/");
     });
   };
 

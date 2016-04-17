@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
     @pins = Pin.all

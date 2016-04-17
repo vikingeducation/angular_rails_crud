@@ -18,11 +18,10 @@ class PinsController < ApplicationController
   end
 
   def create
-    @pin = Pin.new(pin_params)
-    @pin.user = User.first
+    @pin = current_user.pins.new(pin_params)
 
     respond_to do |format|
-      if @pin.save
+      if @pin && @pin.save
         format.json { render json: @pin.to_json(include: :user) }
       else
         format.json { render nothing: true, status: :unprocessable_entity }
@@ -31,10 +30,10 @@ class PinsController < ApplicationController
   end
 
   def update
-    @pin = Pin.find_by_id(params[:id])
+    @pin = current_user.pins.find_by_id(params[:id])
 
     respond_to do |format|
-      if @pin.update(pin_params)
+      if @pin && @pin.update(pin_params)
         format.json { render json: @pin.to_json(include: :user) }
       else 
         format.json { render nothing: true, status: :unprocessable_entity }
@@ -43,11 +42,13 @@ class PinsController < ApplicationController
   end
 
   def destroy
-    @pin = Pin.find_by_id(params[:id])
+    @pin = current_user.pins.find_by_id(params[:id])
 
     respond_to do |format|
-      if @pin.destroy
+      if @pin && @pin.destroy
         format.json { render json: @pin.to_json(include: :user) }
+      else
+        format.json { render nothing: true }
       end
     end
   end

@@ -1,5 +1,7 @@
-pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI',
-  function($scope, pins, PinsAPI){
+pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI', 'Auth',
+  function($scope, pins, PinsAPI, Auth){
+
+  $scope.signedIn = Auth.isAuthenticated;
 
   $scope.pins = pins;
   $scope.buySellOptions = {

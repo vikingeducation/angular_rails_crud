@@ -29,7 +29,9 @@
   </a>
   <span ng-show="pin.buy_sell">WANT TO BUY</span>
   <span ng-show="!pin.buy_sell">FOR SALE</span>
-  <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a> | <a href="javascript:void(0)" ng-click="delete(pin)">Delete Pin</a>
+  <span ng-show="signedIn()">
+    <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a> | <a href="javascript:void(0)" ng-click="delete(pin)">Delete Pin</a>
+  </span>
   <p>{{ pin.description }}</p>
   <p>
     <em>Posted {{ pin.created_at | date }} by {{ pin.user.username }}</em>

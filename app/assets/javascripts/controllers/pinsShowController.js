@@ -1,5 +1,7 @@
-pinboard.controller('PinsShowCtrl', ['$scope', '$state', 'pin', 
-  function($scope, $state, pin){
+pinboard.controller('PinsShowCtrl', ['$scope', '$state', 'pin', 'Auth',
+  function($scope, $state, pin, Auth){
+
+  $scope.signedIn =  Auth.isAuthenticated;
 
   $scope.pin = pin;
 

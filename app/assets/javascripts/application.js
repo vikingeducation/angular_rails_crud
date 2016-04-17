@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require lodash.js
-//= require underscore.js
-//= require angular
-//= require angular-ui-router.js
-//= require restangular.js
+//= require lodash/lodash
+//= require underscore/underscore
+//= require angular/angular
+//= require angular-ui-router/release/angular-ui-router
+//= require restangular/dist/restangular
+//= require angular-devise/lib/devise
 //= require_tree .
 //= require_tree ./controllers
 //= require_tree ./services

@@ -10,7 +10,12 @@ User.destroy_all
 Pin.destroy_all
 
 3.times do |i|
-  User.create!(username: "Dixie#{i}")
+  User.create!(
+    username: "Dixie#{i}",
+    email: "test#{i}@gmail.com",
+    password: "password",
+    password_confirmation: "password"
+  )
 end
 
 10.times do |i|

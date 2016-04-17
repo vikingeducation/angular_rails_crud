@@ -33,8 +33,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 
 # Angular
-gem 'angularjs-rails'
 gem 'angular_rails_csrf'
+
+# Authenication
+gem 'devise'
+
+# Bower
+gem "bower-rails", "~> 0.10.0"
 
 group :development, :test do
   # Testing

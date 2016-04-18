@@ -29,7 +29,7 @@
   </a>
   <span ng-show="pin.buy_sell">WANT TO BUY</span>
   <span ng-show="!pin.buy_sell">FOR SALE</span>
-  <span ng-show="signedIn()">
+  <span ng-show="signedIn() && user.id == pin.user.id">
     <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a> | <a href="javascript:void(0)" ng-click="delete(pin)">Delete Pin</a>
   </span>
   <p>{{ pin.description }}</p>

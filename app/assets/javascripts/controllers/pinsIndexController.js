@@ -1,8 +1,6 @@
 pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI', 'Auth',
   function($scope, pins, PinsAPI, Auth){
 
-  $scope.signedIn = Auth.isAuthenticated;
-
   $scope.pins = pins;
   $scope.buySellOptions = {
     'I want to buy': true,
@@ -18,8 +16,7 @@ pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI', 'Auth',
   };
 
   $scope.delete = function(pin){
-    console.log(pin);
-    pin.remove().then(function(pin){
+    pin.remove().then(function(){
       pins.splice(pins.indexOf(pin), 1);
     });
   };

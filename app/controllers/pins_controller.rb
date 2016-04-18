@@ -48,7 +48,7 @@ class PinsController < ApplicationController
       if @pin && @pin.destroy
         format.json { render json: @pin.to_json(include: :user) }
       else
-        format.json { render nothing: true }
+        format.json { render nothing: true, status: :unprocessable_entity }
       end
     end
   end

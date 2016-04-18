@@ -18,7 +18,7 @@ Pin.destroy_all
   )
 end
 
-10.times do |i|
+15.times do |i|
   Pin.create!(
     item_name: "Doodad#{i}",
     buy_sell: [true, false].sample,

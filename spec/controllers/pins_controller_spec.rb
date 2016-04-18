@@ -93,6 +93,7 @@ RSpec.describe PinsController, type: :controller do
         expect{ 
           delete :destroy, id: another_pin.id, format: :json 
         }.not_to change(Pin, :count)
+        expect(response).to have_http_status(422)
       end
     end
   end

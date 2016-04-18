@@ -1,40 +1,51 @@
-<form name="newPinForm" ng-submit="create()">
-  <h3>New Pin</h3>
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input name="title" type="text" ng-model="newPin.itemname" required>
+<div class="row">
+  <div class="col-md-4">
+    <form name="newPinForm" class="form-horizontal" ng-submit="create()">
+      <h3>New Pin</h3>
+      <div class="form-group">
+        <label for="title" class="col-sm-3 control-label">Title</label>
+        <div class="col-sm-9">        
+          <input name="title" class="form-control" type="text" ng-model="newPin.itemname" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="buysell" class="col-sm-3 control-label">Buy/Sell?</label>
+        <div class="col-sm-9">        
+          <select name="buysell" class="form-control" ng-model="newPin.buysell" ng-options="label for (label, value) in buySellOptions" required>
+            <option value="" disabled>Please choose...</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="col-sm-3 control-label">Description</label>
+        <div class="col-sm-9">
+          <textarea name="description" class="form-control" ng-model="newPin.description" rows="3" required></textarea>
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Create Pin">
+    </form>
   </div>
 
-  <div class="form-group">
-    <label for="buysell">Buy/Sell?</label>
-    <select name="buysell" ng-model="newPin.buysell" ng-options="label for (label, value) in buySellOptions" required>
-      <option value="" disabled>Please choose...</option>
-    </select>
-  </div>
+  <div class="col-md-4" ng-repeat="pin in pins | orderBy: '-created_at' ">
+    <a ui-sref="pins.show({ id: pin.id })">
+      <h3>{{ pin.item_name }}</h3>
+    </a>
+    <span ng-show="pin.buy_sell" class="text-success">
+      <strong>WANT TO BUY</strong>
+    </span>
+    <span ng-show="!pin.buy_sell" class="text-danger">
+      <strong>FOR SALE</strong>
+    </span>
+    <span ng-show="signedIn() && user.id == pin.user.id">
+      <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a> | <a href="javascript:void(0)" ng-click="delete(pin)">Delete Pin</a>
+    </span>
+    <p>{{ pin.description }}</p>
+    <p class="text-muted">
+      <em>Posted {{ pin.created_at | date }} by {{ pin.user.username }}</em>
+    </p>
+</div>
 
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea name="description" ng-model="newPin.description" cols="30" rows="10" required></textarea>
-  </div>
-
-  <input type="submit" value="Create Pin">
-</form>
-
-<h2>All Pins</h2>
-<hr>
-
-<div ng-repeat="pin in pins | orderBy: '-created_at' ">
-  <a ui-sref="pins.show({ id: pin.id })">
-    <h3>{{ pin.item_name }}</h3>
-  </a>
-  <span ng-show="pin.buy_sell">WANT TO BUY</span>
-  <span ng-show="!pin.buy_sell">FOR SALE</span>
-  <span ng-show="signedIn() && user.id == pin.user.id">
-    <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a> | <a href="javascript:void(0)" ng-click="delete(pin)">Delete Pin</a>
-  </span>
-  <p>{{ pin.description }}</p>
-  <p>
-    <em>Posted {{ pin.created_at | date }} by {{ pin.user.username }}</em>
-  </p>
-  <hr>
 </div>

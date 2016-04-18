@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require lodash/lodash
 //= require underscore/underscore
 //= require angular/angular

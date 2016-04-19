@@ -1,12 +1,13 @@
-pinboard.controller('PinsShowCtrl', ['$scope', '$state', 'pin', 'Auth',
-  function($scope, $state, pin, Auth){
+pinboard.controller('PinsShowCtrl', ['$scope', '$state', 'pin',
+  function($scope, $state, pin){
 
   $scope.pin = pin;
 
-  $scope.delete = function(){
-    pin.remove().then(function(){
-      $state.go('pins.index');
-    });
+  $scope.delete = function(pin){
+    PinsAPI.destroy(pin)
+      .then(function(){
+        $state.go('pins.index');
+      });
   };
 
 }]);

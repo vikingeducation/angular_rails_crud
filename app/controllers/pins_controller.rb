@@ -36,6 +36,7 @@ class PinsController < ApplicationController
       if @pin && @pin.update(pin_params)
         format.json { render json: @pin.to_json(include: :user) }
       else 
+        # 403 forbidden here
         format.json { render nothing: true, status: :unprocessable_entity }
       end
     end

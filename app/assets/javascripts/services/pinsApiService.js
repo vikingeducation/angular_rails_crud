@@ -23,7 +23,7 @@ pinboard.factory('PinsAPI', ['Restangular', function(Restangular){
   };
 
   var destroy = function(pin){
-    return pin.delete();
+    return pin.remove();
   };
 
   return {
@@ -31,7 +31,7 @@ pinboard.factory('PinsAPI', ['Restangular', function(Restangular){
     show: show,
     create: create,
     update: update,
-    destory: destroy,
+    destroy: destroy,
   };
 
 }]);

@@ -1,5 +1,5 @@
-pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI', 'Auth',
-  function($scope, pins, PinsAPI, Auth){
+pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI',
+  function($scope, pins, PinsAPI){
 
   $scope.pins = pins;
   $scope.buySellOptions = {
@@ -16,9 +16,10 @@ pinboard.controller('PinsIndexCtrl', ['$scope', 'pins', 'PinsAPI', 'Auth',
   };
 
   $scope.delete = function(pin){
-    pin.remove().then(function(){
-      pins.splice(pins.indexOf(pin), 1);
-    });
+    PinsAPI.destroy(pin)
+      .then(function(){
+        pins.splice(pins.indexOf(pin), 1);
+      });
   };
 
 }]);

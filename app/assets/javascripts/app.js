@@ -5,7 +5,7 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular', 'Devise']
   RestangularProvider.setRequestSuffix('.json');
 }])
 
-.config( function($stateProvider, $urlRouterProvider ){
+.config( ['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider ){
 
   $stateProvider
     .state('pins', {
@@ -57,8 +57,8 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular', 'Devise']
 
   $urlRouterProvider.otherwise('/pins/index');
 
-})
+}])
 
-.run(function($rootScope){
+.run(['$rootScope', function($rootScope){
   $rootScope.$on("$stateChangeError", console.log.bind(console));
-});
+}]);

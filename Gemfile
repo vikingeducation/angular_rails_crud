@@ -63,3 +63,8 @@ group :development do
 
   gem 'guard-rspec'
 end
+
+group :production do
+  # Heroku 
+  gem 'rails_12factor'
+end

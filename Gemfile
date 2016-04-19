@@ -46,12 +46,8 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails'
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'hirb'
-  gem 'pry-rails'
+  # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
-  gem 'better_errors'
-  gem 'binding_of_caller'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -61,6 +57,13 @@ group :development, :test do
 end
 
 group :development do
+  
+  gem 'pry-rails'
+  gem 'hirb'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

@@ -1,11 +1,21 @@
 language: ruby
 rvm:
-  - 2.2.1
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
 env:
-  - DB=postgresql
+- DB=postgresql
 script:
 - export RAILS_ENV=test
 - bundle exec rake db:create db:schema:load db:test:prepare
 - bundle exec rspec
 before_script:
-  - psql -c 'create database assignment_angular_rails_crud_test' -U postgres
+- psql -c 'create database assignment_angular_rails_crud_test' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: ebKw28ua8R5mbitfN1RIm9dHK+PWN/Gbe2+SS3JXSBtCY3uZG742p3Jnw+Q7RG1H5ZcUKTOfH8sr4D02pWiYKBhn6l+a1tS5H+jGUf0mLh69F+uofJ1tollAVmS6GfU6c6V6ly6lFiNRCL7zZ2iipgfrw35mOpTMIOcFxWhDLBvYon5et2zeVlmROZLn17kieNdMmYP+BLjabatevYCz5RzcGSPkhiazwRhP/SNEU2b1ilCLVzBvjTcjuMoIJB6bMV0ClmlYxR97pCXZw+4LOKAJlMilRDz+HvikM3gkXgJF2EZe743NxEbqitm6HmqeiuBuN2fNJxrD7WHGASKxly5uKm7IB0C2Piivn7RguOP3EFXdGkBaSoWxd64dSHAVvK6jvsqgbV5UiruQfX+RRnFP2yD7mxfxQCTHkNH0pRH2huYHdu3HUm8HKiHO4SorZHQ571WaB+JIhvtMcK9mACAZqhynof2YmLn0JLQiyUndjpyXp8S2vYX0TETYVW5V3tGFVleTyoDr8P0Qn4+3bPETaAM9AeAHfXM/R3PMYu28IqmS6gAorUeW4UCv+t+l1ucihv32LyLEyMUxH+IU/1Ynm62uySOYUGm0C3C8bUJQulE+LhMH8eNNX62QxGzcZbZ7OwV9PwIfwOCvjdG0pdMFjc3aLULyHO4pkn4Q0GE=
+  app: evening-spire-61551
+  on:
+    repo: nonadmin/assignment_angular_rails_crud

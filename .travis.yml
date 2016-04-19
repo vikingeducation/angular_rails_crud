@@ -4,6 +4,8 @@ rvm:
 env:
   - DB=postgresql
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:migate test
+- export RAILS_ENV=test
+- bundle exec rake db:create db:schema:load db:test:prepare
+- bundle exec rspec
 before_script:
   - psql -c 'create database assignment_angular_rails_crud_test' -U postgres

@@ -102,7 +102,7 @@ RSpec.describe PinsController, type: :controller do
     describe "POST /pins" do
       it "does not allow creation of new pins" do
         post_data = {format: :json, pin: attributes_for(:pin)}
-        binding.pry
+        
         # For some reason response code is 200 here :(
         # expect(response).to have_http_status(401)
         expect{ post :create, post_data }.not_to change(Pin, :count)       

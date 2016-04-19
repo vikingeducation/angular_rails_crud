@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.2.1
+env:
+  - DB=postgresql
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migate test
+before_script:
+  - psql -c 'create database assignment_angular_rails_crud_test' -U postgres

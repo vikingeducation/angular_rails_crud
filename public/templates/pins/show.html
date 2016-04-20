@@ -1,0 +1,17 @@
+<a ui-sref="pins.index"><strong>View All Pins</strong></a>
+
+<h3>{{ pin.item_name }}</h3>
+
+<span ng-show="pin.buy_sell" class="text-success">
+  <strong>WANT TO BUY</strong>
+</span>
+<span ng-show="!pin.buy_sell" class="text-danger">
+  <strong>FOR SALE</strong>
+</span>
+<span ng-show="signedIn() && user.id == pin.user.id">
+  <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a> | <a href="javascript:void(0)" ng-click="delete(pin)">Delete Pin</a>
+</span>
+<p>{{ pin.description }}</p>
+<p class="text-muted">
+  <em>Posted {{ pin.created_at | date }} by {{ pin.user.username }}</em>
+</p>

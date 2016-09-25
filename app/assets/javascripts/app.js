@@ -1,1 +1,1 @@
-var pinBoard = angular.module('pinBoard', []);
+var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular']);

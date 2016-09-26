@@ -1,3 +1,21 @@
+<div>
+	<form name='pinForm' ng-submit='createPin(pinForm.$valid)'>
+		<label for='item_name'>Title</label>
+		<input type='text' id='item_name' name='item_name' ng-model='newPin.item_name'>
+
+		<label for='buy-sell'>Buy/Sell</label>
+		<select id='buy-sell' name='buy-sell' ng-model='newPin.buy_sell'> 
+			<option value='true' selected>Want to Buy</option>
+			<option value='false'>Want to Sell</option>
+		</select>
+
+		<label for='description'>Description</label>
+		<input type='text' id='description' name='description' ng-model='newPin.description'>
+
+		<input type='submit' value='Create a Pin'>
+	</form>
+</div>
+
 <div class='pins-container'>
 	<div ng-repeat = 'pin in pins'>
 		<h3>{{ pin.item_name }}</h3>

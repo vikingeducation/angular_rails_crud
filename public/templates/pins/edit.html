@@ -1,0 +1,18 @@
+<div>
+	<form name='pinForm' ng-submit='updatePin(pinForm.$valid)'>
+		<label for='item_name'>Title</label>
+		<input type='text' id='item_name' name='item_name' ng-model='pin.item_name'>
+
+		<label for='buy-sell'>Buy/Sell</label>
+		<select id='buy-sell' name='buy-sell' ng-model='pin.buy_sell'> 
+			{{pin.buy_sell}}
+			<option value='true' selected>Want to Buy</option>
+			<option value='false'>Want to Sell</option>
+		</select>
+
+		<label for='description'>Description</label>
+		<input type='text' id='description' name='description' ng-model='pin.description'>
+
+		<input type='submit' value='Edit Pin'>
+	</form>
+</div>

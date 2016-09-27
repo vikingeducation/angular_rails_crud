@@ -1,0 +1,7 @@
+<div>
+	<h2>{{ pin.item_name }}</h2>
+	<p>{{pin.buy_sell ? "BUY" : "SELL"}} by {{ pin.user.username }}</p>
+	<p>{{ pin.description }}</p>
+
+	<a ui-sref='pin.edit({id: pin.id})'>Edit</a> <a href='' ng-click='deletePin(pin)'>Delete</a>
+</div>

@@ -13,8 +13,19 @@ pinBoard.factory('pinService',
 		return _pins;
 	}
 
+	service.getPin = function(id) {
+		return Restangular.one('pins', id).get();
+	}
+
+	service.updatePin = function(pin) {
+		return pin.put();
+	}
+
+	service.deletePin = function(pin) {
+		return pin.remove();
+	}
+
 	service.createPin = function(pin) {
-		pin.buySell = pin.buy_sell ? true : undefined;
 
 		return Restangular.all('pins').post({
 			pin

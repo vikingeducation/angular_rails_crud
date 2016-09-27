@@ -18,7 +18,7 @@
 
 <div class='pins-container'>
 	<div ng-repeat = 'pin in pins'>
-		<h3>{{ pin.item_name }}</h3>
+		<a ui-sref='pin.show({id: pin.id})'><h3>{{ pin.item_name }}</h3></a>
 		<p ng-show='pin.buy_sell'>Buy</p>
 		<p ng-show='!pin.buy_sell'>Sell</p>
 

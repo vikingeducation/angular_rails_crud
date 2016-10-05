@@ -7,13 +7,22 @@ class PinsController < ApplicationController
   end
 
   def create
-    p params
     @pin = Pin.new(pin_params)
-    # @pin.user_id = User.first.id
-    # @pin.buy_sell = true
+    @pin.user_id = User.first.id
     @pin.save
   end
 
+  def show
+    @pin = Pin.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @pin.to_json( include: :user) }
+    end
+  end
+
+  def update
+    @pin = Pin.find(params[:id])
+    @pin.update(pin_params)
+  end
   private
 
     def pin_params

@@ -2,7 +2,6 @@ app.controller("pinsNewCtrl", ['$scope', "pinService", "$rootScope", function($s
   $scope.form = {
     pin: {
       buy_sell: true,
-      user_id: 11
     }
   };
 

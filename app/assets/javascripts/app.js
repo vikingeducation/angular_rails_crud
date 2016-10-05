@@ -44,11 +44,30 @@ app.config([
           templateUrl: "/templates/pins/index.html",
           controller: "pinsIndexCtrl"
         },
-        'new@': {
+        'new@main.pins': {
           templateUrl: "/templates/pins/new.html",
           controller: "pinsNewCtrl"
         }
       }
     })
+    .state('main.pin', {
+      url: '/pin/:id',
+      views: {
+        'pins@': {
+          templateUrl: "/templates/pins/show.html",
+          controller: 'pinsShowCtrl'
+        }
+      }
+    })
+    .state('main.pin.edit', {
+      url: '/edit',
+      views: {
+        'pins@': {
+          templateUrl: "/templates/pins/edit.html",
+          controller: "pinsEditCtrl"
+        }
+      }
+    })
+
   }
 ]);

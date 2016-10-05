@@ -1,7 +1,11 @@
 "use strict";
-var app = angular.module('app', ['ui.router', "restangular"]);
+angular.module('app', ['ui.router', "restangular"]);
 
-app.config([
+angular.module('app').factory('_' ['$window', function($window) {
+  return $window._;
+}]);
+
+angular.module('app').config([
   "$httpProvider",
   function($httpProvider) {
     var token = $('meta[name=csrf-token]').attr('content');
@@ -10,7 +14,7 @@ app.config([
 ]);
 
 // config for restangular
-app.config([
+angular.module('app').config([
   'RestangularProvider',
   function(RestangularProvider) {
 
@@ -20,7 +24,7 @@ app.config([
   }
 ]);
 
-app.config([
+angular.module('app').config([
   '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   		$urlRouterProvider.otherwise('/pins');
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope :api do 
     scope :v1 do 
       resources :static_pages, only: [:index]
+      resources :pins, only: [:index]
     end
   end
 

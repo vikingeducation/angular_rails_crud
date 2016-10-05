@@ -26,6 +26,11 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
           templateUrl: '/templates/index.html',
           controller: 'PinIndexCtrl'
         }
+      },
+      resolve: {
+        pinsFromAPI: ['PinService', function(PinService) {
+          return PinService.getPins();
+        }]
       }
     })
     .state('pins.show', {

@@ -1,6 +1,7 @@
 app.controller('PinIndexCtrl',
-  ['$scope',
-  function( $scope) {
-    
+  ['$scope', 'PinService', 'pinsFromAPI',
+  function($scope, PinService, pinsFromAPI) {
+
+    $scope.pins = pinsFromAPI;
 
 }]);

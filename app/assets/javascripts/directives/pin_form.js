@@ -2,7 +2,9 @@ PinBoard.directive('pinForm', ['PinService', '$state', function(PinService, $sta
   return {
     restrict: 'E',
     templateUrl: '/templates/directives/pin_form.html',
-    scope: {pin: '='},
+    scope: {
+      pin: '='
+    },
     link: function(scope) {
       if (scope.pin) {
         scope.formData = scope.pin;
@@ -12,7 +14,6 @@ PinBoard.directive('pinForm', ['PinService', '$state', function(PinService, $sta
       scope.createOrUpdatePin = function() {
         if (scope.pin) {
           PinService.patchPin(scope.formData, scope.pin);
-          console.log(scope.pin.id);
           $state.go('pins.show', {id: scope.pin.id})
         } else {
           PinService.postPin(scope.formData);

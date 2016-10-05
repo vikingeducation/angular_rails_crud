@@ -10,6 +10,15 @@ pin.factory('PinsService', ['Restangular', function(Restangular) {
     });
   };
 
+  pinsService.createPin = function(params) {
+    Restangular.all('pins').post({
+      pin: params
+    }).then(function(response) {
+      console.log("new pin")
+      _pins.push(response);
+    });
+  };
+
 
   return pinsService;
 }]);

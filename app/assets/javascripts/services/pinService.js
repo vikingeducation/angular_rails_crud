@@ -21,6 +21,10 @@ angular.module('app').factory('PinService', ['Restangular', function(Restangular
 			return Restangular.all('pins').post(pinData);
 		});
 
+	obj.editPin = function(data){
+		
+	}
+
 	};
 
 	return obj;

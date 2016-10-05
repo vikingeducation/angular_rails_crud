@@ -26,21 +26,42 @@ angular.module('app').config([
 
 angular.module('app').config([
   '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  		$urlRouterProvider.otherwise('/pins');
+  		$urlRouterProvider.otherwise('/');
 
   		$stateProvider.state('pins', {
   			url: '/pins',
-  				views: {
-  					'pins': {
-  						templateUrl: "templates/pins/index.html",
-  						controller: 'PinsIndexCtrl'
-  					},
+        abstract: true,
+        views: {
+          "content": {
+            templateUrl: "templates/content"
+          }
+        }
+  		})
+
+      .state("pins.index", {
+        url:"",
+          views: {
+            'pins': {
+              templateUrl: "templates/pins/index.html",
+              controller: 'PinsIndexCtrl'
+            },
 
             "new-pin": {
             templateUrl: "templates/pins/new.html",
             controller: "PinsNewCtrl"
-  				}
+          }
         }
-  		})
+      })
+
+      .state("pins.show", {
+        url: "/:id",
+        views: {
+          "create-pin": {
+            templateUrl: "templates/pins/show.html",
+            controller: "PinsShowCtrl"
+          }
+        }
+      })
+
 
   }]);

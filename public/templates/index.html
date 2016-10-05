@@ -18,5 +18,9 @@
 </form>
 
 <ul ng-repeat="pin in pins">
-  <li> {{ pin.item_name }}</li>
+  <li>
+    <a ui-sref="pins.show({id: pin.id})"> 
+      {{ pin.item_name }}
+    </a>
+  </li>
 </ul>

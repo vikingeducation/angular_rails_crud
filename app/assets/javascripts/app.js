@@ -29,7 +29,7 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
       },
       resolve: {
         pinsFromAPI: ['PinService', function(PinService) {
-          return PinService.getPins();
+          return PinService.populatePins();
         }]
       }
     })

@@ -4,8 +4,10 @@ RSpec.describe PinsController, type: :controller do
 
   let(:user) {create(:user)}
   let(:pins) { create_list(:pin, 5) }
-  let(:pin) { create(:pin, item_name: "Junky") }
+  let(:pin) { create(:pin, item_name: "Junky", user: user) }
   let(:json) { JSON.parse(response.body) }
+
+  before {sign_in(user)}
 
   describe "GET /pins" do
 

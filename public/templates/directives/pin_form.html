@@ -1,12 +1,12 @@
-<form ng-submit="createOrUpdatePin()">
+<form ng-submit="createOrUpdatePin()" name="pinform">
   <div class="form-group">
     <label>Title</label>
-    <input class="form-control" type="text" ng-model="formData.item_name">
+    <input class="form-control" type="text" name="item" ng-model="formData.item_name" required>
   </div>
 
   <div class="form-group">
     <label>Buy/Sell?</label>
-    <select class="form-control" ng-model="formData.buy_sell">
+    <select class="form-control" ng-model="formData.buy_sell" name="buysell" required>
       <option value="true">WANT TO BUY</option>
       <option value="false">WANT TO SELL</option>
     </select>
@@ -14,8 +14,8 @@
 
   <div class="form-group">
     <label>Description</label>
-    <textarea class="form-control" ng-model="formData.description"></textarea>
+    <textarea class="form-control" ng-model="formData.description" name="description" required></textarea>
   </div>
 
-  <input class="form-control btn btn-primary" type="submit">
+  <input class="form-control btn btn-primary" type="submit" ng-disabled="pinform.$invalid">
 </form>

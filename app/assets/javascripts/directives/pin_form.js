@@ -15,14 +15,16 @@ PinBoard.directive('pinForm', ['PinService', '$state', '_', function(PinService,
       }
 
       scope.createOrUpdatePin = function() {
-        if (scope.pin) {
-          PinService.patchPin(scope.formData, scope.pin)
+        if (scope.pinform.$valid) {
+          if (scope.pin) {
+            PinService.patchPin(scope.formData, scope.pin)
             .then(function() {
               $state.go('pins.show', {id: scope.pin.id});
             });
-        } else {
-          PinService.postPin(scope.formData);
-          scope.formData = {};
+          } else {
+            PinService.postPin(scope.formData);
+            scope.formData = {};
+          }
         }
       };
     }

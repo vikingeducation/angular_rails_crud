@@ -1,1 +1,18 @@
-hello world
+<form name="myForm" ng-submit="submitForm()">
+  <label>
+      Title<br>
+      <input type='text' ng-model="myForm.title">
+  </label><br>
+  <label>
+    Buy/Sell<br>
+    <select ng-model="myForm.buySell">
+      <option value="true">Buy</option>
+      <option value="false">Sell</option>
+    </select>
+  </label><br>
+  <label>
+    Description<br>
+    <textarea ng-model="myForm.description"></textarea>
+  </label><br>
+  <button type="submit">Submit</button>
+</form>

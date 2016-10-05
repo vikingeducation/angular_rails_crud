@@ -17,11 +17,11 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
     .state('pins', {
       url: '/pins',
       views: {
-        'nav': {
-          templateUrl: '/templates/nav.html',
-          // Knows username. Has link to logout.
-          controller: 'PinNavCtrl'
-        },
+        // 'nav': {
+        //   templateUrl: '/templates/nav.html',
+        //   // Knows username. Has link to logout.
+        //   controller: 'PinNavCtrl'
+        // },
         'index': {
           templateUrl: '/templates/index.html',
           controller: 'PinIndexCtrl'
@@ -33,7 +33,7 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
       // Will replace index view.
       url: '/:id',
       views: {
-        '': {
+        'index@': {
           templateUrl: '/templates/show.html',
           controller: 'PinShowCtrl'
         }

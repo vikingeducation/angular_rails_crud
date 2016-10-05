@@ -18,7 +18,6 @@ app.factory('PinService',
   PinService.populatePins = function () {
     return Restangular.all('pins').getList()
       .then(function(response) {
-        console.log(response);
         _pins = response;
         return _pins;
       })
@@ -35,9 +34,9 @@ app.factory('PinService',
     }
   };
 
-  PinService.findPins = function() {
+  PinService.findPins = function(id) {
     return Restangular.one("pins", id).get();
-  }
+  };
 
   return PinService;
 

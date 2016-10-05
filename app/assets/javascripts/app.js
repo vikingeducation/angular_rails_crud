@@ -42,6 +42,12 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
           templateUrl: '/templates/show.html',
           controller: 'PinShowCtrl'
         }
+      },
+      resolve: {
+        pin: ['PinService', '$stateParams', function(PinService, $stateParams) {
+          var pin = PinService.findPins($stateParams.id);
+          return pin;
+        }]
       }
     });
     // .state('Posts.show',  {

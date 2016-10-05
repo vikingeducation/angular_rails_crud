@@ -1,5 +1,6 @@
 "use strict";
-angular.module('app', ['ui.router', "restangular"]);
+angular.module('app', ['ui.router', "restangular", "Devise"]);
+
 
 angular.module('app').factory('_' ['$window', function($window) {
   return $window._;

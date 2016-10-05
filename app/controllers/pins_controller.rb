@@ -23,9 +23,18 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
     @pin.update(pin_params)
     respond_to do |format|
-      format.json { render nothing: true } 
+      format.json { render nothing: true }
     end
   end
+
+  def destroy
+    @pin = Pin.find(params[:id])
+    @pin.destroy
+    respond_to do |format|
+      format.json { render nothing: true }
+    end
+  end
+
   private
 
     def pin_params

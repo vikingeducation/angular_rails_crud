@@ -1,4 +1,5 @@
 require 'rails_helper.rb'
+require 'pry'
 
 describe PinsController do
   describe "GET /api/v1/pins.json" do
@@ -30,4 +31,18 @@ describe PinsController do
       expect( json.first.keys ).to eq( ["id", "item_name", "buy_sell", "description", "user_id", "created_at", "updated_at", "user"] )
     end
   end
+
+  describe "POST /api/v1/pins.json" do
+    it 'should respond with a success' do
+      expect( response.status ).to eq( 200 )
+    end
+
+    it 'should post correctly' do
+        build(:pin)
+        post "create", pin: FactoryGirl.attributes_for(:pin)
+        expect( Pin.first.item_name ).to eq "item"
+      end
+  end
+
+
 end

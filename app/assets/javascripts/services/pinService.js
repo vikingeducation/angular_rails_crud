@@ -23,11 +23,16 @@ app.factory("pinService", ["Restangular", function(Restangular) {
     return pin.patch(data);
   };
 
+  var deletePin = function(pin) {
+    pin.remove();
+  }
+
 
   return {
     getAllPins: getAllPins,
     createPin: createPin,
     getPin: getPin,
-    updatePin: updatePin
+    updatePin: updatePin,
+    deletePin: deletePin
   };
 }]);

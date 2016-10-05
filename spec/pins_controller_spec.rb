@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'spec_helper'
 
 describe PinsController do
   describe "GET /pins.json" do

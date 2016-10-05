@@ -1,11 +1,10 @@
 app.controller("PinsCtrl", ["$scope", "Pins", function($scope, Pins) {
 
-  $scope.pins = Pins.all().$object;
+  $scope.pins = Pins.all();
 
   $scope.createPin = function(){
-    Pins.create($scope.form);
+    $scope.pins.create($scope.form)
   };
 
-  console.log("here's the controller");
 
 }]);

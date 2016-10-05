@@ -1,4 +1,4 @@
-<form ng-submit="">
+<form ng-submit="createPin()">
   <div>
     <label>Title:</label>
     <input type="text" name="title" ng-model="form.title">
@@ -18,5 +18,13 @@
     <input type="submit">
   </div>
 </form>
-
-{{pins}}
+<hr>
+<h1>All Pins</h1>
+<hr>
+<div ng-repeat="pin in pins | orderBy : -created_at">
+  <h3>{{ pin.item_name }}</h3>
+  <h5 ng-if="pin.buy_sell">Looking to Buy!</h5>
+  <h5 ng-if="!pin.buy_sell">For Sale!</h5>
+  <p>{{ pin.description }}</p>
+  <hr>
+</div>

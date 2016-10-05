@@ -1,12 +1,13 @@
 app.factory("Pins", ["Restangular", function(Restangular) {
 
-  var _pins = [];
 
+  var _pins;
   var Pins = {};
 
 
   Pins.all = function() {
-    return Restangular.all("pins").getList();
+    _pins = Restangular.all("pins").getList().$object
+    return _pins;
   };
 
   var _createPin = function(params){
@@ -27,6 +28,7 @@ app.factory("Pins", ["Restangular", function(Restangular) {
 
   Restangular.extendCollection('pins', function(collection){
     collection.create = _createPin;
+    return collection;
   });
 
   return Pins;

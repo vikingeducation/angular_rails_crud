@@ -7,8 +7,16 @@ class PinsController < ApplicationController
     end
   end
 
+  def show
+    @pin = Pin.find(params[:id]);
+    respond_to do |format|
+      format.json {render json: @pin, include: :user}
+    end
+  end
+
   def create
-    @pin = Pin.new(pin_params)
+    @user = User.first
+    @pin = @user.pins.build(pin_params)
     if @pin.save
       respond_to do |format|
         format.json {render json: @pin, include: :user}

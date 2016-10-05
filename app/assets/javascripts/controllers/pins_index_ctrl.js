@@ -8,10 +8,4 @@ PinBoard.controller('PinsIndexCtrl', ['$scope', 'pinsList', 'PinService', functi
     angular.copy(PinService.populatePins(), $scope.pins);
   });
 
-  $scope.createPin = function(){
-    $scope.formData.user_id = 1;
-    PinService.postPin($scope.formData);
-    $scope.formData = {};
-  };
-
 }]);

@@ -15,7 +15,7 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
   $stateProvider.state('pins', {
     abstract: true,
     url: '/pins',
-    template: '<div class="container" ui-view></div>',
+    template: '<div ui-view></div>',
     resolve: {
       'pinsList': ['PinService', function(PinService) {
         return PinService.getPins();
@@ -26,6 +26,16 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
     url: '',
     templateUrl: '/templates/pins/index.html',
     controller: 'PinsIndexCtrl'
+  })
+  .state('pins.show', {
+    url: '/:id',
+    templateUrl: '/templates/pins/show.html',
+    controller: 'PinsShowCtrl',
+    resolve: {
+      pin: ['$stateParams', 'PinService', function($stateParams, PinService) {
+        return PinService.find($stateParams.id)
+      }]
+    }
   })
 
 }]);

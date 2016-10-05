@@ -1,31 +1,11 @@
 <div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
+  <div class="col-xs-6 col-xs-offset-3">
     <h2>New Pin</h2>
-    <form ng-submit="createPin()">
-      <div class="form-group">
-        <label>Title</label>
-        <input class="form-control" type="text" ng-model="formData.item_name">
-      </div>
-
-      <div class="form-group">
-        <label>Buy/Sell?</label>
-        <select class="form-control" ng-model="formData.buy_sell">
-          <option value="true">WANT TO BUY</option>
-          <option value="false">WANT TO SELL</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Description</label>
-        <textarea class="form-control" ng-model="formData.description"></textarea>
-      </div>
-
-      <input class="form-control btn btn-primary" type="submit">
-    </form>
+    <pin-form></pin-form>
 
     <h2>All Pins</h2>
     <div ng-repeat="pin in pins | orderBy: '-created_at'">
-      <a href=""><h3>{{ pin.item_name }}</h3></a>
+      <a ui-sref="pins.show({id: pin.id})"><h3>{{ pin.item_name }}</h3></a>
       <h4>{{ pin.buy_sell ? "BUY":"SELL" }}</h4>
       <p><a href="">Edit Pin</a>  <a href="">Delete Pin</a></p>
       <p>{{ pin.description }}</p>

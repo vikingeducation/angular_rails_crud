@@ -1,0 +1,21 @@
+<form ng-submit="createPin()">
+  <div class="form-group">
+    <label>Title</label>
+    <input class="form-control" type="text" ng-model="formData.item_name">
+  </div>
+
+  <div class="form-group">
+    <label>Buy/Sell?</label>
+    <select class="form-control" ng-model="formData.buy_sell">
+      <option value="true">WANT TO BUY</option>
+      <option value="false">WANT TO SELL</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" ng-model="formData.description"></textarea>
+  </div>
+
+  <input class="form-control btn btn-primary" type="submit">
+</form>

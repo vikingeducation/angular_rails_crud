@@ -24,10 +24,15 @@ PinBoard.factory('PinService', ['Restangular', '$rootScope', function(Restangula
       })
   }
 
+  var find = function(id) {
+    return Restangular.one('pins', id).get().$object
+  }
+
   return {
     getPins: getPins,
     populatePins: populatePins,
-    postPin: postPin
+    postPin: postPin,
+    find: find
   }
 
 }]);

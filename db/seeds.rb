@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.delete_all
+Pin.delete_all
+
+puts "Building users and pins"
+5.times do 
+  user = User.create(username: Faker::GameOfThrones.character)
+  2.times do 
+    user.pins.create({
+      item_name: Faker::Space.constellation,
+      buy_sell: Faker::Boolean.boolean,
+      description: Faker::Hipster.paragraph
+      })
+  end
+end
+
+puts "Done"

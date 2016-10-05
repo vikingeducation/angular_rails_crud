@@ -31,17 +31,20 @@ app.config([
   '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/pins');
 
     $stateProvider.state('main', {
-      url: '/',
+      abstract: true
+
+    })
+    .state('main.pins', {
+      url: '/pins',
       views: {
-        'test@': {
-          template: "<div><p>hey</p></div>",
-          controller: "PinboardCtrl"
+        'pins@': {
+          templateUrl: "/templates/pins/index.html",
+          controller: "pinsIndexCtrl"
         }
       }
-
     })
   }
 ]);

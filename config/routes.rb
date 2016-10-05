@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   root to: 'pinboard#index'
 
   resource :pinboard, only: [:index]
+
+  scope :api do
+    scope :v1 do
+      resources :pins
+    end
+  end
 end

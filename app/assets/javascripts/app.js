@@ -16,12 +16,18 @@ pin.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     .state('pins', {
       url: '/pins',
       abstract: true,
-      template: '<div ui-view></div>'
+      template: '<div ui-view></div>',
+      resolve: {
+        pins: function(PinsService) {
+          return PinsService.all();
+        }
+      }
     })
 
     .state('pins.index', {
       url: '',
-      templateUrl: '/templates/pins.html'
+      templateUrl: '/templates/pins/index.html',
+      controller: 'PinsCtrl'
     })
 
     .state('pins.show', {

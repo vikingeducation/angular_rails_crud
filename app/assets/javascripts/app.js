@@ -4,24 +4,27 @@ PinBoard.factory('_', ['$window', function($window){
   return $window._;
 }]);
 
-BulletinBoard.config(['$stateProvider', '$urlRouterProvider', 'RestangularProvider',
+PinBoard.config(['$stateProvider', '$urlRouterProvider', 'RestangularProvider',
 function($stateProvider, $urlRouterProvider, RestangularProvider){
 
   RestangularProvider.setBaseUrl('/api/v1');
   RestangularProvider.setRequestSuffix('.json');
 
-  $stateProvider.state('Pins', {
+  $urlRouterProvider.otherwise('/pins')
+
+  $stateProvider.state('pins', {
     abstract: true,
     url: '/pins',
+    template: '<div ui-view></div>',
     resolve: {
-      'pins': ['PinService', function(PinService) {
+      'pinsList': ['PinService', function(PinService) {
         return PinService.getPins();
       }]
     }
   })
-  .state('Pins.index', {
+  .state('pins.index', {
     url: '',
-    templateUrl: '/pins/index.html',
+    templateUrl: '/templates/pins/index.html',
     controller: 'PinsIndexCtrl'
   })
 

@@ -4,6 +4,7 @@
   <hr>
   <h3>{{pin.item_name}}</h3>
   <h4>{{ pin.buy_sell ? "WANT TO BUY" : "FOR SALE"}}</h4>
+  <p><a ui-sref="pins.edit({ id: pin.id })">Edit</a> | </p>
   <p>{{pin.description}}</p>
   <p class="pull-right"><em>Posted {{pin.created_at | date: "MM/dd/yyyy 'at' h:mma"}} by {{pin.user.username}}</em></p>
 </div>

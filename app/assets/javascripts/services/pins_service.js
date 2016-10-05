@@ -20,8 +20,8 @@ pin.factory('PinsService', ['Restangular', function(Restangular) {
   };
 
   pinsService.find = function(id) {
-    return Restangular.one('pins', id).get()
-  }
+    return Restangular.one('pins', id).get();
+  };
 
 
   return pinsService;

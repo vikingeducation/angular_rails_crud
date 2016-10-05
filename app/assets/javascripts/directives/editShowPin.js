@@ -9,13 +9,19 @@ pin.directive('pinForm', ["PinsService", function(PinsService){
     },
     link: function(scope) {
 
+      console.log(scope.pin)
       if (scope.pin) {
-        scope.formData = pin;
+        scope.formData = {
+          item_name: scope.pin.item_name,
+          description: scope.pin.description,
+          buy_sell: scope.pin.buy_sell
+        };
       } else {
         scope.formData = {
           buy_sell: "false"
         };
       }
+      console.log(scope.formData)
 
       scope.createEditPin = function(){
         if (scope.pin) {

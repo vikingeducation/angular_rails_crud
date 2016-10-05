@@ -29,9 +29,16 @@ pin.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       templateUrl: '/templates/pins/index.html',
       controller: 'PinsCtrl'
     })
+
     .state('pins.show', {
       url: '/:id',
       templateUrl: '/templates/pins/show.html',
+      controller: 'PinsShowCtrl'
+    })
+
+    .state('pins.edit', {
+      url: '/edit/:id',
+      templateUrl: '/templates/pins/edit.html',
       controller: 'PinsShowCtrl'
     });
     

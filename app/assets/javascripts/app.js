@@ -49,19 +49,22 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
           return pin;
         }]
       }
-    });
-    // .state('Posts.show',  {
-    //   url: '/:id',
-    //   views: {
-    //     '@': {
-    //       templateUrl: '/templates/posts/show.html',
-    //       controller: 'PostsShowCtrl'
-    //     }
-    //   },
-    //   onEnter: function() {
-    //     console.log('this is firing (SHOW)');
-    //   }
-    // });
+    })
+    .state('pins.edit', {
+      url: '/:id',
+      views: {
+        'index@': {
+          templateUrl: '/templates/edit.html',
+          controller: 'PinEditCtrl'
+        }
+      },
+      resolve: {
+        pin: ['PinService', '$stateParams', function(PinService, $stateParams) {
+          var pin = PinService.findPins($stateParams.id);
+          return pin;
+        }]
+      }
+    })
 }]);
 
 

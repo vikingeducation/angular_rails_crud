@@ -12,8 +12,7 @@ class PinsController < ApplicationController
       format.json { render json: @pin.to_json }
     end
   end
-
-
+  
   def create
     @pin = User.first.pins.build(pin_params)
 

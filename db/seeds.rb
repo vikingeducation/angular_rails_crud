@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.destroy_all
+Pin.destroy_all
+
+20.times do
+  u = User.create({username: Faker::Name.first_name})
+  3.times do
+    u.pins.create({item_name: Faker::Commerce.product_name,
+                    buy_sell: [true, false].sample,
+                    description: Faker::Lorem.paragraph})
+  end
+end

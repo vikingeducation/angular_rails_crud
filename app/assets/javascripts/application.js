@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require lodash
+//= require angular
+//= require angular-ui-router.min
+//= require restangular.min
 //= require_tree .

@@ -1,10 +1,10 @@
-var PinBoard = angular.module('PinBoard', ['ui.router', 'restangular']);
+var app = angular.module('PinBoard', ['ui.router', 'restangular']);
 
-PinBoard.factory('_', ['$window', function($window) {
+app.factory('_', ['$window', function($window) {
   return $window._;
 }]);
 
-PinBoard.config(['$stateProvider', '$urlRouterProvider', 'RestangularProvider',
+app.config(['$stateProvider', '$urlRouterProvider', 'RestangularProvider',
 function($stateProvider, $urlRouterProvider, RestangularProvider){
 
   // Restangular
@@ -16,14 +16,13 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
   $stateProvider
     .state('Pins', {
       url: '/pins',
-      
       views: {
         '': {
-          templateUrl: '/templates/posts/index.html',
+          templateUrl: '/templates/index.html',
           controller: 'PinIndexCtrl'
         }
       }
-    })
+    });
     // .state('Posts.show',  {
     //   url: '/:id',
     //   views: {
@@ -39,6 +38,6 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
 }]);
 
 
-PinBoard.run(function($rootScope){
+app.run(function($rootScope){
   $rootScope.$on("$stateChangeError", console.log.bind(console));
 });

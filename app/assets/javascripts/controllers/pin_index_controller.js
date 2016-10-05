@@ -1,6 +1,6 @@
-app.controller('PinIndexCtrl', 
-  ['$scope', 
+app.controller('PinIndexCtrl',
+  ['$scope',
   function( $scope) {
     
-  
+
 }]);

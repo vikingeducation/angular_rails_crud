@@ -34,6 +34,16 @@ class PinsController < ApplicationController
     end
   end
 
+  def destroy
+    @pin = Pin.find_by_id(params[:id])
+    if @pin.destroy
+      respond_to do |format|
+        format.json {render json: @pin.to_json, status: 200}
+      end
+
+    end
+  end
+
   private
     def pin_params
       params.require(:pin)

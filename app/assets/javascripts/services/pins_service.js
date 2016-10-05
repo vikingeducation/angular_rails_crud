@@ -6,7 +6,7 @@ pin.factory('PinsService', ['Restangular', function(Restangular) {
   pinsService.all = function() {
     return Restangular.all('pins').getList().then(function(response){
       console.log(response)
-      return angular.copy(_pins, response);
+      return angular.extend(_pins, response.plain());
     });
   };
 

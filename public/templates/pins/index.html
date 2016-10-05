@@ -1,5 +1,15 @@
 <h1>The Pinboard</h1>
+<hr>
 
-<div ng-repeat="pin in pins">
-  {{ pin }}
+<hr>
+<h3>All Pins</h3>
+<hr>
+<div class="col-xs-6">
+  <div ng-repeat="pin in pins">
+    <h4>{{ pin.item_name }}</h4>
+    <h4>{{ pin.buy_sell ? "WANT TO BUY" : "FOR SALE"}}</h4>
+    <p>{{pin.description}}</p>
+    <p class="pull-right"><em>Posted {{pin.created_at | date: "MM/dd/yyyy 'at' h:mma"}} by {{pin.user.username}}</em></p>
+    <hr>
+  </div>
 </div>

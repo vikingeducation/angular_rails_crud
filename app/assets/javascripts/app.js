@@ -36,8 +36,8 @@ app.config([
     $stateProvider.state('main', {
       abstract: true,
       views: {
-        'user@': {
-          templateUrl: "/templates/users/index.html.erb",
+        'users@': {
+          templateUrl: "/templates/users/index.html",
           controller: "UsersCtrl"
         }
       }

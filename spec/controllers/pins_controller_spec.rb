@@ -2,11 +2,14 @@ require 'rails_helper.rb'
 require 'pry'
 
 describe PinsController do
+
+
   describe "GET /api/v1/pins.json" do
 
     let( :json ){ JSON.parse( response.body ) }
-
+    let(:user){ create(:user) }
     before do
+      sign_in user
       pin = create(:pin)
       get 'index', format: :json
     end
@@ -33,6 +36,11 @@ describe PinsController do
   end
 
   describe "POST /api/v1/pins.json" do
+    let(:user){ create(:user) }
+    before do
+      sign_in user
+    end
+
     it 'should respond with a success' do
       expect( response.status ).to eq( 200 )
     end
@@ -45,6 +53,12 @@ describe PinsController do
   end
 
   describe "PATCH /api/v1/pin/:id.json " do
+
+
+    let(:user){ create(:user) }
+    before do
+      sign_in user
+    end
 
     let(:pin){ create(:pin) }
 

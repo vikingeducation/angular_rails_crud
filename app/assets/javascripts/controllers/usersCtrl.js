@@ -1,6 +1,5 @@
 app.controller('UsersCtrl', [
-  '$scope',
-  'Auth',
+  '$scope', 'Auth',
   function($scope, Auth) {
 
     Auth.currentUser().then(function(user) {
@@ -8,5 +7,4 @@ app.controller('UsersCtrl', [
     }, function(response) {
       console.error(response);
     });
-  }
-]);
+}]);

@@ -1,4 +1,4 @@
-app = angular.module("crud", ["ui.router", 'restangular'])
+var app = angular.module("crud", ["ui.router", 'restangular'])
 
 app.factory('_', ['$window', function(){
   return $window._;
@@ -10,7 +10,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state("pins", {
     url: "/pins",
-    template: "hiii"
+    templateUrl: "templates/pins/index.html",
+    controller: "PinsCtrl"
   })
 
 });

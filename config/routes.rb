@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  root to: "pins#index"
+  # root to: "pins#index"
+
+  root "static_pages#index"
+
+  scope "api" do 
+    scope "v1" do 
+      resources :pins, only: [:index]
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

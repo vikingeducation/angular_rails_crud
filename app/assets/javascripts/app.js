@@ -11,33 +11,31 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
   RestangularProvider.setBaseUrl('/api/v1');
   RestangularProvider.setRequestSuffix('.json');
 
-  $urlRouterProvider.otherwise('/posts');
+  $urlRouterProvider.otherwise('/pins');
 
   $stateProvider
-    .state('Posts', {
-      url: '/posts',
-      controller: 'PostsCtrl',
+    .state('Pins', {
+      url: '/pins',
+      
       views: {
         '': {
           templateUrl: '/templates/posts/index.html',
-        },
-        'recentComments': {
-          templateUrl: '/templates/comments/recent_comments.html'
+          controller: 'PinIndexCtrl'
         }
       }
     })
-    .state('Posts.show',  {
-      url: '/:id',
-      views: {
-        '@': {
-          templateUrl: '/templates/posts/show.html',
-          controller: 'PostsShowCtrl'
-        }
-      },
-      onEnter: function() {
-        console.log('this is firing (SHOW)');
-      }
-    });
+    // .state('Posts.show',  {
+    //   url: '/:id',
+    //   views: {
+    //     '@': {
+    //       templateUrl: '/templates/posts/show.html',
+    //       controller: 'PostsShowCtrl'
+    //     }
+    //   },
+    //   onEnter: function() {
+    //     console.log('this is firing (SHOW)');
+    //   }
+    // });
 }]);
 
 

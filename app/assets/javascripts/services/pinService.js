@@ -6,5 +6,19 @@ angular.module('app').factory('PinService', ['Restangular', function(Restangular
 		return Restangular.all('pins').getList();
 	};
 
-	return obj
+	obj.create = function(data){
+		return Restangular.all('users').getList()
+		.then(function(users){
+			var firstUser = users[0];
+			data.user_id = firstUser.id;
+			var pinData = {
+				pin: data
+			};
+			return Restangular.all('pins').post(pinData);
+		});
+
+	};
+
+	return obj;
+
 }]);

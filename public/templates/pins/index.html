@@ -1,6 +1,6 @@
 <h3>All Pins</h3>
 
-<div ng-repeat="pin in pins">
+<div ng-repeat="pin in pins | orderBy: '-created_at' ">
 	<p>{{pin.item_name}}</p>
 	<p>{{pin.buy_sell}}</p>
 	<p>{{pin.description}}</p>

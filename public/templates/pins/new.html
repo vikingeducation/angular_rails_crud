@@ -1,3 +1,12 @@
 <form>
-  <input class="form-control" type='text' ng-model= "formData.title">
+	<label for="title">Title</label>
+  <input class="form-control" name="title" type='text' ng-model= "formData.item_name">
+  <label for="buy/sell">Buy/Sell?</label>
+  <select name="buy/sell" ng-model="formData.buy_sell">
+  	<option value="buy">Buy</option>
+  	<option value="sell">Sell</option>
+  </select>
+  <label for="description">Description</label>
+  <input type="text" name="description" ng-model="formData.description">
+  <input type="submit" ng-click="createPin()" value="Create pin">
 </form>

@@ -1,4 +1,6 @@
 class PinsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @pins = Pin.all
 
@@ -9,7 +11,7 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.new(pin_params)
-    @pin.user = User.all.sample
+    @pin.user = current_user
 
     if @pin.save
       respond_to do |format|

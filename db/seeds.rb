@@ -12,7 +12,7 @@ Pin.delete_all
 
 puts "Building users and pins"
 5.times do 
-  user = User.create(username: Faker::GameOfThrones.character)
+  user = User.create(username: Faker::GameOfThrones.character, email: Faker::Internet.email, password: 'password')
   2.times do 
     user.pins.create({
       item_name: Faker::Space.constellation,

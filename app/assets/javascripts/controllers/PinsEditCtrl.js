@@ -5,10 +5,12 @@ angular.module('app').controller('PinsEditCtrl', ['$scope', 'PinService','$state
 
 	PinService.getPin(pinId).then(function(pin){
 		$scope.formData = pin;
+    $scope.pin = pin
 	});
 
-	$scope.editPin = function(){
-		PinService.editPin($scope.formData);
+	$scope.edit = function(){
+    $scope.pin.edit($scope.formData)
+    $state.go("pins.show", {id: $scope.pin.id})
 	};
 
 }]);

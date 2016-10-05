@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     scope :v1 do 
       resources :static_pages, only: [:index]
       resources :users, only: [:index]
-      resources :pins, only: [:index, :create, :show]
+      resources :pins, only: [:index, :create, :show, :update]
     end
   end
 

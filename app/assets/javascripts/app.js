@@ -66,7 +66,7 @@ angular.module('app').config([
         url: "/edit/:id",
         views: {
           "edit-pin": {
-            templateUrl: "templates/pins/edit/html",
+            templateUrl: "templates/pins/edit.html",
             controller: "PinsEditCtrl"
           }
         }

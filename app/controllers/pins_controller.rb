@@ -6,6 +6,14 @@ class PinsController < ApplicationController
     end
   end
 
+  def show
+    @pin = Pin.find_by_id(params[:id])
+
+    respond_to do |format|
+      format.json {render json: @pin, status: 200}
+    end
+  end
+
   def create
     @pin = Pin.create(pin_params)
 

@@ -21,8 +21,8 @@
 <hr>
 <h1>All Pins</h1>
 <hr>
-<div ng-repeat="pin in pins | orderBy : -created_at">
-  <h3>{{ pin.item_name }}</h3>
+<div ng-repeat="pin in pins | orderBy : '-created_at'">
+  <h3><a ui-sref="show({id: pin.id})">{{ pin.item_name }}</a></h3>
   <h5 ng-if="pin.buy_sell">Looking to Buy!</h5>
   <h5 ng-if="!pin.buy_sell">For Sale!</h5>
   <p>{{ pin.description }}</p>

@@ -1,0 +1,16 @@
+<h1>Pin {{pin.id}}: {{pin.item_name}} </h1>
+
+<h4>Signed in as ____</h4> <span>logout</span>
+
+<h3><a ui-sref="pins">View all pins</a></h3>
+
+<h5>{{pin.item_name}}</h5>
+<h5 ng-if="pin.buy_sell">Looking to Buy!</h5>
+<h5 ng-if="!pin.buy_sell">For Sale!</h5>
+
+<a ui-sref="edit({id: pin.id})">Edit</a> | delete pin
+
+<p>{{pin.description}}</p>
+
+
+<span class="small">Posted {{pin.created_at}} by ______</span>

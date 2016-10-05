@@ -14,6 +14,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: "PinsCtrl"
   })
 
+    .state("show", {
+      url: "/pins/:id",
+      templateUrl: "templates/pins/show.html",
+      controller: "PinShowCtrl"
+    })
+
+    .state("edit", {
+      url: "/pins/:id/edit",
+      templateUrl: "templates/pins/edit.html",
+      controller: "PinEditCtrl"
+    })
+
 });
 
 app.config(

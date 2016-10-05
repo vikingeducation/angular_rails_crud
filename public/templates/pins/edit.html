@@ -1,0 +1,28 @@
+<form>
+  <label>Item Name</label>
+  <input type="text" ng-model="pin.item_name">
+  <label>Buying or Selling</label>
+  <select ng-model="pin.buy_sell">
+    <option ng-if="pin.buy_sell" selected value=true>Buy</option> 
+    <option ng-if="pin.buy_sell" value=false>Sell</option> 
+    <option ng-if="!pin.buy_sell" value=true>Buy</option> 
+    <option ng-if="!pin.buy_sell" selected value=false>Sell</option> 
+  </select>
+  <label>Item Description</label>
+  <input type="text" ng-model="pin.description">
+  <input type="submit" ng-click="handleForm()">
+
+</form>
+
+<Pin {{pin.id}}: {{pin.item_name}} </h1>
+
+<h5>{{pin.item_name}}</h5>
+<h5 ng-if="pin.buy_sell">Looking to Buy!</h5>
+<h5 ng-if="!pin.buy_sell">For Sale!</h5>
+
+<a ui-sref="edit({id: pin.id})">Edit</a> | delete pin
+
+<p>{{pin.description}}</p>
+
+
+<span class="small">Posted {{pin.created_at}} by ______</span>

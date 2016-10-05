@@ -4,6 +4,11 @@ app.factory("Pins", ["Restangular", function(Restangular) {
   var _pins;
   var Pins = {};
 
+  Pins.find = function(id) {
+    var pin = Restangular.one("pins", id).get().$object
+    return pin
+  }
+
 
   Pins.all = function() {
     _pins = Restangular.all("pins").getList().$object

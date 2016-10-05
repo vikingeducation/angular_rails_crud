@@ -2,6 +2,10 @@ app.controller("PinsCtrl", ["$scope", "Pins", function($scope, Pins) {
 
   $scope.pins = Pins.all().$object;
 
-  console.log("here's the controller")
+  $scope.createPin = function(){
+    Pins.create($scope.form);
+  };
 
-}])
+  console.log("here's the controller");
+
+}]);

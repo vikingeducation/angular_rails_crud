@@ -1,1 +1,22 @@
+<form ng-submit="">
+  <div>
+    <label>Title:</label>
+    <input type="text" name="title" ng-model="form.title">
+  </div>
+  <div>
+    <label>Buy/Sell</label>
+    <select name="buy-sell" ng-model="form.buySell">
+      <option value="true">Buy</option>
+      <option value="false" selected>Sell</option>
+    </select>
+  </div>
+  <div>
+    <label>Description</label>
+    <textarea name="description" ng-model="form.description"></textarea>
+  </div>
+  <div>
+    <input type="submit">
+  </div>
+</form>
+
 {{pins}}

@@ -14,6 +14,10 @@ app.controller('PinEditCtrl',
       });
     };
 
-
+    $scope.destroy = function() {
+      PinService.destroy($scope.pin, $scope.pinParams).then( function() {
+        $state.go("pins");
+      });
+    };
 
 }]);

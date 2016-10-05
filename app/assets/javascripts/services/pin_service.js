@@ -50,6 +50,17 @@ app.factory('PinService',
     return Restangular.one("pins", id).get();
   };
 
+  PinService.destroy = function(pin, pinParams) {
+    return Restangular.remove({
+      pin: pinParams
+    }).then(function(response) {
+      console.log('destroyed!');
+    }).catch(function(reaosn) {
+      console.log('failed! REASON:');
+      console.log(reason);
+    });
+  };
+
   return PinService;
 
 }]);

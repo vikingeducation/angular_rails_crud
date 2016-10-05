@@ -15,7 +15,7 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
   $stateProvider.state('pins', {
     abstract: true,
     url: '/pins',
-    template: '<div ui-view></div>',
+    template: '<div class="container" ui-view></div>',
     resolve: {
       'pinsList': ['PinService', function(PinService) {
         return PinService.getPins();

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   scope :api do
     scope :v1 do
-      resources :pins, only: [:index]
+      resources :pins, only: [:index, :create]
     end
   end
 end

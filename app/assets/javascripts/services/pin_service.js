@@ -1,4 +1,4 @@
-PinBoard.factory('PinService', ['Restangular', function(Restangular) {
+PinBoard.factory('PinService', ['Restangular', '$rootScope', function(Restangular, $rootScope) {
 
   var _pins = [];
 
@@ -17,9 +17,17 @@ PinBoard.factory('PinService', ['Restangular', function(Restangular) {
     }
   };
 
+  var postPin = function(pinParams) {
+    return Restangular.all('pins').post(pinParams)
+      .then(function() {
+        $rootScope.$broadcast('pins.create')
+      })
+  }
+
   return {
     getPins: getPins,
-    populatePins: populatePins
+    populatePins: populatePins,
+    postPin: postPin
   }
 
 }]);

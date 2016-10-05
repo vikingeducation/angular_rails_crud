@@ -18,11 +18,13 @@ app.factory('PinService',
   PinService.editPin = function(pin, pinParams) {
     var tempParams = pinParams;
     tempParams.buySell = (pinParams.buySell === "Buy");
-      
-    return Restangular.one("pins", pin.id).put(tempParams)
+
+    return Restangular.one("pins", pin.id).patch({
+      pin: tempParams
+    })
       .then(function (response) {
         console.log("we need to change cache pin to,", response);
-      })
+      });
   };
 
   PinService.populatePins = function () {

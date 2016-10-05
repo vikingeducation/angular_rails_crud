@@ -4,7 +4,7 @@ app.controller('PinEditCtrl',
 
     $scope.pinParams = {};
 
-    console.log('you are editing pin controller')
+    console.log('you are editing pin controller');
     $scope.pin = pin;
 
 
@@ -12,7 +12,7 @@ app.controller('PinEditCtrl',
       PinService.editPin($scope.pin, $scope.pinParams).then( function() {
         console.log('pin was edited');
       });
-    }
+    };
 
 
 

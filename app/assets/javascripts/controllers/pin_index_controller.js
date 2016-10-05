@@ -7,7 +7,7 @@ app.controller('PinIndexCtrl',
     $scope.submitForm = function() {
       PinService.createPin($scope.myForm).then(function() {
         console.log('pin was created');
-      })
+      });
     };
 
 }]);

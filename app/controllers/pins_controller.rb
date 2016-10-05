@@ -12,7 +12,7 @@ class PinsController < ApplicationController
       format.json { render json: @pin.to_json }
     end
   end
-  
+
   def create
     @pin = User.first.pins.build(pin_params)
 
@@ -25,10 +25,20 @@ class PinsController < ApplicationController
     end
   end
 
+  def update
+    @pin = Pin.find_by_id(params[:id])
+    if @pin.update_attributes(pin_params)
+      respond_to do |format|
+        format.json { render json: @pin.to_json, status: 200 }
+      end
+    end
+  end
+
   private
     def pin_params
       params.require(:pin)
-        .permit(:item_name,
+        .permit(:id,
+                :item_name,
                 :buy_sell,
                 :description,
                 )

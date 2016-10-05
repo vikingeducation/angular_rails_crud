@@ -14,6 +14,7 @@
 //= require jquery_ujs
 
 //= require angular
+//= require angular-devise
 //= require lodash
 //= require angular-ui-router.min
 //= require restangular.min

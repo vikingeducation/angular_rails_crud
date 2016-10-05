@@ -38,6 +38,14 @@ class PinsController < ApplicationController
 
 	end
 
+	def destroy
+		@pin = Pin.find(params[:id])
+		@pin.destroy
+		respond_to do |format| 
+				format.json{render json: @pin}
+		end
+	end
+
 	private
 	def pin_params
 		params.require('pin').permit(:item_name, :buy_sell, :description, :user_id)

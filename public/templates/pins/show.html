@@ -3,5 +3,5 @@
 <p ng-show="pin.buy_sell">WANT TO BUY</p>
 <p ng-show="!pin.buy_sell">FOR SALE</p>
 <a ui-sref="pins.edit({id:pin.id})">Edit Pin</a>
-<a>Delete Pin</a>
+<a href="#" ng-click="delete()">Delete Pin</a>
 <p>{{pin.description}}</p>

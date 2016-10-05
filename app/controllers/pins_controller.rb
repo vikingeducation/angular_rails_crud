@@ -22,10 +22,13 @@ class PinsController < ApplicationController
   def update
     @pin = Pin.find(params[:id])
     @pin.update(pin_params)
+    respond_to do |format|
+      format.json { render nothing: true } 
+    end
   end
   private
 
     def pin_params
-      params.require(:pin).permit(:item_name, :description, :buy_sell, :user_id)
+      params.require(:pin).permit(:item_name, :description, :buy_sell, :user_id, :id, :created_at, :updated_at)
     end
 end

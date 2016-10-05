@@ -9,11 +9,19 @@ app.factory("pinService", ["Restangular", function(Restangular) {
 
   var getPin = function(id) {
     return Restangular.one('pins', id).get();
-  }
+  };
 
   var updatePin = function(pin) {
-    return pin.put();
-  }
+    // return Restangular.one('pins', id).get();
+    var data = {
+      pin: {
+        description: pin.description,
+        item_name: pin.item_name,
+        true_false: pin.true_false
+      }
+    };
+    return pin.patch(data);
+  };
 
 
   return {

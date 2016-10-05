@@ -5,7 +5,7 @@ pin.factory('PinsService', ['Restangular', '$state', function(Restangular, $stat
 
   pinsService.all = function() {
     return Restangular.all('pins').getList().then(function(response){
-      return angular.extend(_pins, response.plain());
+      return angular.copy(response, _pins);
     });
   };
 
@@ -18,6 +18,10 @@ pin.factory('PinsService', ['Restangular', '$state', function(Restangular, $stat
     });
   };
 
+  pinsService.getPins = function() {
+    return _pins;
+  };
+
   pinsService.find = function(id) {
     return Restangular.one('pins', id).get();
   };
@@ -28,13 +32,16 @@ pin.factory('PinsService', ['Restangular', '$state', function(Restangular, $stat
     pin.buy_sell = params.buy_sell;
     pin.save().then(function(response){
       pinsService.all();
+      $state.go('pins.show', {id: pin.id})
     });
   };
 
   pinsService.deletePin = function(pin) {
     return pin.remove().then(function(response){
-      pinsService.all()
-      $state.go('pins.index');
+      pinsService.all().then(function() {
+        $state.go('pins.index');
+        console.log(_pins)
+      })
     })
   }
 

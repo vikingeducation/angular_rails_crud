@@ -11,5 +11,6 @@
   <label for="description">Description</label>
   <textarea name="description" class="form-control" placeholder="So great!" ng-model="formData.description"></textarea>
 
-  <input type="submit" value="Create Pin" class="btn btn-warning" ng-click="createEditPin()">
+  <input type="submit" value="{{ pin ? 'Edit Pin' : 'Create Pin' }}" class="btn btn-warning" ng-click="createEditPin()">
+  <a class="btn btn-danger" ng-if="pin" ui-sref="pins.show({id: pin.id})">Cancel</a>
 </form>

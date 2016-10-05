@@ -9,7 +9,6 @@ pin.directive('pinForm', ["PinsService", "$state", function(PinsService, $state)
     },
     link: function(scope) {
 
-      console.log(scope.pin)
       if (scope.pin) {
         scope.formData = {
           item_name: scope.pin.item_name,
@@ -21,12 +20,10 @@ pin.directive('pinForm', ["PinsService", "$state", function(PinsService, $state)
           buy_sell: "false"
         };
       }
-      console.log(scope.formData)
 
       scope.createEditPin = function(){
         if (scope.pin) {
           PinsService.editPin(scope.formData, scope.pin)
-          $state.go('pins.show', {id: scope.pin.id})
         } else {
           PinsService.createPin(scope.formData)
         }

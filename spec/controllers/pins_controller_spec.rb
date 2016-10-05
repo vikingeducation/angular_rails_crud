@@ -48,5 +48,27 @@ describe PinsController do
 		end
 
 	end
+
+	describe "GET api/v1/pin/:id" do
+		let(:json){JSON.parse(response.body)}
+
+		before do
+			user = User.create(username: "Bob123")
+			pin = Pin.create(description: "I am a description", item_name: "Pin1", user_id: user.id, buy_sell: true)
+			get :show, id: 1, format: :json
+		end
+
+		it "should get a 200 staus success" do 
+			expect(response.status).to eq(200)
+		end
+
+		it "should return the pin object" do 
+			expect(json).to be_a Hash
+		end
+
+		it "should have a valid attribute" do 
+			expect(json["item_name"]).to eq("Pin1")
+		end
+	end
 	
 end

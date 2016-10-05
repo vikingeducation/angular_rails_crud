@@ -6,6 +6,10 @@ angular.module('app').factory('PinService', ['Restangular', function(Restangular
 		return Restangular.all('pins').getList();
 	};
 
+	obj.getPin = function(id){
+		return Restangular.one('pins', id).get();
+	};
+
 	obj.create = function(data){
 		return Restangular.all('users').getList()
 		.then(function(users){

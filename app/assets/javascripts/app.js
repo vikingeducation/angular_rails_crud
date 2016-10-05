@@ -56,12 +56,21 @@ angular.module('app').config([
       .state("pins.show", {
         url: "/:id",
         views: {
-          "create-pin": {
+          "show-pin": {
             templateUrl: "templates/pins/show.html",
             controller: "PinsShowCtrl"
           }
         }
       })
+      .state("pins.edit", {
+        url: "/edit/:id",
+        views: {
+          "edit-pin": {
+            templateUrl: "templates/pins/edit/html",
+            controller: "PinsEditCtrl"
+          }
+        }
+      });
 
 
   }]);

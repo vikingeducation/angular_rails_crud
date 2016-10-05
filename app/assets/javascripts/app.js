@@ -33,13 +33,23 @@ pin.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     .state('pins.show', {
       url: '/:id',
       templateUrl: '/templates/pins/show.html',
-      controller: 'PinsShowCtrl'
+      controller: 'PinsShowCtrl',
+      resolve: {
+        pin: ['PinsService', '$stateParams', function(PinsService, $stateParams){
+          return PinsService.find($stateParams.id);
+        }]
+      }
     })
 
     .state('pins.edit', {
       url: '/edit/:id',
       templateUrl: '/templates/pins/edit.html',
-      controller: 'PinsShowCtrl'
+      controller: 'PinsShowCtrl',
+      resolve: {
+        pin: ['PinsService', '$stateParams', function(PinsService, $stateParams){
+          return PinsService.find($stateParams.id);
+        }]
+      }
     });
     
 }]);

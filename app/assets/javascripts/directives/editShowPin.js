@@ -1,4 +1,4 @@
-pin.directive('pinForm', ["PinsService", function(PinsService){
+pin.directive('pinForm', ["PinsService", "$state", function(PinsService, $state){
 
   return {
 
@@ -14,7 +14,7 @@ pin.directive('pinForm', ["PinsService", function(PinsService){
         scope.formData = {
           item_name: scope.pin.item_name,
           description: scope.pin.description,
-          buy_sell: scope.pin.buy_sell
+          buy_sell: scope.pin.buy_sell.toString()
         };
       } else {
         scope.formData = {
@@ -25,7 +25,8 @@ pin.directive('pinForm', ["PinsService", function(PinsService){
 
       scope.createEditPin = function(){
         if (scope.pin) {
-          PinsService.editPin(scope.formData)
+          PinsService.editPin(scope.formData, scope.pin)
+          $state.go('pins.show', {id: scope.pin.id})
         } else {
           PinsService.createPin(scope.formData)
         }

@@ -1,8 +1,11 @@
-pin.controller('PinsShowCtrl', ['$scope', 'PinsService', 'pins', '$stateParams', function($scope, PinsService, pins, $stateParams) {
+pin.controller('PinsShowCtrl', ['$scope', '$state', 'PinsService', 'pins', '$stateParams', 'pin', function($scope, $state, PinsService, pins, $stateParams, pin) {
 
   $scope.pins = pins;
-  $scope.pin = PinsService.find($stateParams.id).$object;
+  $scope.pin = pin
 
+  $scope.deletePin = function(){
+    PinsService.deletePin($scope.pin);
+  }
   
 
 }]);

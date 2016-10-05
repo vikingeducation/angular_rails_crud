@@ -27,6 +27,27 @@ class PinsController < ApplicationController
     end
   end
 
+  def update
+    @pin = Pin.find(params[:id])
+    if @pin.update(pin_params)
+      respond_to do |format|
+        format.json { render json: @pin.to_json( include: :user ), 
+          status: 200 }
+      end
+    end
+
+  end
+
+  def destroy
+    @pin = Pin.find(params[:id])
+    if @pin.destroy
+      respond_to do |format|
+        format.json { render json: @pin, 
+          status: 200 }
+      end
+    end
+  end
+
   private
 
   def pin_params

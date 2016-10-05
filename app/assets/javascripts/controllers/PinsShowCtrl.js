@@ -1,10 +1,10 @@
 "use strict";
-angular.module('app').controller('PinsShowCtrl', ['$scope', 'PinService','$stateParams', '$state', "Auth", function($scope, PinService, $stateParams, $state, Auth){
+angular.module('app').controller('PinsShowCtrl', ['$scope', 'PinService','$stateParams', '$state', "Auth", 'currentUser', function($scope, PinService, $stateParams, $state, Auth, currentUser){
 
 
-  Auth.currentUser().then(function(user) {
-    $scope.currentUser = user;
-  })
+  // Auth.currentUser().then(function(user) {
+  //   $scope.currentUser = user;
+  // })
 
 
 	var pinId = $stateParams.id;
@@ -15,8 +15,8 @@ angular.module('app').controller('PinsShowCtrl', ['$scope', 'PinService','$state
 
   $scope.isCurrentUser = function(userId) {
 
-    return userId === $scope.currentUser.id
-  }
+    return userId === currentUser.id;
+  };
 
 	$scope.delete = function(){
 		$scope.pin.remove();

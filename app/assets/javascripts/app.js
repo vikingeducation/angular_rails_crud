@@ -36,6 +36,14 @@ angular.module('app').config([
           "content": {
             templateUrl: "templates/content"
           }
+        },
+        resolve: {
+          currentUser: ['Auth', function(Auth){
+            return Auth.currentUser()
+            .then(function(user){
+              return user;
+            });
+          }]
         }
   		})
 

@@ -1,4 +1,4 @@
-PinBoard.controller('PinsIndexCtrl', ['$scope', 'pinsList', 'PinService', function($scope, pinsList, PinService) {
+PinBoard.controller('PinsIndexCtrl', ['$scope', 'pinsList', 'PinService', 'Auth', function($scope, pinsList, PinService, Auth) {
 
   $scope.pins = pinsList;
 
@@ -11,5 +11,9 @@ PinBoard.controller('PinsIndexCtrl', ['$scope', 'pinsList', 'PinService', functi
   $scope.removePin = function(pin) {
     PinService.removePin(pin);
   }
+
+  Auth.currentUser().then(function(user) {
+    $scope.currentUser = user;
+  })
 
 }]);

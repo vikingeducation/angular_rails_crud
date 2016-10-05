@@ -16,7 +16,7 @@ class PinsController < ApplicationController
   end
 
   def create
-    @user = User.first
+    @user = User.find(current_user.id)
     @pin = @user.pins.build(pin_params)
     if @pin.save
       respond_to do |format|
@@ -27,18 +27,22 @@ class PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
-    if @pin.update(pin_params)
-      respond_to do |format|
-        format.json {render json: @pin, include: :user}
+    if current_user.id == @pin.user.id
+      if @pin.update(pin_params)
+        respond_to do |format|
+          format.json {render json: @pin, include: :user}
+        end
       end
     end
   end
 
   def destroy
     @pin = Pin.find(params[:id])
-    @pin.destroy
-    respond_to do |format|
-      format.json {render nothing: true, status: 200}
+    if current_user.id == @pin.user.id
+      @pin.destroy
+      respond_to do |format|
+        format.json {render nothing: true, status: 200}
+      end
     end
   end
 

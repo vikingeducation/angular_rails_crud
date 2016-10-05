@@ -23,6 +23,18 @@ angular.module('app').factory('PinService', ['Restangular', function(Restangular
 
 	};
 
+
+	obj.editPin = function(formData) {
+	}
+
+	Restangular.extendModel("pins", function(model) {
+		model.edit = function(data) {
+			model.patch({pin: data})
+		}
+		return model
+	})
+
+
 	return obj;
 
 }]);

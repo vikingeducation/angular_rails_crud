@@ -24,6 +24,20 @@ class PinsController < ApplicationController
 		end
 	end
 
+	def update
+		@pin = Pin.find(params[:id])
+		if @pin.update(pin_params) 
+			respond_to do |format| 
+				format.json{ render json: @pin}
+			end
+		else 
+			respond_to do |format| 
+				format.json{}
+			end
+		end
+
+	end
+
 	private
 	def pin_params
 		params.require('pin').permit(:item_name, :buy_sell, :description, :user_id)

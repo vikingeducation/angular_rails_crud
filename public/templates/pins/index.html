@@ -1,0 +1,9 @@
+<div ui-view="new"></div>
+
+<ul>
+  <li ng-repeat="pin in pins">
+    <a ui-sref="main.pin({id:{{pin.id}}})">
+      {{pin.id}} -- {{pin.description}} -- {{pin.user.username}}
+    </a>
+  </li>
+</ul>

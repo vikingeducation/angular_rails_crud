@@ -6,7 +6,7 @@ describe PinsController do
     let( :json ){ JSON.parse( response.body ) }
 
     before do
-      get :index, format: :json
+      process :index, format: :json
     end
 
     it 'should respond with a success' do

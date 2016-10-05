@@ -2,31 +2,19 @@
 <hr>
 
 <div class="col-xs-6">
-  <form>
-    <label for="title">Title</label>
-    <input type="text" name="title" class="form-control" ng-model="newPin.item_name">
-
-    <label for="buy-sell">Buy/Sell?</label>
-    <select class="form-control" ng-model="newPin.buy_sell">
-      <option value="false">FOR SALE</option>
-      <option value="true">WANT TO BUY</option>
-    </select>
-
-    <label for="description">Description</label>
-    <textarea name="description" class="form-control" placeholder="So great!" ng-model="newPin.description"></textarea>
-
-    <input type="submit" value="Create Pin" class="btn btn-warning" ng-click="createPin()">
-  </form>
+  <div pin-form></div>
 
 
   <hr>
   <h3>All Pins</h3>
   <hr>
   <div ng-repeat="pin in pins | orderBy: '-created_at'">
-    <h4>{{ pin.item_name }}</h4>
-    <h4>{{ pin.buy_sell ? "WANT TO BUY" : "FOR SALE"}}</h4>
-    <p>{{pin.description}}</p>
-    <p class="pull-right"><em>Posted {{pin.created_at | date: "MM/dd/yyyy 'at' h:mma"}} by {{pin.user.username}}</em></p>
+    <div>
+      <h4><a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a></h4>
+      <h4>{{ pin.buy_sell ? "WANT TO BUY" : "FOR SALE"}}</h4>
+      <p>{{pin.description}}</p>
+      <p class="pull-right"><em>Posted {{pin.created_at | date: "MM/dd/yyyy 'at' h:mma"}} by {{pin.user.username}}</em></p>
+    </div>
     <hr>
   </div>
 </div>

@@ -44,5 +44,20 @@ describe PinsController do
       end
   end
 
+  describe "PATCH /api/v1/pin/:id.json " do
+
+    let(:pin){ create(:pin) }
+
+    it 'should respond with a success' do
+      expect( response.status ).to eq( 200 )
+    end
+
+    it 'should update correctly' do
+      attrs = { item_name: "leorrel" }
+      patch "update", id: pin.id, pin: attrs, format: :json
+      expect( Pin.first.item_name ).to eq "leorrel"
+    end
+
+  end
 
 end

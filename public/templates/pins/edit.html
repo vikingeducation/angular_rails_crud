@@ -1,13 +1,13 @@
-<form>
+<form ng-submit="editPin()">
   <label>Item Name</label>
-  <input type="text" ng-model="pin.item_name" class="form-control">
+  <input type="text" ng-model="newPin.item_name" class="form-control">
   <label>Buying or Selling</label>
-  <select ng-model="pin.buy_sell" class="form-control">
-    <option value="true" ng-selected="pin.buy_sell">Buy</option>
-    <option value="false" ng-selected="pin.buy_sell === false">Sell</option>
+  <select ng-model="newPin.buy_sell" class="form-control">
+    <option value="true" ng-selected="newPin.buy_sell">Buy</option>
+    <option value="false" ng-selected="newPin.buy_sell === false">Sell</option>
   </select>
   <label>Item Description</label>
-  <textarea ng-model="pin.description" class="form-control"></textarea>
+  <textarea ng-model="newPin.description" class="form-control"></textarea>
   <input type="submit" ng-click="handleForm()" class="form-control btn-primary">
 
 </form>
@@ -18,7 +18,7 @@
 <h5 ng-if="pin.buy_sell">Looking to Buy!</h5>
 <h5 ng-if="!pin.buy_sell">For Sale!</h5>
 
-<a ui-sref="edit({id: pin.id})">Edit</a> | <a ng-click="deletePin()">delete pin</a>
+<a ui-sref="edit({id: pin.id})">Edit</a> | <a ng-click="deletePin()" href="#">delete pin</a>
 
 <p>{{pin.description}}</p>
 

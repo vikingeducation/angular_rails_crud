@@ -8,7 +8,7 @@
 <h5 ng-if="pin.buy_sell">Looking to Buy!</h5>
 <h5 ng-if="!pin.buy_sell">For Sale!</h5>
 
-<a ui-sref="edit({id: pin.id})">Edit</a> | delete pin
+<a ui-sref="edit({id: pin.id})">Edit</a> | <a href="#" ng-click="deletePin()">Delete pin</a>
 
 <p>{{pin.description}}</p>
 

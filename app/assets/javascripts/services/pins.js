@@ -31,9 +31,41 @@ app.factory("Pins", ["Restangular", function(Restangular) {
       });
   };
 
+  var _updatePin = function(params) {
+    Restangular.one('pins', params.id).patch({
+      pin: {
+        item_name: params.title,
+        buy_sell: params.buySell,
+        description: params.description,
+        user_id: 1              //hard-coded
+      }
+    }).then(function() {
+
+        return $state.go("show", $stateParams.id)
+      }
+    )
+
+  }
+
+  // Pins.edit = function(params) {
+  //   Restangular.all('pins').put({
+  //     pin: {
+  //       item_name: params.title,
+  //       buy_sell: params.buySell,
+  //       description: params.description,
+  //       user_id: 1              //hard-coded
+  //     }
+  //   })
+  // }
+
   Restangular.extendCollection('pins', function(collection){
     collection.create = _createPin;
     return collection;
+  });
+
+  Restangular.extendModel('pins', function(pin){
+    pin.update = _updatePin;
+    return pin;
   });
 
   return Pins;

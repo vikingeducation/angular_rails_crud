@@ -5,7 +5,7 @@
 
     <h3>{{ pin.item_name }}</h3>
     <h4> {{ pin.buy_sell ? "To Buy" : "For Sale" }}</h4>
-    <p><a href="">Edit Pin</a> <a href="">Delete Pin</a></p>
+    <p><a ui-sref="pins.edit({id: pin.id})">Edit Pin</a> <a href="" ng-click="removePin()">Delete Pin</a></p>
     <p>{{ pin.description }}</p>
     <p>Posted {{ pin.created_at | date }} by {{pin.user.username}}</p>
   </div>

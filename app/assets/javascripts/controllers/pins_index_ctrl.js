@@ -8,4 +8,8 @@ PinBoard.controller('PinsIndexCtrl', ['$scope', 'pinsList', 'PinService', functi
     angular.copy(PinService.populatePins(), $scope.pins);
   });
 
+  $scope.removePin = function(pin) {
+    PinService.removePin(pin);
+  }
+
 }]);

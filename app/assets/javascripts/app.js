@@ -27,6 +27,16 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
     templateUrl: '/templates/pins/index.html',
     controller: 'PinsIndexCtrl'
   })
+  .state('pins.edit', {
+    url: '/edit/:id',
+    templateUrl: '/templates/pins/edit.html',
+    controller: 'PinsEditCtrl',
+    resolve: {
+      pin: ['$stateParams', 'PinService', function($stateParams, PinService) {
+        return PinService.find($stateParams.id)
+      }]
+    }
+  })
   .state('pins.show', {
     url: '/:id',
     templateUrl: '/templates/pins/show.html',

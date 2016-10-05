@@ -34,8 +34,13 @@ angular.module('app').config([
   					'pins': {
   						templateUrl: "templates/pins/index.html",
   						controller: 'PinsIndexCtrl'
-  					}
+  					},
+
+            "new-pin": {
+            templateUrl: "templates/pins/new.html",
+            controller: "PinsNewCtrl"
   				}
-  		});
+        }
+  		})
 
   }]);

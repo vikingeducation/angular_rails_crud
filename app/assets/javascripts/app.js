@@ -14,12 +14,33 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
   $urlRouterProvider.otherwise('/pins');
 
   $stateProvider
-    .state('Pins', {
+    .state('pins', {
       url: '/pins',
       views: {
-        '': {
+        // 'nav': {
+        //   templateUrl: '/templates/nav.html',
+        //   // Knows username. Has link to logout.
+        //   controller: 'PinNavCtrl'
+        // },
+        'index': {
           templateUrl: '/templates/index.html',
           controller: 'PinIndexCtrl'
+        }
+      },
+      resolve: {
+        pinsFromAPI: ['PinService', function(PinService) {
+          return PinService.getPins();
+        }]
+      }
+    })
+    .state('pins.show', {
+      // Clicking on a pin will give ui-sref({id: pin.id})
+      // Will replace index view.
+      url: '/:id',
+      views: {
+        'index@': {
+          templateUrl: '/templates/show.html',
+          controller: 'PinShowCtrl'
         }
       }
     });

@@ -2,4 +2,5 @@ app.controller("PinShowCtrl", ["$scope", "Pins", "$stateParams", function($scope
 
   $scope.pin = Pins.find($stateParams.id);
 
+
 }])

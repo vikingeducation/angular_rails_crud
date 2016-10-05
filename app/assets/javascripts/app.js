@@ -6,7 +6,7 @@ app.factory('_', ['$window', function(){
 
 
 app.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/pins")
+  $urlRouterProvider.otherwise("/pins");
 
   $stateProvider.state("pins", {
     url: "/pins",
@@ -24,7 +24,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: "/pins/:id/edit",
       templateUrl: "templates/pins/edit.html",
       controller: "PinEditCtrl"
-    })
+    });
 
 });
 

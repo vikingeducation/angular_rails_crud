@@ -5,13 +5,13 @@ app.factory("Pins", ["Restangular", function(Restangular) {
   var Pins = {};
 
   Pins.find = function(id) {
-    var pin = Restangular.one("pins", id).get().$object
-    return pin
-  }
+    var pin = Restangular.one("pins", id).get().$object;
+    return pin;
+  };
 
 
   Pins.all = function() {
-    _pins = Restangular.all("pins").getList().$object
+    _pins = Restangular.all("pins").getList().$object;
     return _pins;
   };
 

@@ -3,8 +3,13 @@ app.factory("pinService", ["Restangular", function(Restangular) {
     return Restangular.all("pins").getList();
   };
 
+  var createPin = function(data){
+    return Restangular.all("pins").post(data);
+  };
+
 
   return {
-    getAllPins: getAllPins
+    getAllPins: getAllPins,
+    createPin: createPin
   };
 }]);

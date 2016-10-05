@@ -43,6 +43,10 @@ app.config([
         'pins@': {
           templateUrl: "/templates/pins/index.html",
           controller: "pinsIndexCtrl"
+        },
+        'new@': {
+          templateUrl: "/templates/pins/new.html",
+          controller: "pinsNewCtrl"
         }
       }
     })

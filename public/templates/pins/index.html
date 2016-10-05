@@ -1,9 +1,3 @@
-<form ng-init="form">
-  <input type="text" name="item_name" >
-  <input type="text" name="description" >
-  <input type="submit" name="submit" value="new pin">
-</form>
-
 <ul>
   <li ng-repeat="pin in pins">
     {{pin.id}} -- {{pin.description}} -- {{pin.user.username}}

@@ -60,4 +60,19 @@ describe PinsController do
 
   end
 
+  describe "DELETE /api/v1/pin/:id.json " do
+
+    let(:pin){ create(:pin) }
+
+    it 'should respond with a success' do
+      expect( response.status ).to eq( 200 )
+    end
+
+    it 'should delete correctly' do
+      delete "destroy", id: pin.id, format: :json
+      expect( Pin.find_by_id(pin.id) ).to be nil
+    end
+
+  end
+
 end

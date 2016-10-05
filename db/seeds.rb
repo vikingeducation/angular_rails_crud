@@ -12,6 +12,6 @@ Pin.destroy_all
 puts "Creating users and Pinsesesssss"
 
 10.times do |i|
-  User.create(username: "username#{i}")
+  User.create(username: "username#{i}", email: "email#{i}@email.com", password: 'password')
   Pin.create(item_name: "chuck norrised", buy_sell: [true, false].sample, description: "blah blah blah stuff", user_id: User.all.sample.id)
 end

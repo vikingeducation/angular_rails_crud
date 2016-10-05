@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'restangular']);
+var app = angular.module('app', ['ui.router', 'restangular', 'Devise']);
 
 app.factory('_', [
   '$window',
@@ -34,8 +34,13 @@ app.config([
     $urlRouterProvider.otherwise('/pins');
 
     $stateProvider.state('main', {
-      abstract: true
-
+      abstract: true,
+      views: {
+        'user@': {
+          templateUrl: "/templates/users/index.html.erb",
+          controller: "UsersCtrl"
+        }
+      }
     })
     .state('main.pins', {
       url: '/pins',

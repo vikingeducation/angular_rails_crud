@@ -26,7 +26,7 @@ angular.module('app').config([
 
 angular.module('app').config([
   '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  		$urlRouterProvider.otherwise('/');
+  		$urlRouterProvider.otherwise('/pins');
 
   		$stateProvider.state('pins', {
   			url: '/pins',

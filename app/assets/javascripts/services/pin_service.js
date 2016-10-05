@@ -25,18 +25,18 @@ PinBoard.factory('PinService', ['Restangular', '$rootScope', function(Restangula
   }
 
   var patchPin = function(pinParams, pin) {
-    pin.patch(pinParams).then(function() {
-        $rootScope.$broadcast('pins.create')
+    return pin.patch(pinParams).then(function() {
+        return angular.copy(populatePins(), _pins)
       })
   }
 
   var find = function(id) {
-    return Restangular.one('pins', id).get().$object
+    return Restangular.one('pins', id).get()
   }
 
   var removePin = function(pin) {
     pin.remove().then(function() {
-        $rootScope.$broadcast('pins.create')
+        angular.copy(populatePins(), _pins)
       })
   }
 

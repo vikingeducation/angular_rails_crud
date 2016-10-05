@@ -1,4 +1,4 @@
-var PinBoard = angular.module('PinBoard', ['ui.router', 'restangular']);
+var PinBoard = angular.module('PinBoard', ['ui.router', 'restangular', 'Devise']);
 
 PinBoard.factory('_', ['$window', function($window){
   return $window._;
@@ -15,11 +15,19 @@ function($stateProvider, $urlRouterProvider, RestangularProvider){
   $stateProvider.state('pins', {
     abstract: true,
     url: '/pins',
-    template: '<div ui-view></div>',
     resolve: {
       'pinsList': ['PinService', function(PinService) {
         return PinService.getPins();
       }]
+    },
+    views: {
+      "": {
+        template: '<div ui-view></div>'
+      },
+      'nav': {
+        templateUrl: '/templates/pins/nav.html',
+        controller: 'NavCtrl'
+      }
     }
   })
   .state('pins.index', {

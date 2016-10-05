@@ -1,1 +1,7 @@
-<pin-form pin="pin"></pin-form>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref="pins.index">View All Pins/Cancel Edit</a>
+    <h1>Pin {{ pin.id }}: {{ pin.item_name }}</h1>
+    <pin-form pin="pin"></pin-form>
+  </div>
+</div>

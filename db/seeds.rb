@@ -10,8 +10,8 @@ User.destroy_all
 Pin.destroy_all
 
 puts 'creating users and pins'
-5.times do
-  user = User.create(username: Faker::Name.first_name)
+5.times do |num|
+  user = User.create(username: Faker::Name.first_name, email: "#{num}@aol.com", password: "graham+mike")
   pin = {
     item_name: Faker::Commerce.product_name,
     buy_sell: true,

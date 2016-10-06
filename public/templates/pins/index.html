@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h2>New Pin</h2>
+    <pin-form></pin-form>
+
+    <h2>All Pins</h2>
+    <div ng-repeat="pin in pins | orderBy: '-created_at'">
+      <a ui-sref="pins.show({id: pin.id})"><h3>{{ pin.item_name }}</h3></a>
+      <h4>{{ pin.buy_sell ? "BUY":"SELL" }}</h4>
+      <p ng-show="currentUser.id === pin.user.id"><a ui-sref="pins.edit({id: pin.id})">Edit Pin</a>  <a href="" ng-click="removePin(pin)">Delete Pin</a></p>
+      <p>{{ pin.description }}</p>
+      <p>posted {{ pin.created_at | date }} by {{ pin.user.username }}</p>
+    </div>
+  </div>
+</div>

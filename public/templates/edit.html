@@ -1,0 +1,19 @@
+
+<form ng-submit="updatePin()">
+  <label>name</label>
+  <input type="text" ng-model="pinParams.name">
+  <br>
+
+  <label>Buy or Sell</label>
+  <select ng-model="pinParams.buy_sell">
+    <option value="Buy"> Buy</option>
+    <option value="Sell"> Sell</option>
+  </select>
+  <br>
+  <label>Description</label>
+  <input type="text" ng-model="pinParams.description">
+
+  <br>
+
+  <input type="submit" class="btn btn-outline-info btn-md">
+</form>

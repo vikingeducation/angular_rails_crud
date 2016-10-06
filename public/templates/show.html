@@ -1,0 +1,7 @@
+<h3>{{ pin.item_name }}</h3>
+<button ui-sref="pins.edit({id:pin.id})" class="btn btn-outline-primary btn-sm">Edit</button>
+
+<button ng-click="destroy()" class="btn btn-outline-danger btn-sm">Delete</button>
+
+<p>{{ pin.description }}</p>
+<p>Posted {{ pin.created_at }} by {{ pin.user }}</p>

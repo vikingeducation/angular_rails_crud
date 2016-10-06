@@ -53,7 +53,7 @@ app.factory('PinService',
   PinService.destroyPin = function(pin, pinParams) {
     return pin.remove().then(function(response) {
       var unwanted = _.find(_pins, {id: pin.id});
-      
+
       angular.copy(_.without(_pins, unwanted) , _pins);
       console.log('destroyed!');
 

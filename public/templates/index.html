@@ -19,8 +19,10 @@
 
 <ul ng-repeat="pin in pins">
   <li>
-    <a ui-sref="pins.show({id: pin.id })"> 
+    <h4><a ui-sref="pins.show({id: pin.id })">
       {{ pin.item_name }}
-    </a>
+    </a></h4>
+    <p>{{ pin.description }}</p>
+    <p>Posted {{ pin.created_at }} by {{ pin.user.username }}</p>
   </li>
 </ul>

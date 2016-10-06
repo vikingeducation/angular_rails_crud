@@ -2,7 +2,7 @@ class PinsController < ApplicationController
   def index
     @pins = Pin.all
     respond_to do |format|
-      format.json { render json: @pins.to_json }
+      format.json { render json: @pins.to_json(include: :user), status: 200 }
     end
   end
 
@@ -18,7 +18,7 @@ class PinsController < ApplicationController
 
     respond_to do |format|
       if @pin.save
-        format.json { render json: @pin.to_json {{ include: :user }}, status: 200}
+        format.json { render json: @pin.to_json(include: :user), status: 200}
       else
         format.json { render json: {error: "Couldn't created pin"}, status: 400}
       end

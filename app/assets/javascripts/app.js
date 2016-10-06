@@ -1,7 +1,19 @@
-var pin = angular.module('pin', ['ui.router', 'restangular']);
+var pin = angular.module('pin', ['ui.router', 'restangular', 'Devise']);
 
 pin.factory('_', ['$window', function($window){
   return $window._;
+}]);
+
+// CSRF support
+pin.config(
+  ["$httpProvider",
+  function($httpProvider) {
+    var token = $('meta[name=csrf-token]')
+      .attr('content');
+    $httpProvider
+      .defaults
+      .headers
+      .common['X-CSRF-Token'] = token;
 }]);
 
 pin.config(['RestangularProvider', function(RestangularProvider) {

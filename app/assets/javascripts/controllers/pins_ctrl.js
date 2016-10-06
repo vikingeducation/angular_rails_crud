@@ -1,4 +1,12 @@
-pin.controller('PinsCtrl', ['$scope', 'PinsService', 'pins', function($scope, PinsService, pins) {
+pin.controller('PinsCtrl', ['$scope', 'Auth', 'PinsService', 'pins', function($scope, Auth, PinsService, pins) {
+
+
+  Auth.currentUser()
+      .then(function(user){
+        $scope.currentUser = user;
+      }, function(response) {
+        console.error(response);
+      });
 
   $scope.pins = PinsService.getPins();
   // console.log($scope.pins);
@@ -6,5 +14,7 @@ pin.controller('PinsCtrl', ['$scope', 'PinsService', 'pins', function($scope, Pi
   $scope.createPin = function() {
     PinsService.createPin($scope.newPin);
   };
+
+  
 
 }]);

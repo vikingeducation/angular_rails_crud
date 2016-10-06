@@ -1,0 +1,12 @@
+ <div class="col-xs-6"> 
+  <h1>Pin {{pin.id}}: {{pin.item_name}}</h1>
+  <h5><a ui-sref="pins.index">View All Pins</a></h5>
+  <hr>
+  <h3>{{pin.item_name}}</h3>
+  <h4>{{ pin.buy_sell ? "WANT TO BUY" : "FOR SALE"}}</h4>
+  <div ng-if="isCurrentUser()">
+    <p><a ui-sref="pins.edit({ id: pin.id })">Edit</a> | <button class="btn btn-danger btn-xs" ng-click="deletePin()">Delete</button> </p>
+  </div>
+  <p>{{pin.description}}</p>
+  <p class="pull-right"><em>Posted {{pin.created_at | date: "MM/dd/yyyy 'at' h:mma"}} by {{pin.user.username}}</em></p>
+</div>

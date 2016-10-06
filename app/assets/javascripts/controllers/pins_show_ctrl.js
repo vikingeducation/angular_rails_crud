@@ -8,6 +8,7 @@ pin.controller('PinsShowCtrl', ['$scope', 'Auth', '$state', 'PinsService', 'pins
       });
 
   $scope.pins = pins;
+  console.log(pins);
   $scope.pin = pin
 
   $scope.deletePin = function(){

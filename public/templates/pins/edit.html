@@ -1,0 +1,23 @@
+<div class="row">
+  <h1>Pin {{ pin.id }}: {{ pin.item_name }}</h1>
+
+</div>
+
+<div class="row">
+  <a ui-sref="pins">View all Pins</a>
+</div>
+
+
+<div class="row">
+  <form ng-init="form">
+    Item Name<input type="text" name="item_name" ng-model="form.item_name" ><br>
+    Description<input type="text" name="description" ng-model="form.description" ><br>
+
+    <select ng-model="form.buy_sell">
+      <option value="buy">Buy</option>
+      <option value="sell">Sell</option>
+    </select><br>
+    <input ng-click="editPin()" type="submit" name="submit" value="Edit">
+  </form>
+
+</div>

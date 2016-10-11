@@ -1,0 +1,8 @@
+<div ui-view="pin-form"></div>
+
+
+<div class="row" ng-repeat="pin in pins">
+  <h1 ui-sref="pins.show({ id: pin.id })">{{ pin.item_name }}</h1>
+
+
+</div>

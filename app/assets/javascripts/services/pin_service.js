@@ -7,6 +7,11 @@ app.factory("pinService", ['Restangular', function(Restangular){
     return Restangular.all('pins').getList();
   };
 
+  service.createPin = function(formData){
+    var pin = { pin: formData };
+    return Restangular.all("pins").post(pin);
+  }
+
 
   return service;
 }]);

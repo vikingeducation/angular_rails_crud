@@ -29,8 +29,13 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: "/pins",
       views: {
         "": {
-          templateUrl: "templates/pins/pins.html",
+          templateUrl: "templates/pins/index.html",
           controller: "PinsCtrl" 
+        },
+
+        "pin-form@pins": {
+          templateUrl: "templates/pins/new.html",
+          controller: "NewPinCtrl"
         }
       }
     })

@@ -1,0 +1,13 @@
+<div class="row">
+  <form ng-init="form">
+    Item Name<input type="text" name="item_name" ng-model="form.item_name" ><br>
+    Description<input type="text" name="description" ng-model="form.description" ><br>
+
+    <select ng-model="form.buy_sell">
+      <option value="buy">Buy</option>
+      <option value="sell">Sell</option>
+    </select><br>
+    <input ng-click="createPin()" type="submit" name="submit" value="Create">
+  </form>
+
+</div>

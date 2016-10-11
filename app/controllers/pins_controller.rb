@@ -29,6 +29,39 @@ class PinsController < ApplicationController
   end
 
 
+  def show
+    @pin = Pin.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @pin }
+    end
+  end
+
+  def update
+    @pin = Pin.find(params[:id])
+
+    @pin.update(pin_params)
+
+    respond_to do |format|
+      format.json { render json: @pin }
+
+    end
+
+  end
+
+
+  def destroy 
+    @pin = Pin.find(params[:id])
+
+    @pin.destroy
+
+    respond_to do |format|
+      format.json { render json: @pin }
+    end 
+
+  end
+
+
 
 
 

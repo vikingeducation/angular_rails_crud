@@ -2,7 +2,7 @@
 
 
 <div class="row" ng-repeat="pin in pins">
-  <h1>{{ pin.item_name }}</h1>
+  <h1 ui-sref="pins.show({ id: pin.id })">{{ pin.item_name }}</h1>
 
 
 </div>

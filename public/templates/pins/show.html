@@ -1,0 +1,36 @@
+<div class="row">
+  <h1>Pin {{ pin.id }}: {{ pin.item_name }}</h1>
+
+</div>
+
+<div class="row">
+  <a ui-sref="pins">View all Pins</a>
+</div>
+
+
+
+<div class="row">
+  <h2>{{ pin.item_name }}</h2>
+
+
+</div>
+
+<div class="row">
+  <h3 class="text-success" ng-if="!pin.buy_sell">FOR SALE</h3>
+  <h3 class="text-success" ng-if="pin.buy_sell">LOOKING TO BUY</h3>
+
+</div>
+
+<div class="row">
+  <a ui-sref="pins.edit({ id: pin.id })">Edit Pin</a>
+  <a ng-click="deletePin()">Delete Pin</a>
+</div>
+
+<div class="row">
+  <p>{{ pin.description }}</p>
+</div>
+
+
+<div class="row">
+  <p>Posted on {{ pin.created_at | date }} by</p>
+</div>

@@ -40,6 +40,27 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
 
+    
+    .state("pins.show", {
+      url: "/:id", 
+      views: {
+        "@": {
+          templateUrl: "templates/pins/show.html",
+          controller: "ShowPinCtrl"
+        }
+      }
+    })
+
+    .state("pins.edit", {
+      url: "/edit/:id",
+      views: {
+        "@": {
+          templateUrl: "templates/pins/edit.html",
+          controller: "EditPinCtrl"
+        }
+      }
+    })
+
 
     
 })

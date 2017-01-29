@@ -9,10 +9,10 @@ end
 
 puts 'Creating Pins'
 pins = []
-(MULTIPLIER*5).times do
+(MULTIPLIER*3).times do
   pins << {
     :item_name => Faker::Commerce.product_name,
-    :buy_sell => rand(2) ? true:false,
+    :buy_sell => rand(2) == 1 ? true:false,
     :description => Faker::Lorem.paragraph,
     :user_id => User.pluck(:id).sample
   }

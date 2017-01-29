@@ -10,7 +10,13 @@ Crudangles.config(['$urlRouterProvider', '$stateProvider',
     $stateProvider
       .state('pins', {
         url: '/pins',
-        template: 'dynamic pins',
+        resolve: {
+          "pins": ['PinService', function(PinService) {
+            return PinService.all();
+          }]
+        },
+        templateUrl: 'templates/pinsIndex.html',
+        controller: 'PinsIndexCtrl'
       });
   }]);
 

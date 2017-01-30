@@ -1,0 +1,7 @@
+<h4>{{ pin.item_name }}</h4>
+<h4 ng-if="pin.buy_sell" class="text-danger">WANT TO BUY</h4>
+<h4 ng-if="!pin.buy_sell" class="text-success">FOR SALE</h4>
+<a class="col-sm-1">edit pin</a> <a class="col-sm-1">delete pin</a><br>
+<p> {{ pin.description }} </p>
+<em class="text-muted pull-right">Posted on {{ pin.created_at | date:'MMM d, y h:mm:ss a' }} by {{ pin.user.username }}</em><br>
+<hr>

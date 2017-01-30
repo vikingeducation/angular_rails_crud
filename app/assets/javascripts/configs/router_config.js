@@ -9,15 +9,43 @@ Crudangles.config(['$urlRouterProvider', '$stateProvider',
 
     $stateProvider
       .state('pins', {
+        abstract: true,
         url: '/pins',
+        templateUrl: 'templates/pinsTemplate.html',
+      })
+      .state('pins.index', {
+        url: '',
+        views: {
+          '': {
+            templateUrl: 'templates/pinsIndex.html',
+            controller: 'PinsIndexCtrl',
+          },
+          'form': {
+            templateUrl: 'templates/pinsNew.html',
+            controller: 'PinsNewCtrl',
+          }
+        },
         resolve: {
           "pins": ['PinService', function(PinService) {
             return PinService.all();
           }]
         },
-        templateUrl: 'templates/pinsIndex.html',
-        controller: 'PinsIndexCtrl'
-      });
+      })
+      .state('pins.show', {
+        url: '/:id',
+        views: {
+          '': {
+            templateUrl: 'templates/pinsShow.html',
+            controller: 'PinsShowCtrl',
+          }
+        },
+        resolve: {
+          "pin": ['$stateParams', 'PinService', function($stateParams, PinService) {
+            return PinService.find($stateParams.id);
+          }]
+        }
+      })
+      ;
   }]);
 
 

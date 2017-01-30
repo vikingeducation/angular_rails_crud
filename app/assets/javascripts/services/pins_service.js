@@ -24,12 +24,12 @@ Crudangles.factory('PinService',
     var _pins;
 
     var _createPin = function(params) {
-      return Restangular.all('pins').Pin({
-        Pin: {
-          item_name: params.title,
-          buy_sell: params.author,
-          description: params.body,
-          user_id: 1,  //change after adding devise
+      return Restangular.all('pins').post({
+        pin: {
+          item_name: params.item_name,
+          buy_sell: params.buy_sell,
+          description: params.description,
+          user_id: 15,  //change after adding devise
         }
       })
         .then(function(response) {
@@ -43,18 +43,19 @@ Crudangles.factory('PinService',
 
     var _findPin = function(id) {
       id = parseInt(id);
-      var result = _.find(_pins, function(Pin) {
-        if (Pin.id === id) {
-          return Pin;
+      var result = _.find(_pins, function(pin) {
+        if (pin.id === id) {
+          return pin;
         }
       });
+      console.log(result);
       return result ? result : PinService.refreshOne(id);
     };
 
 
     var _refreshOne = function(id) {
-      var index = _.findIndex(_pins, function(Pin) {
-        return Pin.id === id;
+      var index = _.findIndex(_pins, function(pin) {
+        return pin.id === id;
       });
 
       if (index >= 0) {

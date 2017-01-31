@@ -25,11 +25,11 @@ Crudangles.config(['$urlRouterProvider', '$stateProvider',
             controller: 'PinsNewCtrl',
           }
         },
-        resolve: {
-          "pins": ['PinService', function(PinService) {
-            return PinService.all();
-          }]
-        },
+        // resolve: {
+        //   "pins": ['PinService', function(PinService) {
+        //     return PinService.getPins();
+        //   }]
+        // },
       })
       .state('pins.show', {
         url: '/:id',
@@ -41,9 +41,23 @@ Crudangles.config(['$urlRouterProvider', '$stateProvider',
         },
         resolve: {
           "pin": ['$stateParams', 'PinService', function($stateParams, PinService) {
-            return PinService.find($stateParams.id);
+            return PinService.getPin($stateParams.id);
           }]
-        }
+        },
+      })
+      .state('pins.edit', {
+        url: '/:id/edit',
+        views: {
+          '': {
+            templateUrl: 'templates/pinsEdit.html',
+            controller: 'PinsEditCtrl',
+          }
+        },
+        resolve: {
+          "pin": ['$stateParams', 'PinService', function($stateParams, PinService) {
+            return PinService.getPin($stateParams.id);
+          }]
+        },
       })
       ;
   }]);

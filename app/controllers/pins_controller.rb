@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+  before_action :set_pin, :except => [:index, :create]
 
   def index
     @pins = Pin.order(:created_at => :desc)
@@ -33,13 +34,34 @@ class PinsController < ApplicationController
         format.json { render :json => resource_to_json, :status => 200 }
       else
         flash.now[:error] = 'Pin not updated'
-        format.json { render :json => post_errors, :status => 422 }
+        format.json { render :json => pin_errors, :status => 422 }
       end
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @pin.destroy
+        flash.now[:error] = 'pin destroyed'
+        format.json { render :json => @pin, :status => 200 }
+      else
+        flash.now[:error] = 'pin not destroyed'
+        format.json { render :json => pin_errors, :status => 422 }
+      end
+    end
+  end
 
   private
+  def set_pin
+    @pin = Pin.find_by_id(params[:id])
+    unless @pin
+      flash.now[:error] = 'Could not find pin'
+      respond_to do |format|
+        format.json { render :json => pin_errors, :status => 422 }
+      end
+    end
+  end
+
   def pin_params
     params.require(:pin).permit(:item_name, :buy_sell, :description, :user_id)
   end

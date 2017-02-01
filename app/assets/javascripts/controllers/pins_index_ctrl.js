@@ -5,16 +5,16 @@
 Crudangles.controller('PinsIndexCtrl',
   ['$scope', '$state', 'PinService', '$rootScope',
   function($scope, $state, PinService, $rootScope) {
-    $scope.pins = PinService.getPins().$object;
-
-    $scope.removePin = function(id) {
-      PinService.deletePin(id);
-      $rootScope.$broadcast('pins.changed');
-    };
-
-    $scope.$on('pins.changed', function(){
-      $scope.pins = PinService.getPins().$object;
+    PinService.getPins().then( function(pins) {
+      $scope.pins = pins;
     })
+
+    $scope.removePin = function(pin) {
+      PinService.deletePin(pin);
+      PinService.getPins().then( function(pins) {
+        angular.copy(pins,$scope.pins);
+      })
+    };
 
   }]);
 

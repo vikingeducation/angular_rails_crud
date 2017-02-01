@@ -29,7 +29,7 @@ Crudangles.factory('PinService',
   };
 
   PinService.deletePin = function(pin){
-    pin.remove();
+    return pin.remove();
   }
 
   return PinService;

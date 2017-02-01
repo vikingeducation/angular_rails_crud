@@ -1,0 +1,30 @@
+<h2>New Pin</h2>
+<form id="pin-form" name="pinForm" class="row">
+  <div class="col-md-6">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label form-label">Item Name</label>
+      <div class="col-sm-10">
+        <input type="text" ng-model="pinParams.item_name" class="form-control form-control-success" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label form-label">Buy/Sell</label>
+      <div class="col-sm-10">
+        <select ng-init="pinParams.buy_sell='true'"  name="type" ng-model="pinParams.buy_sell" class="form-control form-control-success">
+          <option value="true">WANT TO BUY</option>
+          <option value="false">FOR SELL</option>
+        </select>
+      </div>
+    </div>
+   <div class="form-group row">
+      <label class="col-sm-2 col-form-label form-label">Item Desc.</label>
+      <div class="col-sm-10">
+        <textarea ng-model="pinParams.description" class="form-control form-control-success"></textarea>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-2">
+      <input type="submit" value="Create pin" class="btn btn-success" ng-click="createPin()" ng-disabled="pinForm.$invalid">
+    </div>
+  </div>
+</form>

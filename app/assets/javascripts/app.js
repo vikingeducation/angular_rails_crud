@@ -11,20 +11,42 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
   $urlRouterProvider.otherwise('/pins');
 
   $stateProvider
-    .state('pins', {
-      url: '/pins',
-      templateUrl: 'templates/index.html',
-      controller: 'PinsCtrl'
+    .state('home', {
+      url: '',
+      views: {
+        'navbar' : {
+          templateUrl: 'templates/_navbar.html'
+        },
+        'footer' : {
+          templateUrl: 'templates/_footer.html'
+        }
+      }
     })
 
-    .state('pins.show', {
-      url: '/:id',
+    .state('home.pins',{
+      url: '/pins',
       views: {
         '@' : {
-          templateUrl: 'templates/show.html',
+          templateUrl: 'templates/_pins.html',
+          controller: 'PinsCtrl'
+        },
+        'pinForm@home.pins' : {
+          templateUrl: 'templates/_pinForm.html',
           controller: 'PinsCtrl'
         }
       }
     })
+
+    .state('home.pins.show', {
+      url: '/:id',
+      views: {
+        '@' : {
+          templateUrl: 'templates/_pin.html',
+          controller: 'PinsCtrl'
+        }
+      }
+    })
+
+
 
 }]);

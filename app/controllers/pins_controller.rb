@@ -27,6 +27,11 @@ class PinsController < ApplicationController
     end
   end
 
+  def destroy
+    @pin = Pin.find(params[:id]).destroy
+    head :no_content
+  end
+
 
     private
       def pin_params

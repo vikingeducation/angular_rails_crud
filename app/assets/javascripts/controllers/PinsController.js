@@ -6,6 +6,15 @@ App.controller('PinsCtrl', ['$scope', 'Restangular', '$stateParams', 'PinService
   $scope.pin = Restangular.one('pins', $stateParams.id).get().$object;
   $scope.pinForm = {};
 
+  $scope.delete = function(pin){
+    console.log(pin);
+    Restangular.one('pins', pin.id).remove()
+      .then(function(response){
+        var index = $scope.pins.indexOf(pin);
+        $scope.pins.splice(index, 1);
+    });
+  };
+
 
 
   $scope.createPin = function(){

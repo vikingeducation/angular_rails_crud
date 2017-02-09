@@ -6,6 +6,7 @@ App.controller('PinsCtrl', ['$scope', 'Restangular', '$stateParams', 'PinService
   $scope.pin = Restangular.one('pins', $stateParams.id).get().$object;
   $scope.pinForm = {};
   $scope.id = $stateParams.id;
+  $scope.editPin = {};
 
   $scope.delete = function(pin){
     console.log(pin);
@@ -34,10 +35,12 @@ App.controller('PinsCtrl', ['$scope', 'Restangular', '$stateParams', 'PinService
   };
 
   $scope.update = function(pin){
+    console.log(pin);
     Restangular.one('pins', pin.id).get()
       .then(function(response){
-        response = pin
-        response.put();
+
+        pin = response;
+        pin.put();
       });
   };
 

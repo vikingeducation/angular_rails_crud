@@ -13,6 +13,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
   $stateProvider
     .state('home', {
       url: '',
+      anstract: true,
       views: {
         'navbar' : {
           templateUrl: 'templates/_navbar.html'
@@ -37,11 +38,21 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }
     })
 
-    .state('home.pins.show', {
+    .state('home.show', {
       url: '/:id',
       views: {
         '@' : {
           templateUrl: 'templates/_pin.html',
+          controller: 'PinsCtrl'
+        }
+      }
+    })
+
+    .state('home.edit', {
+      url: '/:id/edit',
+      views: {
+        '@' : {
+          templateUrl: 'templates/_edit_pin.html',
           controller: 'PinsCtrl'
         }
       }

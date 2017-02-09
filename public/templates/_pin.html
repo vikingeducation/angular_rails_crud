@@ -1,1 +1,10 @@
-Id of pin: {{ id }}
+<h1>Pin {{ pin.id }}: {{ pin.item_name }}</h1>
+<p>Signed in as {{ pin.user.username }}</p>
+<a ui-sref="home.pins"><u>View All Pins</u></a>
+<hr>
+<h4>{{ pin.item_name }}</h4>
+<h5><mark>{{ pin.buy_sell ? "FOR SALE" : "BUY IT?"}}</mark></h5>
+<a ui-sref="home.edit({ id: pin.id })"><u>Edit Pin</a></u> <a href="#"><u>Delete Pin</u></a>
+<br><br>
+<p>{{ pin.description }}</p>
+<p class="pull-right"><i> Posted on {{ pin.created_at | date}} by {{ pin.user.username }}</i></p>

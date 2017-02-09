@@ -3,11 +3,12 @@ App.controller('PinsCtrl', ['$scope', 'Restangular', '$stateParams', 'PinService
 
 
   $scope.pins = PinService.all();
+  $scope.pin = Restangular.one('pins', $stateParams.id).get().$object;
   $scope.pinForm = {};
 
 
+
   $scope.createPin = function(){
-    console.log($scope.pinForm);
     Restangular.all('pins').post({
       pin: {
         item_name: $scope.pinForm.item_name,
@@ -17,11 +18,14 @@ App.controller('PinsCtrl', ['$scope', 'Restangular', '$stateParams', 'PinService
       }
     }).then(function(response){
       console.log(response);
-      $scope.pins = PinService.all();
-      $scope.pinForm = {};
+
     });
+    $scope.pinForm = {};
   };
 
+  $scope.update = function(){
+    console.log("Updating Pin");
+  };
 
   $scope.id = $stateParams.id;
 

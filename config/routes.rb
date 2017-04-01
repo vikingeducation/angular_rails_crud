@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "static_pages#index"
 
-  scope :api do
+  scope :api, constraints: { format: 'json' } do
     scope :v1 do
       resources :pins, :only => [:index]
     end

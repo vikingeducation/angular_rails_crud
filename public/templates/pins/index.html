@@ -1,3 +1,10 @@
-<h1>this is the pins index template pls show up</h1>
+<div>form goes here</div>
 
-<p>{{pins}}</p>
+<hr>
+
+<div ng-repeat="pin in pins">
+  <h3>{{pin.item_name}}</h3>
+  <p>{{pin.description}}</p>
+  <p class="text-right text-muted">Posted {{pin.created_at | date}} by {{pin.user.username}}</p>
+  <hr>
+</div>

@@ -27,9 +27,8 @@ User.all.each do |user|
     user.pins.create(
       item_name: Faker::Hipster.word,
       description: Faker::Hipster.sentence,
-      buy_sell: false,
+      buy_sell: false
       )
   end
 end
-
 puts "DONE"

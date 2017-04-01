@@ -2,9 +2,9 @@ class PinsController < ApplicationController
 
   def index
     @pins = Pin.all
+
     respond_to do |format|
-      format.html
-      format.json { render json: @pins.to_json }
+      format.json { render json: @pins.to_json(:include => :user) }
     end
   end
 

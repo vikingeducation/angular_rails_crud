@@ -3,6 +3,9 @@ var fullCRUD = angular.module('fullCRUD', ['ui.router', 'restangular'])
 .config(['RestangularProvider', function(RestangularProvider) {
   RestangularProvider.setBaseUrl('/api/v1');
   RestangularProvider.setRequestSuffix('.json');
+  RestangularProvider.setDefaultHttpFields({
+    'content-type': 'application/json'
+  });
 }])
 
 .config(function($stateProvider, $urlRouterProvider) {

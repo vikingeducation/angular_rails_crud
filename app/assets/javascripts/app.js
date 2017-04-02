@@ -30,8 +30,6 @@ var fullCRUD = angular.module('fullCRUD', ['ui.router', 'restangular'])
 
     .state('pins.show', {
       url: '/:id',
-      // templateUrl: '/templates/pins/show.html',
-      // controller: "pinsShowCtrl",
       views: {
         "@": { 
           templateUrl: "/templates/pins/show.html", 
@@ -41,18 +39,24 @@ var fullCRUD = angular.module('fullCRUD', ['ui.router', 'restangular'])
       resolve: {
         pin: ['Restangular', '$stateParams',
               function(Restangular, $stateParams) {
-                return Restangular.one('pins', $stateParams.id).get(); //check syntax
+                return Restangular.one('pins', $stateParams.id).get();
               }]
       }
     })
 
     .state('pins.edit', {
-      url: '/edit',
-      views: { //in
-        "pin-info@pins.edit": {
-          templateUrl: '/templates/pins/pin.html',
-          controller: "pinsCtrl"
+      url: '/:id/edit',
+      views: { 
+        "@": {
+          templateUrl: '/templates/pins/edit.html',
+          controller: "pinsEditCtrl"
         }
+      },
+      resolve: {
+        pin: ['Restangular', '$stateParams',
+              function(Restangular, $stateParams) {
+                return Restangular.one('pins', $stateParams.id).get();
+              }]
       }
     })
 })

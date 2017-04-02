@@ -8,8 +8,8 @@
 <h5 ng-if="pin.buy_sell" class="text-success">For Sale</h5>
 <h5 ng-if="!pin.buy_sell" class="text-danger">Want to Buy</h5>
 
-<a href="pins.edit({pin.id})">Edit</a> &nbsp
+<a ui-sref="pins.edit({id: pin.id})">Edit</a> &nbsp
 
-<a href="pins.delete({pin.id})">Delete</a><br><br>
+<a href="pins.delete({id: pin.id})">Delete</a><br><br>
 
 <p>{{pin.description}}</p>

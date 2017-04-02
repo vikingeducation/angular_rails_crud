@@ -1,0 +1,15 @@
+<h1>Pin {{pin.id}}: {{pin.item_name}}</h1>
+<h4><a ui-sref="pins">View all pins</a></h4>
+
+<hr>
+
+<h2>{{pin.item_name}}</h2>
+
+<h5 ng-if="pin.buy_sell" class="text-success">For Sale</h5>
+<h5 ng-if="!pin.buy_sell" class="text-danger">Want to Buy</h5>
+
+<a href="pins.edit({pin.id})">Edit</a> &nbsp
+
+<a href="pins.delete({pin.id})">Delete</a><br><br>
+
+<p>{{pin.description}}</p>

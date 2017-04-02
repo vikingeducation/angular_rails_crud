@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   scope :api, constraints: { format: 'json' } do
     scope :v1 do
-      resources :pins, :only => [:index]
+      resources :pins
     end
   end
 end

@@ -20,6 +20,10 @@ fullCRUD.factory('pinService',
                                         buy_sell: JSON.parse(updatedPin.buy_sell)} })
     }
 
+    pinService.delete = function(pin) {
+      return Restangular.one('pins', pin.id)
+                        .remove( { id: pin.id } );
+    }
 
     return pinService;
 

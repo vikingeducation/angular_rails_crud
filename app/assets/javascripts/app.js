@@ -59,4 +59,5 @@ var fullCRUD = angular.module('fullCRUD', ['ui.router', 'restangular'])
               }]
       }
     })
+    
 })

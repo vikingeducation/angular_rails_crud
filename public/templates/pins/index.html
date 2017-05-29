@@ -1,6 +1,16 @@
 <h2>All Pins</h2>
 <hr>
 
-"/templates/pins/index.html"
-{{ pins }}
-{{ testing }}
+<div ng-repeat="pin in pins">
+  <h3>
+    <a sref="">{{ pin.item_name }}</a>
+  </h3>
+
+  <p>
+    {{ pin.description}}
+  </p>
+  <p>
+    Posted {{ pin.created_at | date }} by {{ 'user' }}
+  </p>
+
+</div>

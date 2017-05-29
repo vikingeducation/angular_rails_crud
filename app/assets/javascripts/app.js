@@ -18,7 +18,6 @@ MyApp.config(['$urlRouterProvider', '$stateProvider',
       resolve: {
         "pins": ['PinService', function(PinService) {
           return PinService.all();
-          // return 'apples'
         }]
       },
       views: {

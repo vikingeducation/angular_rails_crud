@@ -1,17 +1,39 @@
 var MyApp = angular.module('MyApp', ['ui.router', 'restangular']);
 
+MyApp.config(['RestangularProvider',
+  function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('/api/v1');
+    RestangularProvider.setRequestSuffix('.json');
+  }]);
+
 MyApp.config(['$urlRouterProvider', '$stateProvider',
   function($urlRouterProvider, $stateProvider){
 
   $urlRouterProvider.otherwise('');
 
   $stateProvider
-    .state('test', {
+    .state('pins', {
+      // abstract: true,
       url: '',
-      template: "heyo"
+      resolve: {
+        "pins": ['PinService', function(PinService) {
+          return PinService.all();
+          // return 'apples'
+        }]
+      },
+      views: {
+        "": {
+          templateUrl: "/templates/pins/index.html",
+          controller: "PinIndexCtrl"
+        }
+      }
     })
 
+
 }]);
+
+
+
 
 
 // debugging

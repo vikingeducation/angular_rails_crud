@@ -2,7 +2,7 @@ MyApp.factory('PinService', ['Restangular', function(Restangular){
   var service = {};
 
   service.all = function(){
-    return Restangular.all('pins').getList();
+    return Restangular.all('pins').getList().$object;
   };
 
   service.getPin = function(pinId){
@@ -18,6 +18,10 @@ MyApp.factory('PinService', ['Restangular', function(Restangular){
         user_id: 4 //temp until devise is hooked up
       }
     })
+  };
+
+  service.destroyPin = function(pinId){
+    return Restangular.one('pins', pinId).remove();
   };
 
   return service;

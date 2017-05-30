@@ -12,13 +12,14 @@
   </h4>
 
 
-    <a ui-sref="">
+    <a ui-sref="pins.edit({id: pin.id})">
       Edit Pin
     </a>
 
 
 
-    <a ui-sref="">
+
+    <a href="#" ng-click="destroyPin()">
       Delete Pin
     </a>
 
@@ -27,7 +28,7 @@
     {{ pin.description}}
   </p>
   <p>
-    Posted {{ pin.created_at | date }} by {{ 'user' }}
+    Posted {{ pin.created_at | date }} by {{ pin.user.name }}
   </p>
 
 </div>

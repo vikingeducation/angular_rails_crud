@@ -53,7 +53,7 @@
     {{ pin.description}}
   </p>
   <p>
-    Posted {{ pin.created_at | date }} by {{ 'user' }}
+    Posted {{ pin.created_at | date }} by {{ pin.user.name }}
   </p>
 
 </div>

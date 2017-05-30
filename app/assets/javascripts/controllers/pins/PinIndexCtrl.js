@@ -1,6 +1,10 @@
 MyApp.controller('PinIndexCtrl', ['Restangular', '$scope', 'pins', 'PinService',
   function(Restangular, $scope, pins, PinService){
 
+  $scope.$on('pin.deleted', function(){
+    $scope.pins = PinService.all();
+  });
+
   $scope.pins = pins;
 
   $scope.createPin = function(formData){
@@ -10,5 +14,7 @@ MyApp.controller('PinIndexCtrl', ['Restangular', '$scope', 'pins', 'PinService',
         $scope.formData = {};
       })
   };
+
+
 
 }]);

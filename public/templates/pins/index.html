@@ -24,7 +24,7 @@
 
 
 
-<div ng-repeat="pin in pins">
+<div ng-repeat="pin in pins | orderBy: '-created_at'">
   <h3>
     <a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a>
   </h3>

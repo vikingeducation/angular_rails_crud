@@ -1,18 +1,14 @@
-MyApp.controller('PinIndexCtrl', ['Restangular', '$scope', 'pins',
-  function(Restangular, $scope, pins){
+MyApp.controller('PinIndexCtrl', ['Restangular', '$scope', 'pins', 'PinService',
+  function(Restangular, $scope, pins, PinService){
 
   $scope.pins = pins;
 
   $scope.createPin = function(formData){
-     Restangular.all('pins').post({
-      pin: {
-        description: formData.description,
-        item_name: formData.itemName,
-        buy_sell: Boolean( formData.buySell ),
-        user_id: 4 //temp until devise is hooked up
-      }
-    })
-
+    PinService.createPin(formData)
+      .then(function(pinResponse){
+        $scope.pins.push( pinResponse );
+        $scope.formData = {};
+      })
   };
 
 }]);

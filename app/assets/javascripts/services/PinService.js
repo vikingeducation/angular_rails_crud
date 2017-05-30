@@ -9,5 +9,9 @@ MyApp.factory('PinService', ['Restangular', function(Restangular){
     return Restangular.one('pins', pinId).get();
   };
 
+  // service.createPin = function(){
+  //   Restangular.
+  // };
+
   return service;
 }]);

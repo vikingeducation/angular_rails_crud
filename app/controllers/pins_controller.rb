@@ -8,4 +8,12 @@ class PinsController < ApplicationController
     end
   end
 
+  def show
+    @pin = Pin.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @pin }
+    end
+  end
+
 end

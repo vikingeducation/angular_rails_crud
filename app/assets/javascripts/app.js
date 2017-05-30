@@ -19,6 +19,7 @@ MyApp.config(['$urlRouterProvider', '$stateProvider',
         "pins": ['PinService', function(PinService) {
           return PinService.all();
         }]
+      }
     })
 
     .state('pins.index', {
@@ -28,6 +29,21 @@ MyApp.config(['$urlRouterProvider', '$stateProvider',
           templateUrl: "/templates/pins/index.html",
           controller: "PinIndexCtrl"
         }
+      }
+    })
+
+    .state('pins.show', {
+      url: '/:id',
+      views: {
+        "": {
+          templateUrl: "/templates/pins/show.html",
+          controller: "PinShowCtrl"
+        }
+      },
+      resolve: {
+        "pin": ['PinService', '$stateParams', function(PinService, stateParams) {
+          return PinService.getPin( stateParams.id );
+        }]
       }
     })
 

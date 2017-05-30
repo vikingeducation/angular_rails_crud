@@ -9,17 +9,20 @@ MyApp.config(['RestangularProvider',
 MyApp.config(['$urlRouterProvider', '$stateProvider',
   function($urlRouterProvider, $stateProvider){
 
-  $urlRouterProvider.otherwise('');
+  $urlRouterProvider.otherwise('/pins');
 
   $stateProvider
     .state('pins', {
-      // abstract: true,
-      url: '',
+      abstract: true,
+      url: '/pins',
       resolve: {
         "pins": ['PinService', function(PinService) {
           return PinService.all();
         }]
-      },
+    })
+
+    .state('pins.index', {
+      url: '',
       views: {
         "": {
           templateUrl: "/templates/pins/index.html",

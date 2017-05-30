@@ -3,8 +3,28 @@
 
 <div ng-repeat="pin in pins">
   <h3>
-    <a sref="">{{ pin.item_name }}</a>
+    <a ui-sref="">{{ pin.item_name }}</a>
   </h3>
+
+  <h4 ng-show="pin.buy_sell">
+    WANT TO BUY
+  </h4>
+
+  <h4 ng-show="!pin.buy_sell">
+    FOR SALE
+  </h4>
+
+  <p>
+    <a ui-sref="">
+      Edit Pin
+    </a>
+  </p>
+
+  <p>
+    <a ui-sref="">
+      Delete Pin
+    </a>
+  </p>
 
   <p>
     {{ pin.description}}

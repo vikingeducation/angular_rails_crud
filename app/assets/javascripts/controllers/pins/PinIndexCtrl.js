@@ -1,5 +1,5 @@
-MyApp.controller('PinIndexCtrl', ['Restangular', '$scope', 'pins', 'PinService',
-  function(Restangular, $scope, pins, PinService){
+MyApp.controller('PinIndexCtrl', ['Restangular', '$scope', 'pins', 'PinService', '$rootScope',
+  function(Restangular, $scope, pins, PinService, $rootScope){
 
   $scope.$on('pin.deleted', function(){
     $scope.pins = PinService.all();
@@ -15,6 +15,11 @@ MyApp.controller('PinIndexCtrl', ['Restangular', '$scope', 'pins', 'PinService',
       })
   };
 
-
+  $scope.destroyPin = function(pinId){
+    PinService.destroyPin( pinId )
+      .then(function(response){
+        $rootScope.$broadcast('pin.deleted');
+      })
+  };
 
 }]);

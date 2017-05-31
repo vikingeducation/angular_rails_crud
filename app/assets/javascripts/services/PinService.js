@@ -20,10 +20,6 @@ MyApp.factory('PinService', ['Restangular', function(Restangular){
     })
   };
 
-  // service.updatePin = function(pinId){
-  //   return Restangular.one('pins', pinId).remove();
-  // };
-
   service.destroyPin = function(pinId){
     return Restangular.one('pins', pinId).remove();
   };
@@ -38,7 +34,7 @@ MyApp.factory('PinService', ['Restangular', function(Restangular){
       name: 'b'
     }
 
-  ]
+  ];
 
   return service;
 }]);

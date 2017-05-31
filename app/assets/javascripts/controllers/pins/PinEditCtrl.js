@@ -8,6 +8,4 @@ MyApp.controller('PinEditCtrl', ['$scope', 'pin', '$state', function($scope, pin
       })
   };
 
-  // $scope.selectData = PinService.buySellSelectData;
-
 }]);

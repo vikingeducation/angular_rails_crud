@@ -28,5 +28,17 @@ MyApp.factory('PinService', ['Restangular', function(Restangular){
     return Restangular.one('pins', pinId).remove();
   };
 
+  service.buySellSelectData = [
+    {
+      value: 'true',
+      name: 'a'
+    },
+    {
+      value: 'false',
+      name: 'b'
+    }
+
+  ]
+
   return service;
 }]);

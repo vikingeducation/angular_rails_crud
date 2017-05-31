@@ -47,14 +47,20 @@ MyApp.config(['$urlRouterProvider', '$stateProvider',
       }
     })
 
-    // .state('pins.edit', {
-    //   url: '/:id/edit',
-    //   views: {
-    //     "": {
-    //       template: "edit template"
-    //     }
-    //   }
-    // })
+    .state('pins.edit', {
+      url: '/:id/edit',
+      views: {
+        "": {
+          templateUrl: '/templates/pins/edit.html',
+          controller: 'PinEditCtrl'
+        }
+      },
+      resolve: {
+        "pin": ['PinService', '$stateParams', function(PinService, stateParams) {
+          return PinService.getPin( stateParams.id );
+        }]
+      }
+    })
 
 
 }]);

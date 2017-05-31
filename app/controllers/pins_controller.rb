@@ -27,6 +27,19 @@ class PinsController < ApplicationController
     end
   end
 
+  def update
+    @pin = Pin.find(params[:id])
+    @pin.update_attributes( pin_params )
+    
+    respond_to do |format|
+      if @pin.save
+        format.json { render json: @pin }
+      else
+        format.json { render status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @pin = Pin.find(params[:id])
     @pin.destroy

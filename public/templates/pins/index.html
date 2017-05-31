@@ -21,9 +21,9 @@
 
   <button type="submit">Create Pin</button>
 </form>
+<hr>
 
-
-
+<h2>All Pins</h2>
 <div ng-repeat="pin in pins | orderBy: '-created_at'">
   <h3>
     <a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a>
@@ -55,5 +55,5 @@
   <p>
     Posted {{ pin.created_at | date }} by {{ pin.user.name }}
   </p>
-
+<hr>
 </div>

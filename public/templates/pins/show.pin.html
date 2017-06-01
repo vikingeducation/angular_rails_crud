@@ -1,0 +1,7 @@
+<h2>{{ pin.item_name }}</h2>
+<h3> {{ pin.type ? "Want to Buy" : "Selling" }}</h3>
+<a ui-sref="show.edit">Edit Pin</a>
+<a ng-click="deletePin()">Delete Pin</a>
+
+<p>{{ pin.description }}</p>
+<em>Posted on: {{ pin.created_at | date }} by {{ pin.user.username }}</em>

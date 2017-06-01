@@ -35,6 +35,30 @@ app.config(
               return pinService.all();
             }
           }
+        })
+
+        .state('show', {
+          url: '/pins/:id',
+          views: {
+            'main@': {
+              templateUrl: '/templates/pins/show.html',
+              controller: 'PinShowCtrl'
+            },
+            '@show': {
+              templateUrl: '/templates/pins/show.pin.html',
+              controller: 'PinShowCtrl'
+            }
+          }
+        })
+
+        .state('show.edit', {
+          url: '/edit',
+          views: {
+            '@show': {
+              template: '<pin-form form-data="pin" process-pin="processPin(valid)"></pin-form>',
+              controller: 'PinEditCtrl'
+            }
+          }
         });
 
 }]);

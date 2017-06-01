@@ -8,5 +8,11 @@ app.controller('PinIndexCtrl',
       // console.log("pins in PinIndexCtrl are:");
       // console.log(pins);
 
+      $scope.processPin = function(valid) {
+        if (valid) {
+          pinService.create($scope.formData);
+          $scope.formData = {};
+        }
+      };
 
 }]);

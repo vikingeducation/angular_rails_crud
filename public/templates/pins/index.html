@@ -1,0 +1,59 @@
+<h2>All Pins</h2>
+<hr>
+
+
+<h3>New Pin</h3>
+
+<form name="pinForm" ng-submit="createPin(formData)">
+  <h4>Title</h4>
+  <input type="text" ng-model="formData.itemName">
+
+  <h4>Buy/Sell?</h4>
+  <select ng-model="formData.buySell">
+    <option value="true">WANT TO BUY</option>
+    <option value="false">WANT TO SELL</option>
+  </select>
+
+  <h4>Description</h4>
+  <textarea ng-model="formData.description"></textarea>
+
+  <br>
+
+  <button type="submit">Create Pin</button>
+</form>
+<hr>
+
+<h2>All Pins</h2>
+<div ng-repeat="pin in pins | orderBy: '-created_at'">
+  <h3>
+    <a ui-sref="pins.show({id: pin.id})">{{ pin.item_name }}</a>
+  </h3>
+
+  <h4 ng-show="pin.buy_sell">
+    WANT TO BUY
+  </h4>
+
+  <h4 ng-show="!pin.buy_sell">
+    FOR SALE
+  </h4>
+
+  <p>
+    <a ui-sref="pins.edit({id: pin.id})">
+      Edit Pin
+    </a>
+  </p>
+
+  <p>
+    <a href="#" ng-click="destroyPin(pin.id)">
+      Delete Pin
+    </a>
+  </p>
+
+  <p>
+    {{ pin.description}}
+  </p>
+  <p>
+    Posted {{ pin.created_at | date }} by {{ pin.user.name }}
+  </p>
+<hr>
+</div>

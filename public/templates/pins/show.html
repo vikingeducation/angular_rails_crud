@@ -1,0 +1,26 @@
+<div>
+  <h3>
+    {{ pin.item_name }}
+  </h3>
+
+  <h4 ng-show="pin.buy_sell">
+    WANT TO BUY
+  </h4>
+
+  <h4 ng-show="!pin.buy_sell">
+    FOR SALE
+  </h4>
+    <a ui-sref="pins.edit({id: pin.id})">
+      Edit Pin
+    </a>
+    <a href="#" ng-click="destroyPin()">
+      Delete Pin
+    </a>
+  <p>
+    {{ pin.description}}
+  </p>
+  <p>
+    Posted {{ pin.created_at | date }} by {{ pin.user.name }}
+  </p>
+
+</div>

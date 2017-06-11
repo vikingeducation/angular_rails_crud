@@ -1,0 +1,19 @@
+<h2>Edit Pin</h2>
+
+<form name="pinForm" ng-submit="updatePin()">
+  <h4>Title</h4>
+  <input type="text" ng-model="pin.item_name">
+
+  <h4>Buy/Sell?</h4>
+  <select ng-model="pin.buy_sell">
+    <option value="true" >WANT TO BUY</option>
+    <option value="false" >WANT TO SELL</option>
+  </select>
+
+  <h4>Description</h4>
+  <textarea ng-model="pin.description"></textarea>
+
+  <br>
+
+  <button type="submit">Update Pin</button>
+</form>
